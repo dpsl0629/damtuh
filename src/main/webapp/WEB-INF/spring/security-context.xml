@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="customLoginSuccess" class="com.damtuh.security.CustomLoginSuccessHandler"></bean>
+	<bean id="customPasswordEncoder" class="com.damtuh.security.CustomNoOpPasswordEncoder"></bean>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	
+	<security:http>
+		<security:intercept-url pattern="/member/all" access="permitAll"/>
+		<security:intercept-url pattern="/member/member" access="hasRole('ROLE_MEMBER')"/>
+		
+		<security:form-login
+		login-page="/member/loginPage"
+		default-target-url="/main/main"
+		authentication-success-handler-ref="customLoginSuccess"/> 
+		<security:logout logout-url="/logout" invalidate-session="true" logout-success-url="/main/main"/>
+		
+	</security:http>
+	
+	<security:jdbc-user-service data-source-ref="dataSource"/>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="select id, pw, enabled from tbl_member where id=?"
+			authorities-by-username-query="select userid, auth from tbl_member_auth where userid = ?"/>
+			<!-- <security:password-encoder ref="customPasswordEncoder"/> -->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 아이디 중복검사 -->
+<mapper namespace="com.damtuh.mapper.MemberMapper">
+
+<resultMap id="memberResult" type="com.damtuh.member.vo.MemberVO">
+		<result property="numberId" column="numberId"/> 
+		<result property="name" column="name"/> 
+		<result property="id" column="id"/> 
+		<result property="pw" column="pw"/> 
+		<result property="email" column="email"/> 
+		<result property="zipcode" column="zipcode"/> 
+		<result property="address1" column="address1"/> 
+		<result property="address2" column="address2"/> 
+		<result property="phone" column="phone"/> 
+		<result property="birth" column="birth"/> 
+		<result property="joindate" column="joindate"/> 
+	</resultMap>
+	
+	<select id="idCheck" resultType="int">
+	
+		select count(*) from tbl_member where id = #{id}
+	
+	</select>
+	
+	<insert id="join">
+		insert into tbl_member (numberid, name, id, pw, email, zipcode, address1, address2, phone, birth, joindate)
+		values (seq_member.nextval, #{name}, #{id}, #{pw} , #{email}, #{zipcode}, #{address1}, #{address2}, #{phone}, #{birth}, sysdate)
+	</insert>
+	
+</mapper>
