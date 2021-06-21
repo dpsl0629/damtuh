@@ -220,6 +220,8 @@
     transition: 0.3 ease-in-out;
     -moz-transition: 0.3 ease-in-out;
     -webkit-transition: 0.3 ease-in-out;
+    margin-top: 20px;
+    display: inline-block;
 }
 
 .buy-btn:hover {
@@ -262,7 +264,8 @@
 }
 
 .notice-banner {
-    padding: 20px 50px 0 50px;
+    padding: 0 50px 0 50px;
+    height: 200px;
 }
 
 .notice-lst {

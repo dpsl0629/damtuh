@@ -219,7 +219,7 @@
       </dependency>   
       
 	    
-	    <!-- 썸내일 기능 -->
+	    <!-- 썸네일 기능 -->
         <dependency>
          <groupId>net.coobird</groupId> 
          <artifactId>thumbnailator</artifactId> 

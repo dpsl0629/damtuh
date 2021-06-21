@@ -28,20 +28,77 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/join.jsp" />
 	</definition>
 	
-	<definition name="member/all" extends="subLayout">
-		<put-attribute name="title" value="회원가입"/>
-		<put-attribute name="subtit" value="회원가입"/>
+	<definition name="member/myPage" extends="subLayout">
+		<put-attribute name="title" value="마이페이지"/>
+		<put-attribute name="subtit" value="마이페이지"/>
 		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/all.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/member/myPage.jsp" />
 	</definition>
 	
-	<definition name="member/member" extends="subLayout">
+	<definition name="member/joinConfirm" extends="subLayout">
 		<put-attribute name="title" value="회원가입"/>
 		<put-attribute name="subtit" value="회원가입"/>
 		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/member.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/member/joinConfirm.jsp" />
 	</definition>
-
+	
+	<definition name="member/modifyCheckForm" extends="subLayout">
+		<put-attribute name="title" value="회원정보 수정"/>
+		<put-attribute name="subtit" value="회원정보 수정"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/modifyCheckForm.jsp" />
+	</definition>
+	
+	<definition name="member/memberModify" extends="subLayout">
+		<put-attribute name="title" value="회원정보 수정"/>
+		<put-attribute name="subtit" value="회원정보 수정"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberModify.jsp" />
+	</definition>
+	
+	<definition name="member/modifyConfirm" extends="subLayout">
+		<put-attribute name="title" value="회원정보 수정"/>
+		<put-attribute name="subtit" value="회원정보 수정"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/modifyConfirm.jsp" />
+	</definition>
+	
+	<definition name="member/deleteCheckForm" extends="subLayout">
+		<put-attribute name="title" value="회원탈퇴"/>
+		<put-attribute name="subtit" value="회원탈퇴"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/deleteCheckForm.jsp" />
+	</definition>
+	
+	<definition name="member/deleteConfirm" extends="subLayout">
+		<put-attribute name="title" value="회원탈퇴"/>
+		<put-attribute name="subtit" value="회원탈퇴"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/deleteConfirm.jsp" />
+	</definition>
+	
+	<definition name="member/productCommentForm" extends="subLayout">
+		<put-attribute name="title" value="후기작성"/>
+		<put-attribute name="subtit" value="후기작성"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/productCommentForm.jsp" />
+	</definition>
+	
+	<definition name="member/commentConfirm" extends="subLayout">
+		<put-attribute name="title" value="후기작성"/>
+		<put-attribute name="subtit" value="후기작성"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/commentConfirm.jsp" />
+	</definition>
+	
+	<definition name="member/productCommentConfirm" extends="subLayout">
+		<put-attribute name="title" value="후기작성"/>
+		<put-attribute name="subtit" value="후기작성"/>
+		<put-attribute name="bg" value="bg1"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/productCommentConfirm.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>                                                
 
 

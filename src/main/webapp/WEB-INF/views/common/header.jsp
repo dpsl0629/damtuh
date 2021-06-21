@@ -24,7 +24,10 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="담터">
     <meta property="og:image" content="/images/layout/16xfavi.ico">
-    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- <meta name="_csrf" content="${_csrf.token}"/> -->
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+	<!-- default header name is X-CSRF-TOKEN -->
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
     <title>담터</title>
 	<link href="${contextPath}/resources/css/main.css" rel="stylesheet" type="text/css" media="screen">
 	<link href="${contextPath}/resources/css/common.css" rel="stylesheet" type="text/css" media="screen">
@@ -41,7 +44,7 @@
 	$(document).ready(function() {
 	    $(".gnb-list>li").mouseover(function() { 
 	        $(this).addClass("active");
-	        $(this).children(".gnb-dep2-wrap").slideDown(); }); 
+	        $(this).stop().children(".gnb-dep2-wrap").slideDown(); }); 
 	        $(".gnb-list>li").mouseleave(function() {
 	           $(this).removeClass("active");
 	             $(this).children(".gnb-dep2-wrap").slideUp(); 
@@ -51,90 +54,137 @@
 	
 	</script>
 <body>
-	<div class="layout-skip"><a href="#container">본문바로가기</a></div>
+	 <div class="layout-skip"><a href="#container">본문바로가기</a></div>
 
-    <!-- :: wrapper s :: -->
-    <div class="wrapper">
+        <!-- :: wrapper s :: -->
+        <div class="wrapper">
 
-        <!-- :: header s :: -->	
-        <header class="header">
-            <div class="header-wrap">
-                <div class="header-container">
-                    <div class="header-top">
-                        <button type="button" class="mob-gnb-btn" title="모바일 메뉴">
-                            <span class="ico"></span>
-                        </button>
-                        <h1 class="header-logo">
-                            <a href="${contextPath }/main/main.do" class="header-logo-link"><img src="${contextPath}/resources/images/layout/header-logo.png" title="logo"><span class="opt-screen-out"></span></a>
-                        </h1>
-                        <div class="opt-mobile-tablet-hide">
-                            <div class="header-etc">
-                            <sec:authorize access="isAuthenticated()">
+            <!-- :: header s :: -->
+            <header class="header">
+                <div class="header-wrap">
+                    <div class="header-container">
+                        <div class="header-top">
+                            <button type="button" class="mob-gnb-btn" title="모바일 메뉴">
+                                <span class="ico"></span>
+                            </button>
+                            <h1 class="header-logo">
+                                <a href="${contextPath }/main/main.do" class="header-logo-link"><img src="${contextPath }/resources/images/layout/header-logo.png" title="logo"><span class="opt-screen-out"></span></a>
+                            </h1>
+                            <div class="opt-mobile-tablet-hide">
+                                <div class="header-etc">
+                                    <sec:authorize access="isAuthenticated()">
+                                <a href="#"  class="header-etc-item" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+								<!-- <form id="logout-form" action='<c:url value='${contextPath}/logout'/>' method="POST">
+								   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+								</form> -->
+	                            </sec:authorize>	
+	                            <sec:authorize access="isAnonymous()">
+	                            	<a href="#"  class="header-etc-item" onclick="document.getElementById('login-form').submit();">로그인</a>
+									<!-- <form id="login-form" action='<c:url value='${contextPath}/member/myPage'/>'>
+									   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+									</form> -->
+	                            </sec:authorize>
+	                            <sec:authorize access="isAuthenticated()">
+	                                <a href="${contextPath}/member/myPage" class="header-etc-item">마이페이지</a>
+	                            </sec:authorize>	
+	                            <sec:authorize access="isAnonymous()">
+	                                <a href="${contextPath}/member/join.do" class="header-etc-item">회원가입</a>
+	                            </sec:authorize>          
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="gnb">
+                        <div class="opt-web-hide">
+		                    <div class="header-etc">
+		                        <sec:authorize access="isAuthenticated()">
                                 <a href="#"  class="header-etc-item" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
 								<form id="logout-form" action='<c:url value='${contextPath}/logout'/>' method="POST">
 								   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 								</form>
-                            </sec:authorize>	
-                            <sec:authorize access="isAnonymous()">
-                            	<a href="#"  class="header-etc-item" onclick="document.getElementById('login-form').submit();">로그인</a>
-								<form id="login-form" action='<c:url value='${contextPath}/member/loginPage'/>'>
-								   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
-								</form>
-                            </sec:authorize>
-                                <a href="${contextPath}/member/join.do" class="header-etc-item">회원가입</a>                            </div>
-                        	</div>
-                       	</div>
-                    </div>
-        
-                    <div class="gnb">
-                        <nav class="gnb-wrap">
-                            <ul class="gnb-list opt-clearfix">
-                                <li>
-                                    <a href="#lnk">회사소개</a>
-                                    <div class="gnb-dep2-wrap">
-                                        <ul class="gnb-dep2-list">
-                                            <li><a href="${contextPath }/company/damtuh.do">인사말</a></li>
-                                            <li><a href="${contextPath }/company/ideology.do">경영이념</a></li>
-                                            <li><a href="${contextPath }/company/ci.do">CI</a></li>
-                                            <li><a href="${contextPath }/company/history.do">회사 연혁</a></li>
-                                            <li><a href="#lnk">작업공정</a></li>
-                                            <li><a href="#lnk">세계속의 담터</a></li>
-                                            <li><a href="#lnk">찾아오시는 길</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="${contextPath }/product/productList.do">제품구매 </a>
-                                </li>
-                                <li>
-                                    <a href="#lnk">차 이야기 </a>
-                                    <div class="gnb-dep2-wrap">
-                                        <ul class="gnb-dep2-list">
-                                            <li><a href="${contextPath }/chaStory/origin.do">차의 기원</a></li>
-                                            <li><a href="${contextPath }/chaStory/kind.do">차의 종류</a></li>
-                                            <li><a href="#lnk">직원소개</a></li>
-                                            <li><a href="#lnk">오시는 길</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#lnk">고객지원</a>
-                                    <div class="gnb-dep2-wrap">
-                                        <ul class="gnb-dep2-list">
-                                            <li><a href="${contextPath }/support/notice.do">담터소식</a></li>
-                                            <li><a href="#lnk">주요업무</a></li>
-                                            <li><a href="#lnk">직원소개</a></li>
-                                            <li><a href="#lnk">오시는 길</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
+	                            </sec:authorize>	
+	                            <sec:authorize access="isAnonymous()">
+	                            	<a href="#"  class="header-etc-item" onclick="document.getElementById('login-form').submit();">로그인</a>
+									<form id="login-form" action='<c:url value='${contextPath}/member/myPage'/>'>
+									   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+									</form>
+	                            </sec:authorize>
+	                            <sec:authorize access="isAuthenticated()">
+	                                <a href="${contextPath}/member/myPage" class="header-etc-item">마이페이지</a>
+	                            </sec:authorize>	
+	                            <sec:authorize access="isAnonymous()">
+	                                <a href="${contextPath}/member/join.do" class="header-etc-item">회원가입</a>
+	                            </sec:authorize>
+		                    </div>
+		                </div>
+                            <nav class="gnb-wrap">
+                                <ul class="gnb-lst opt-clearfix">
+                                    <li class="">
+                                        <a href="${contextPath }/company/damtuh">이용정보</a>
+                                            <div class="gnb-dep2-wrap">
+                                                <ul class="gnb-dep2-lst">
+                                                    <li>
+                                                        <a href="${contextPath }/company/damtuh">회사소개</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="${contextPath }/company/damtuh">인사말</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="${contextPath }/company/ideology">경영이념</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="${contextPath }/company/ci">CI</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="${contextPath }/company/history">회사연혁</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#lnk">작업공정</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#lnk">세계속의 담터</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#lnk">찾아오시는 길</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="${contextPath }/product/productList" style="font-weight: 600;">제품구매</a>
+                                        </li>
+                                        <li>
+                                            <a href="${contextPath }/chaStory/kind">차이야기</a>
+                                            <div class="gnb-dep2-wrap">
+                                                <ul class="gnb-dep2-lst">
+                                                    <li>
+                                                        <a href="${contextPath }/chaStory/kind">차의 종류</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="${contextPath }/chaStory/origin">차의 기원</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="">
+                                            <a href="${contextPath }/support/notice">고객지원</a>
+                                            <div class="gnb-dep2-wrap">
+                                                <ul class="gnb-dep2-lst">
+                                                    <li>
+                                                        <a href="${contextPath }/support/notice">공지사항</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#lnk">자주 묻는 질문</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                            <!--<div class="gnb-dimed"></div>-->
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
-        
-      
-</body>
-</html>
+            </header>
+         </html>

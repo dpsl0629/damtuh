@@ -31,9 +31,10 @@
                 <div class="contents">
                     <div class="login-box">
                         <div class="login-form">
-                        	<form id="login-form" action="${contextPath}/login" method="post">
+                        	<form id="modify-check-form" action="${contextPath}/login" method="post">
 	                            <fieldset>
 	                                <legend>로그인</legend>
+	                                <p style="color:#f00;">${requestScope.loginFailMsg}</p>
 	                                <div class="login-cont">
 	                                    <div class="input-field">
 	                                        <p class="tit">아이디</p>
@@ -50,8 +51,8 @@
 	                                <ul class="login-lst opt-clearfix">
 	                                    <li>
 	                                        <div class="chk-wrap">
-	                                            <input type="checkbox" name="idsave" id="idsave" value="checked" class="mb0">
-	                                            <label for="idsave"><span class="chk_mark"></span>아이디 저장</label>
+	                                            <input type="checkbox" name="remember-me" id="remember-me" value="true" style="vertical-align: middle; margin-right: 10px;">
+	                                            <label for="idsave" for="remember-me" ><span class="chk_mark"></span>자동 로그인</label>
 	                                        </div>
 	                                    </li>
 	                                    <li>
@@ -64,6 +65,9 @@
 	                                </div>
 	                                <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 	                            </fieldset>
+	                            <input type="hidden" name="loginRedirect" value="${loginRedirect }"/>
+	                            <p>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }</p>
+	                            <c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION"/>
                             </form>
                         </div>
                     </div>

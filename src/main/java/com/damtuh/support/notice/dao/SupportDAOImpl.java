@@ -8,8 +8,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.damtuh.mapper.SupportMapper;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -19,8 +17,6 @@ public class SupportDAOImpl implements SupportDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
-	private SupportMapper mapper;
 	
 	@Override
 	public List<NoticeBoardVO> view(Criteria cri) throws DataAccessException {

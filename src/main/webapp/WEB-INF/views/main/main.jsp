@@ -51,38 +51,20 @@
         <div class="cont-container">
             <h2 class="tit-h2">베스트 상품</h2>
            <div class="main-best-box opt-clearfix">
-               <div class="best-cont">
-                    <div class="best-img gold">
-                        <img src="${contextPath}/resources/images/main/gold-img.png" alt="1등 상품">
-                    </div>
-                    <div class="best-txt">
-                        <p class="tit">담터 호두아몬드 율무차[18g*80포]</p>
-                        <p class="pre-price">26,000원</p>
-                        <p class="now-price">22,700원</p>
-                        <button class="buy-btn" type="button">구매하러 가기</button>
-                    </div>
-               </div>
-               <div class="best-cont">
-                    <div class="best-img silver">
-                        <img src="${contextPath}/resources/images/main/silver-img.png" alt="1등 상품">
-                    </div>
-                    <div class="best-txt">
-                        <p class="tit">담터 호두아몬드 율무차[18g*80포]</p>
-                        <p class="pre-price">26,000원</p>
-                        <p class="now-price">22,700원</p>
-                        <button class="buy-btn" type="button">구매하러 가기</button>
-                    </div>
-                </div>
-                <div class="best-cont">
-                    <div class="best-img bronze">
-                        <img src="${contextPath}/resources/images/main/bronze-img.png" alt="1등 상품">
-                    </div>
-                    <div class="best-txt">
-                        <p class="tit">담터 호두아몬드 율무차[18g*80포]</p>
-                        <p class="pre-price">26,000원</p>
-                        <p class="now-price">22,700원</p>
-                        <button class="buy-btn" type="button">구매하러 가기</button>
-                    </div>
+                  <form id="productForm" action="${contextPath}/product/productDetail">
+                  <c:forEach items="${productList}" var="product" end="2">
+		               <div class="best-cont">
+		                    <div class="best-img gold">
+		                        <img src="${contextPath }/thumbnails.do?fileName=${product.fileName}" alt="1등 상품">
+		                    </div>
+		                    <div class="best-txt">
+		                        <p class="tit"><c:out value="${product.productName }"/></p>
+		                        <p class="now-price"><fmt:formatNumber type="number" maxFractionDigits="3" value="${product.productPrice}"/></p>
+		                        <a href="${product.productId }" class="buy-btn">구매하러 가기</a>
+		                    </div>
+		               </div>
+               </c:forEach>
+	               </form>
                 </div>
            </div>
         </div>
@@ -100,10 +82,12 @@
                     <span class="more">더보기</span>
                     <div class="info-box">
                         <div class="notice-banner">
-                            <img src="${contextPath}/resources/images/main/notice-banner.jpg" alt="공지사항 배너">
                             <ul class="notice-lst">
-                                <li class="opt-clearfix"><span class="notice-tit main-tit">공지사항입니다</span><span class="notice-date">2020-12-24</span></li>
-                                <li class="opt-clearfix"><span class="notice-tit">공지사항입니다</span><span class="notice-date">2020-12-24</span></li>
+                            <form id="noticeForm" action="${contextPath }/support/noticeView">
+	                            <c:forEach items="${noticeList}" var="board" end="1">
+	                                <li><a href="${board.bno }" class="opt-clearfix board-bno"><span class="notice-tit main-tit"><c:out value="${board.title }"/></span><span class="notice-date"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.writeDate}"/></span></a></li>
+	                            </c:forEach>
+                            </form>
                             </ul>
                         </div>
                     </div>
@@ -213,3 +197,27 @@
     </div>
 </div>
 <!-- :: main contents e :: -->
+
+<script>
+$(document).ready(function() {
+	var actionForm = $("#noticeForm");
+	var productForm = $("#productForm");
+	
+	$(".board-bno").on("click", function(e) {
+		e.preventDefault();
+		
+		actionForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+"'>");
+		actionForm.attr("action", "/support/noticeView");
+		actionForm.submit();
+	});
+	
+	
+	$(".buy-btn").on("click", function(e) {
+		e.preventDefault();
+		
+		actionForm.append("<input type='hidden' name='productId' value='"+ $(this).attr("href")+"'>");
+		actionForm.attr("action", "/product/productDetail.do");
+		actionForm.submit();
+	});
+});
+</script>

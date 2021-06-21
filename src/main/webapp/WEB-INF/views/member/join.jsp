@@ -30,11 +30,11 @@
                 <!-- :: content s :: -->
                 <div class="contents">
                     <div class="join-box">
-                        <form id="joinForm" action="/member/joinForm" class="join-form">
+                        <form id="join-form" action="/member/joinConfirm" class="join-form" method="post">
                             <fieldset>
                                 <legend>회원가입</legend>
                                 <div class="join-cont">
-                                    <div class="input-field name">
+                                    <div class="input-field">
                                         <div class="input-tit">
                                             <label class="tit">이름</label>
                                         </div>
@@ -65,7 +65,7 @@
                                             <input type="password" class="pw" name="pw" placeholder="비밀번호">
                                         </div>
                                     </div>
-                                    <p class="desc">특수문자(~,!,?,@), 영어 대문자, 숫자 포함 9~12자</p>
+                                    <p class="desc">특수문자, 영어 대문자, 숫자 포함 9~12자</p>
                                      <div class="input-field password">
                                         <div class="input-tit">
                                             <label class="tit">비밀번호 확인</label>
@@ -239,21 +239,59 @@
 $(document).ready(function() {
 	var emailData;
 	var email;
-	var joinForm = $("#joinForm");
+	var joinForm = $("#join-form");
 	var emailCheck = false;
 	
 	$(".input-email select").on("change", function() {
 		$(".email").focus();
 	});
 	
+	$(".pw").on("change", function() {
+
+	 var pw = $(".pw").val();
+	 var num = pw.search(/[0-9]/g);
+	 var eng = pw.search(/[a-z]/ig);
+	 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+	 console.log(pw);
+	 if(pw.length < 9 || pw.length > 12){
+
+	  alert("9자리 ~ 12자리 이내로 입력해주세요.");
+	  return false;
+	 }else if(pw.search(/\s/) != -1){
+	  alert("비밀번호는 공백 없이 입력해주세요.");
+	  return false;
+	 }else if(num < 0 || eng < 0 || spe < 0 ){
+	  alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+	  return false;
+	 }else {
+		console.log("통과"); 
+	    return true;
+	 }
+
+	});
+	
+	$(".name").on("change", function() {
+		var pattern = /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i;
+		
+		console.log($(".name").val());
+
+		if(pattern.test($(".name").val())) {
+			alert("성함은 한글로만 작성해주세요.");
+		}
+		
+	});
+	
 	$(".confirm-pw").on("change", function() {
-		if($(".confirm-pw").val() != $(".pw").val()) {s
+		console.log($(".name").val());
+		if($(".confirm-pw").val() != $(".pw").val()) {
 			$(".pw-check").css("display", "block");
 		}
 	});
 
 	
 	$(".send-email").on("click", function() {
+		alert("인증번호가 전송되었습니다. 바르게 입력해주세요.");
 		email = $(".email").val();
 		console.log("이메일 버튼");
 		console.log(email);

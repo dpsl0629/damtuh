@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.damtuh.mapper.SupportMapper;
 import com.damtuh.support.notice.dao.SupportDAO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
@@ -17,8 +16,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class NoticeBoardServiceImpl implements NoticeBoardService {
 
-	private SupportMapper mapper;
-	
 	private SupportDAO supportDao;
 	
 

@@ -1,17 +1,10 @@
 package com.damtuh.support.notice.vo;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@ToString
-@Setter
-@Getter
+@Data
 @Component("Criteria")
 public class Criteria {
 
