@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.damtuh.mapper.SupportMapper">
+	<resultMap id="boardResult" type="com.damtuh.support.notice.vo.NoticeBoardVO">
+		<result property="bno" column="bno"/> 
+		<result property="title" column="title"/> 
+		<result property="content" column="content"/> 
+		<result property="attach" column="attach"/> 
+		<result property="writeDate" column="writedate"/> 
+		<result property="hits" column="hits"/> 
+	</resultMap>
+	
+<select id="getList" resultMap="boardResult">
+	<![CDATA[
+		select * from tbl_notice where bno > 0
+	]]>
+</select>
+
+<insert id="insert">
+	insert into tbl_notice (bno, title, content, attach, hits)
+	values (seq_notice.nextval, #{title}, #{content}, 1, 0)
+</insert>
+
+<select id="read" resultMap="boardResult">
+	select * from tbl_notice where bno = #{bno}
+</select>
+
+<update id="getCount">
+	update tbl_notice set hits = hits + 1 where bno = #{bno}
+</update>
+
+<sql id="criteria">
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'. toString()">
+						title like '%' || #{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						content like '%' || #{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>
+	</trim>
+</sql>
+
+<select id="getListWithPaging" resultMap="boardResult">
+		<![CDATA[
+			select 
+				bno, title, content, attach, writedate, hits
+			from
+				(
+				select /*+INDEX_DESC(tbl_notice pk_notice) */
+					rownum rn, bno, title, content, attach, writedate, hits
+				from
+					tbl_notice
+				where 
+		]]>
+	<include refid="criteria"></include>
+	
+	<![CDATA[
+		rownum <= #{pageNum} * #{amount}
+		)
+		where rn > (#{pageNum} -1 ) * #{amount}
+	]]>
+	</select>
+	
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_notice where
+		<include refid="criteria"></include>
+		 bno > 0
+	</select>
+</mapper>
