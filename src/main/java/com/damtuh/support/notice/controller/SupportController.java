@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.damtuh.support.notice.vo.Criteria;
+<<<<<<< HEAD
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 
 @Controller("supportController")
 @RequestMapping("/support/*")
@@ -18,9 +21,12 @@ public interface SupportController {
 	
 	public ModelAndView noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+<<<<<<< HEAD
 	public String noticeConfirm(NoticeBoardVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	public ModelAndView noticeWrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	public ModelAndView modifyWrite(@RequestParam("bno") Long bno,HttpServletRequest request, HttpServletResponse response) throws Exception;
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 }

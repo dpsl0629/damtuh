@@ -98,7 +98,11 @@
 	                   					</div>
 		                       		</div>
 		                       		<div class="review-box">
+<<<<<<< HEAD
 		                       			<input type="textarea" name="content">
+=======
+		                       			<input type="textarea" name="comment">
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 		                       		</div>
 		                       		<input type="hidden" class="like-count" name="likeCount">
 		                       		<input type="hidden" name="deliveryNum" value="${orderDetail.deliveryId }">

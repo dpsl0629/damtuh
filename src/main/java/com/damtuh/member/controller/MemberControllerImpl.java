@@ -49,6 +49,12 @@ public class MemberControllerImpl implements MemberController {
 	private OrderVO orderVO; 
 	
 	@Autowired
+<<<<<<< HEAD
+=======
+	private CommentVO commentVO;
+	
+	@Autowired
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
     private JavaMailSender mailSender;
 	
 	@Autowired(required=false)
@@ -265,6 +271,7 @@ public class MemberControllerImpl implements MemberController {
 	}
 	
 	@Override
+<<<<<<< HEAD
 	@ResponseBody
 	@RequestMapping(value= "/commentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception { 
@@ -275,6 +282,27 @@ public class MemberControllerImpl implements MemberController {
 		vo.setUserId(userDetails.getUsername());
 		memberService.comment(vo);
 		log.info(vo);
+=======
+	@RequestMapping(value= "/commentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView commentConfirm(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		int likeCount = Integer.parseInt(request.getParameter("likeCount"));
+		String deliveryId = request.getParameter("deliveryNum");
+		int productId = Integer.parseInt(request.getParameter("productNum"));
+		String comment = request.getParameter("comment");
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+		UserDetails userDetails = (UserDetails)principal;
+		log.info(likeCount);
+		log.info(deliveryId);
+		commentVO.setDeliveryNum(deliveryId);
+		commentVO.setProductNum(productId);
+		commentVO.setUserId(userDetails.getUsername());
+		commentVO.setContent(comment);
+		commentVO.setLikeCount(likeCount);
+		memberService.comment(commentVO);
+		log.info(commentVO);
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 		return mav;
 	}
 

@@ -29,7 +29,11 @@
 
                 <!-- :: content s :: -->
                 <div class="contents">
+<<<<<<< HEAD
                     <div class="contents-box notice-box">
+=======
+                    <div class="contents-box">
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                         <div class="board-view">
                             <div class="board-view-header">
                                 <p class="tit"><span class="opt-screen-out">공지</span></span><span class="ico-badge badge-region"><c:out value="${article.title }"/></p>
@@ -59,6 +63,7 @@
                             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
 
                             <div class="board-view-con">
+<<<<<<< HEAD
                                 ${article.content }
                             </div>
                             
@@ -67,6 +72,10 @@
 			                    	<a href="${contextPath }/support/modifyWrite?bno=${article.bno}" class="btn-green" type="button">글쓰기</a>
 			                    </div>
 		                    </sec:authorize>
+=======
+                                <c:out value="${article.content }"/>
+                            </div>
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                      
                         </div>
                         <div class="btn-list">

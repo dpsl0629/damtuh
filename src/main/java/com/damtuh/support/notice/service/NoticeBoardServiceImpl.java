@@ -42,10 +42,13 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return count;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public void insert(NoticeBoardVO vo) {
 		supportDao.insertNotice(vo);
 	}
 
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 
 }

@@ -5,7 +5,10 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<<<<<<< HEAD
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!--#include virtual="/html/include/sub-head.html"-->
 <body class="sub-body">
@@ -30,8 +33,12 @@
 
                 <!-- :: content s :: -->
                 <div class="contents">
+<<<<<<< HEAD
                     <div class="notice-box">
                     	<div class="search-form">
+=======
+                    <div class="search-form">
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                     <form id="searchForm" action="/support/notice" method="get">
                         <div class="search-form-box">
                             <div class="search-form-select">
@@ -102,6 +109,7 @@
                             </ul>
                         </div>
                     </div>
+<<<<<<< HEAD
                      <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
                     <form id="writeForm" action="/support/noticeWrite" method="get">
 	                    <div class="btn-box right-box opt-clearfix">
@@ -109,6 +117,9 @@
 	                    </div>
                     </form>
                     </sec:authorize>
+=======
+                    
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                     <div class="paging">
                         <div class="paging-box">
                        		<c:if test="${pageMaker.prev }">
@@ -129,7 +140,10 @@
                     	<input type="hidden" name="type" value="${pageMaker.cri.type }">
                     	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
                     </form>
+<<<<<<< HEAD
                     </div>
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                 </div>
                 <!-- :: content e :: -->
 

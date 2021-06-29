@@ -16,8 +16,13 @@
     <link rel="apple-touch-icon" sizes="114x114" href="/images/layout/114xfavi.ico">
     <meta name="title" content="담터">
     <meta name="description" content="담터입니다">
+<<<<<<< HEAD
     <meta name="keywords" content="양양시설관리사업소, 양양군, 문화시설, 체육시설, 예약">
     <meta name="author" content="주식회사 나모">
+=======
+    <meta name="keywords" content="담터">
+    <meta name="author" content="김예원">
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
     <meta property="og:title" content="담터">
     <meta property="og:description" content="담터입니다">
     <meta property="og:url" content="PROJECT SITE URL">
@@ -37,8 +42,11 @@
 	<link href="${contextPath}/resources/css/datepicker.css" rel="stylesheet" type="text/css">
 	<script src="${contextPath }/resources/js/libs/jquery-3.4.1.min.js"></script>
 	<script src="${contextPath }/resources/js/libs/datepicker.js"></script>
+<<<<<<< HEAD
 	<script src="${contextPath }/resources/js/libs/ckeditor/ckeditor.js"></script>
 	<script src="${contextPath }/resources/js/libs/config.js"></script>
+=======
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 	<script src="${contextPath }/resources/js/layout.js"></script>
 	<script src="${contextPath }/resources/js/contents.js"></script>
 	<script src="${contextPath }/resources/js/common.js"></script>
@@ -189,4 +197,8 @@
                     </div>
                 </div>
             </header>
+<<<<<<< HEAD
          </html>
+=======
+         </html>
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
