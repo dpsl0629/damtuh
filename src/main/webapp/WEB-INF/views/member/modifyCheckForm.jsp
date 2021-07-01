@@ -31,7 +31,7 @@
                 <div class="contents">
                     <div class="login-box">
                         <div class="login-form">
-                        	<form id="modify-check-form" action="${contextPath }/member/deleteConfirm">
+                        	<form id="modify-check-form" action="${contextPath }/member/memberModify">
 	                            <fieldset>
 	                                <legend>로그인</legend>
 	                                <p style="color:#f00;">${requestScope.loginFailMsg}</p>

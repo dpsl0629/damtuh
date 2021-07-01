@@ -27,7 +27,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
-
 	@Override
 	public void join(MemberVO vo) throws DataAccessException {
 		sqlSession.selectOne("com.damtuh.mapper.MemberMapper.join", vo);
@@ -81,6 +80,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
+	public void deleteProductOrder(String userid) throws DataAccessException {
+		sqlSession.delete("com.damtuh.mapper.MemberMapper.deleteProductOrder", userid);
+	}
+	
+	@Override
 	public OrderVO readOrderDetail(OrderVO orderVO) throws DataAccessException { 
 		OrderVO orderDetail = sqlSession.selectOne("com.damtuh.mapper.MemberMapper.readOrderDetail", orderVO);
 		return orderDetail;
@@ -104,4 +108,5 @@ public class MemberDAOImpl implements MemberDAO {
 		CommentVO commentResult = sqlSession.selectOne("com.damtuh.mapper.MemberMapper.productCommentConfirm", deliveryId);
 		return commentResult;
 	}
+
 }

@@ -100,5 +100,10 @@ public class MemberServiceImpl implements MemberService {
 		CommentVO order = memberDAO.productCommentConfirm(deliveryId);
 		return order;
 	}
+
+	@Override
+	public void deleteProductOrder(String userid) {
+		memberDAO.deleteProductOrder(userid);
+	}
 	
 }

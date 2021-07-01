@@ -47,5 +47,5 @@ input[type="email"],
 input[type="password"] {border:1px solid #dedede; background:#fff; height:45px; line-height:45px; padding:0 10px;}
 input[type="password"] {font-family: sans-serif;}
 select {border:1px solid #dedede; background:#fff; height:45px; line-height:45px; padding:0 0 0 10px;}
-textarea {border:1px solid #dedede; background:#fff; padding:10px;}
+textarea {border:1px solid #dedede; background:#fff; padding:10px; width: 100%; height: 250px;}
 legend {display: none;}

@@ -30,6 +30,8 @@ public interface MemberDAO {
 	
 	public int delete2(String userid) throws DataAccessException;
 	
+	public void deleteProductOrder(String userid) throws DataAccessException;
+	
 	public OrderVO readOrderDetail(OrderVO orderVO) throws DataAccessException;
 	
 	public int comment(CommentVO commentVO) throws DataAccessException;

@@ -115,7 +115,7 @@
                       					</c:choose>
                    					</div>
 		                       		<div class="review-box">
-		                       			<input type="textarea" name="comment" value="${order.content }" readonly>
+		                       			<textarea name="comment" readonly><c:out value="${order.content }"/></textarea>
 		                       		</div>
 		                       		<input type="hidden" class="like-count" name="likeCount">
 		                       		<input type="hidden" name="deliveryNum" value="${orderDetail.deliveryId }">

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="subLayout"
+		template="/WEB-INF/views/common/subLayout.jsp">
+		<put-attribute name="title" value="서브 레이아웃 페이지" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="bg" value=""/>
+		<put-attribute name="subtit" value=""/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="support/notice" extends="subLayout">
+		<put-attribute name="title" value="담터소식"/>
+		<put-attribute name="subtit" value="담터소식"/>
+		<put-attribute name="bg" value="bg2"/>
+		<put-attribute name="body" value="/WEB-INF/views/support/notice.jsp" />
+	</definition>
+	
+	<definition name="support/noticeView" extends="subLayout">
+		<put-attribute name="title" value="담터소식"/>
+		<put-attribute name="subtit" value="담터소식"/>
+		<put-attribute name="bg" value="bg2"/>
+		<put-attribute name="body" value="/WEB-INF/views/support/noticeView.jsp" />
+	</definition>
+	
+<<<<<<< HEAD
+	<definition name="support/noticeWrite" extends="subLayout">
+		<put-attribute name="title" value="글쓰기"/>
+		<put-attribute name="subtit" value="글쓰기"/>
+		<put-attribute name="bg" value="bg2"/>
+		<put-attribute name="body" value="/WEB-INF/views/support/noticeWrite.jsp" />
+	</definition>
+=======
+
+>>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
+</tiles-definitions>
+
+

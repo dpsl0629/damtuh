@@ -49,17 +49,15 @@ public class MemberControllerImpl implements MemberController {
 	private OrderVO orderVO; 
 	
 	@Autowired
-<<<<<<< HEAD
-=======
 	private CommentVO commentVO;
 	
 	@Autowired
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
     private JavaMailSender mailSender;
 	
 	@Autowired(required=false)
     private BCryptPasswordEncoder pwdEncoder;
 	
+	// 로그인
 	@Override
 	@RequestMapping(value= "/loginPage" ,method={RequestMethod.POST,RequestMethod.GET})
 	public String loginPage(HttpServletRequest request, HttpServletResponse response, Model model, Authentication authentication) throws Exception{
@@ -67,12 +65,14 @@ public class MemberControllerImpl implements MemberController {
 		return "member/loginPage";
 	}
 	
+	// 회원가입
 	@Override
 	@RequestMapping(value= "/join" ,method={RequestMethod.POST,RequestMethod.GET})
 	public String join(Locale locale, Model model) throws Exception{
 		return "member/join";
 	}
 	
+	// 아이디 중복체크
 	@Override
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	public @ResponseBody String memberIdChkPOST(@RequestParam(required = false, value = "memberId") String memberId) throws Exception{
@@ -96,50 +96,51 @@ public class MemberControllerImpl implements MemberController {
 		
 	}
 	
+	// 이메일 인증번호
 	@Override
+	@ResponseBody
 	@RequestMapping(value="/emailCheck", method=RequestMethod.GET)
-	 @ResponseBody
-	    public String mailCheckGET(String email) throws Exception{
+    public String mailCheckGET(String email) throws Exception{
 	        
-	        /* 뷰(View)로부터 넘어온 데이터 확인 */
-	        log.info("이메일 데이터 전송 확인");
-	        log.info("인증번호 : " + email);
-	                
-	        Random random = new Random();
-	        int checkNum = random.nextInt(888888) + 111111;
-	        log.info("인증번호 " + checkNum);
-	        
-	        String setFrom = "damtuh@damtuh.com";
-	        String toMail = email;
-	        String title = "회원가입 인증 이메일 입니다.";
-	        String content = 
-	                "홈페이지를 방문해주셔서 감사합니다." +
-	                "<br><br>" + 
-	                "인증 번호는 " + checkNum + "입니다." + 
-	                "<br>" + 
-	                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+        /* 뷰(View)로부터 넘어온 데이터 확인 */
+        log.info("이메일 데이터 전송 확인");
+        log.info("인증번호 : " + email);
+                
+        Random random = new Random();
+        int checkNum = random.nextInt(888888) + 111111;
+        log.info("인증번호 " + checkNum);
+        
+        String setFrom = "damtuh@damtuh.com";
+        String toMail = email;
+        String title = "회원가입 인증 이메일 입니다.";
+        String content = 
+                "홈페이지를 방문해주셔서 감사합니다." +
+                "<br><br>" + 
+                "인증 번호는 " + checkNum + "입니다." + 
+                "<br>" + 
+                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
-	        try {
-	            
-	            MimeMessage message = mailSender.createMimeMessage();
-	            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-	            helper.setFrom(setFrom);
-	            helper.setTo(toMail);
-	            helper.setSubject(title);
-	            helper.setText(content,true);
-	            mailSender.send(message);
-	            
-	        }catch(AddressException e) {
-	            e.printStackTrace();
-	        }
+        try {
+            
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content,true);
+            mailSender.send(message);
+            
+        }catch(AddressException e) {
+            e.printStackTrace();
+        }
 
-	        String num = Integer.toString(checkNum);
+        String num = Integer.toString(checkNum);
 
-	        return num;
+        return num;
 
-
-	    } 
+    } 
 	
+	// 회원가입 확인
 	@Override
 	@RequestMapping(value = "/joinConfirm",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView joinConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -155,6 +156,7 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 
+	// 마이페이지
 	@Override
 	@RequestMapping(value= "/myPage" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response, Locale locale, Model model) throws Exception{
@@ -170,6 +172,7 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 
+	// 수정 비밀번호 확인페이지
 	@Override
 	@RequestMapping(value= "/modifyCheckForm" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView modifyCheckForm(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
@@ -178,6 +181,8 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
+	
+	// 수정 비밀번호 확인 페이지
 	@Override
 	@RequestMapping(value= "/modifyCheck" ,method={RequestMethod.POST,RequestMethod.GET})
 	public String modifyCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -189,6 +194,7 @@ public class MemberControllerImpl implements MemberController {
 		return pw;
 	}
 	
+	// 회원정보 수정 폼
 	@Override
 	@RequestMapping(value= "/memberModify" ,method={RequestMethod.POST,RequestMethod.GET})
 	public String memberModify(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
@@ -207,9 +213,9 @@ public class MemberControllerImpl implements MemberController {
 		} else {
 			return "redirect:/member/modifyCheckForm";
 		}
-		
 	}
 	
+	// 수정 확인
 	@Override
 	@RequestMapping(value = "/modifyConfirm",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView modifyConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -222,6 +228,7 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
+	// 삭제 비밀번호 확인 페이지
 	@Override
 	@RequestMapping(value = "/deleteCheckForm", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -230,6 +237,7 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
+	// 삭제 확인 페이지
 	@Override
 	@RequestMapping(value = "/deleteConfirm", method= {RequestMethod.POST, RequestMethod.GET})
 	public String deleteConfirm(HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) {
@@ -244,6 +252,7 @@ public class MemberControllerImpl implements MemberController {
 		if(check) {
 			memberService.delete1(userDetails.getUsername());
 			memberService.delete2(userDetails.getUsername());
+			memberService.deleteProductOrder(userDetails.getUsername());
 			SecurityContextHolder.clearContext();
 			return "member/deleteConfirm";
 		} else {
@@ -251,6 +260,7 @@ public class MemberControllerImpl implements MemberController {
 		}
 	}
 	
+	// 제품 코멘트 등록 페이지
 	@Override
 	@RequestMapping(value= "/productCommentForm" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView productCommentForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -270,8 +280,8 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
+	// 제품 코멘트 작성 확인 페이지
 	@Override
-<<<<<<< HEAD
 	@ResponseBody
 	@RequestMapping(value= "/commentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception { 
@@ -282,30 +292,34 @@ public class MemberControllerImpl implements MemberController {
 		vo.setUserId(userDetails.getUsername());
 		memberService.comment(vo);
 		log.info(vo);
-=======
-	@RequestMapping(value= "/commentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView commentConfirm(HttpServletRequest request, HttpServletResponse response) throws Exception { 
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		int likeCount = Integer.parseInt(request.getParameter("likeCount"));
-		String deliveryId = request.getParameter("deliveryNum");
-		int productId = Integer.parseInt(request.getParameter("productNum"));
-		String comment = request.getParameter("comment");
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		UserDetails userDetails = (UserDetails)principal;
-		log.info(likeCount);
-		log.info(deliveryId);
-		commentVO.setDeliveryNum(deliveryId);
-		commentVO.setProductNum(productId);
-		commentVO.setUserId(userDetails.getUsername());
-		commentVO.setContent(comment);
-		commentVO.setLikeCount(likeCount);
-		memberService.comment(commentVO);
-		log.info(commentVO);
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 		return mav;
 	}
-
+	
+//	// 작성한 코멘트 확인 페이지
+//	@Override
+//	@RequestMapping(value= "/ProductcommentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
+//	public ModelAndView commentConfirm(HttpServletRequest request, HttpServletResponse response) throws Exception { 
+//		String viewName = (String) request.getAttribute("viewName");
+//		ModelAndView mav = new ModelAndView(viewName);
+//		int likeCount = Integer.parseInt(request.getParameter("likeCount"));
+//		String deliveryId = request.getParameter("deliveryNum");
+//		int productId = Integer.parseInt(request.getParameter("productNum"));
+//		String comment = request.getParameter("comment");
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+//		UserDetails userDetails = (UserDetails)principal;
+//		log.info(likeCount);
+//		log.info(deliveryId);
+//		commentVO.setDeliveryNum(deliveryId);
+//		commentVO.setProductNum(productId);
+//		commentVO.setUserId(userDetails.getUsername());
+//		commentVO.setContent(comment);
+//		commentVO.setLikeCount(likeCount);
+//		memberService.comment(commentVO);
+//		log.info(commentVO);
+//		return mav;
+//	}
+	
+	// 작성한 코멘트 확인 페이지
 	@Override
 	@RequestMapping(value= "/productCommentConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView productCommentConfirm(HttpServletRequest request, HttpServletResponse response)

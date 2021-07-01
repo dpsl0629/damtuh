@@ -19,13 +19,8 @@
 </select>
 
 <insert id="insert">
-<<<<<<< HEAD
 	insert into tbl_notice (bno, title, content, attach, hits)
 	values (seq_notice.nextval, #{title}, #{content}, 1, 0)
-=======
-	insert into tbl_notice (bno, title, content, attach)
-	values (seq_notice.nextval, #{title}, #{content}, 1)
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 </insert>
 
 <select id="read" resultMap="boardResult">
@@ -80,4 +75,12 @@
 		<include refid="criteria"></include>
 		 bno > 0
 	</select>
+	
+	<update id="updateNotice">
+		update tbl_notice set title=#{title}, content=#{content} where bno = #{bno}
+	</update> 
+	
+	<delete id="deleteNotice">
+		delete from tbl_notice where bno = #{bno}
+	</delete>
 </mapper>

@@ -31,40 +31,30 @@
                 <div class="contents">
                     <form id="write-form" action="/support/noticeConfirm" method="post">
                     	<div class="contents-box">
-                        <div class="board-view">
-                            <div class="board-view-header">
-                                <p class="tit"><span style="margin-right: 10px;">제목</span><input type="text" class="title" name="title"></p>
-                            </div>
-
-                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
-                            <div class="board-view-file">
-                                <div class="file-list">
-                                    <p class="file">
-                                        <a href="#lnk">
-                                            <span class="ico-download"></span>
-                                            홈페이지 오픈.jpg
-                                        </a>
-                                    </p>
-                                    <p class="file">
-                                        <a href="#lnk">
-                                            <span class="ico-download"></span>
-                                            홈페이지 오픈.pdf
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
-
-                            <div class="board-view-con">
-                                <textarea id="editor" cols="30" rows="10"></textarea>
-                            </div>
-                     
-                        </div>
-                        <div class="btn-list">
-                            <button type="submit" class="move btn-green" href="#lnk">글쓰기</a>
-                        </div>
-
-                    </div>
+	                        <div class="board-view">
+	                            <div class="board-view-header">
+	                                <p class="tit"><span style="margin-right: 10px;">제목</span><input type="text" class="title" name="title"></p>
+	                            </div>
+	
+	                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
+	                            <div class="board-view-file">
+	                                <div class="file-list">
+	                                    <p class="file">
+	                                        <input type="file">
+	                                    </p>
+	                                </div>
+	                            </div>
+	                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
+	
+	                            <div class="board-view-con">
+	                                <textarea id="editor" cols="30" rows="10"></textarea>
+	                            </div>
+		                     
+		                        <div class="btn-list">
+		                            <button type="submit" class="move btn-green" href="#lnk">글쓰기</a>
+		                        </div>
+                       		</div>
+                    	</div>
                     </form>
                 </div>
                 <!-- :: content e :: -->

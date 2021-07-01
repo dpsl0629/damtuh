@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="input-box">
                                             <div class="input-col">
-                                                <input type="text" name="phone" value="" placeholder="'-'을 제외한 핸드폰 번호를 입력해주세요.">
+                                                <input type="text" name="phone" value="${memberVO.phone }" placeholder="'-'을 제외한 핸드폰 번호를 입력해주세요.">
                                             </div>
                                         </div>
                                     </div>
@@ -117,15 +117,15 @@
                                         </div>
                                         <div class="input-box">
                                             <div class="input-col">
-                                                <input type="text" name="zipcode" id="sample6_postcode" value="" placeholder="우편번호">
+                                                <input type="text" name="zipcode" id="sample6_postcode" value="${memberVO.zipcode }" placeholder="우편번호">
                                             </div>
                                             <div class="input-col">
                                                 <button type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
                                             </div>
                                         </div>
                                         <div class="address-etc">
-                                            <input type="text" name="address1" id="sample6_address" value="" placeholder="주소1">
-                                            <input type="text" name="address2" id="sample6_detailAddress" value="" placeholder="나머지 주소">
+                                            <input type="text" name="address1" id="sample6_address" value="${memberVO.address1 }" placeholder="주소1">
+                                            <input type="text" name="address2" id="sample6_detailAddress" value="${memberVO.address2 }" placeholder="나머지 주소"> 
                                         </div>
                                     </div>
                                 </div>
@@ -181,4 +181,12 @@
             }
         }).open();
     }
+</script>
+<script>
+$(".confirm-pw").on("change", function() {
+	console.log($(".name").val());
+	if($(".confirm-pw").val() != $(".pw").val()) {
+		$(".pw-check").css("display", "block");
+	}
+});
 </script>

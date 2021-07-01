@@ -14,9 +14,9 @@ import org.springframework.ui.Model;
 @EnableAspectJAutoProxy
 public interface CommonController {
 
-	public String loginGET(HttpServletRequest request, HttpServletResponse response);
-	
-	public void logout(Locale locale, Model model) throws Exception;
-	
-	public void accessDenied(Authentication auth, Model model);
+//	public String loginGET(HttpServletRequest request, HttpServletResponse response);
+//	
+//	public void logout(Locale locale, Model model) throws Exception;
+//	
+//	public void accessDenied(Authentication auth, Model model);
 }

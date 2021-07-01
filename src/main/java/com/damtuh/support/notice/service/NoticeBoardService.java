@@ -12,9 +12,10 @@ public interface NoticeBoardService {
 	public List<NoticeBoardVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
-<<<<<<< HEAD
 	
 	public void insert(NoticeBoardVO vo);
-=======
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
+	
+	public void updateNotice(NoticeBoardVO vo);
+	
+	public void deleteNotice(Long bno);
 }

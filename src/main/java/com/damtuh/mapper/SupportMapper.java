@@ -17,4 +17,8 @@ public interface SupportMapper {
 	public List<NoticeBoardVO> getListWithPaging(Criteria cri);
 	
 	public int getTotalCount(Criteria cri);
+	
+	public void updateNotice(NoticeBoardVO vo);
+	
+	public void deleteNotice(Long bno);
 }

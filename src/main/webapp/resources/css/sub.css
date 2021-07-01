@@ -418,13 +418,10 @@
     clear: both;
 }
 
-<<<<<<< HEAD
 .notice-box .right-box .btn-green {
 	float: right;
 }
 
-=======
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 .search-form-box {
     float: right;
     width: 450px;
@@ -789,19 +786,12 @@
     margin-top: 20px;
     width: 100%;
     padding-bottom: 30px;
-<<<<<<< HEAD
 }
 
 .item-detail .btn-box {
     border-bottom: 1px solid #7d7d7d;
 }
 
-
-=======
-    border-bottom: 1px solid #7d7d7d;
-}
-
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 .btn-box .btn-basket,
 .btn-box .btn-buy {
     width: 49.5%;

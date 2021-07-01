@@ -5,6 +5,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!--#include virtual="/html/include/sub-head.html"-->
 <body class="sub-body">
@@ -29,11 +30,7 @@
 
                 <!-- :: content s :: -->
                 <div class="contents">
-<<<<<<< HEAD
                     <div class="contents-box notice-box">
-=======
-                    <div class="contents-box">
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
                         <div class="board-view">
                             <div class="board-view-header">
                                 <p class="tit"><span class="opt-screen-out">공지</span></span><span class="ico-badge badge-region"><c:out value="${article.title }"/></p>
@@ -63,31 +60,28 @@
                             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
 
                             <div class="board-view-con">
-<<<<<<< HEAD
                                 ${article.content }
                             </div>
-                            
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
-			                    <div class="btn-box right-box opt-clearfix">
-			                    	<a href="${contextPath }/support/modifyWrite?bno=${article.bno}" class="btn-green" type="button">글쓰기</a>
-			                    </div>
-		                    </sec:authorize>
-=======
-                                <c:out value="${article.content }"/>
-                            </div>
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
-                     
-                        </div>
+                           
+                           <form id="operForm" method="get">
+                        
+                          <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+	                    <div class="btn-box right-box opt-clearfix">
+	                    	<button class="btn-green btn-modify" type="button">글 수정하기</button>
+	                    	<button class="btn-green btn-delete" type="button">글 삭제하기</button>
+	                    </div>
+	                    </sec:authorize>
+	                      	<input type="hidden" id="bno" name="bno" value="<c:out value='${article.bno }'/>">
+	                      	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum }'/>">
+	                      	<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>">
+                       </form>
+                           
+                           
                         <div class="btn-list">
                             <a class="move btn-green" href="#lnk">목록</a>
                         </div>
                         
-                        <form id="operForm" method="get">
-                        	<input type="hidden" id="bno" name="bno" value="<c:out value='${article.bno }'/>">
-                        	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum }'/>">
-                        	<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>">
-                        </form>
-
+                        
                     </div>
                 </div>
                 <!-- :: content e :: -->
@@ -120,5 +114,16 @@
 				operForm.attr("action", "/support/notice");
 				operForm.submit();
     		});
+    		
+    		$(".btn-modify").on("click", function(e) {
+    			operForm.attr("action", "/support/modifyWrite");
+    			operForm.submit();
+    		});
+    		
+    		$(".btn-delete").on("click", function() {
+    			operForm.attr("action", "/support/deleteConfirm");
+    			operForm.submit();
+    		});
+    		
     	});
     </script>

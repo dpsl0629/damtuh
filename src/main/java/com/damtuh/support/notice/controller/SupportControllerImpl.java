@@ -3,8 +3,6 @@ package com.damtuh.support.notice.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,32 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-=======
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.damtuh.support.notice.service.NoticeBoardService;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 import com.damtuh.support.notice.vo.PageDTO;
-<<<<<<< HEAD
-
-import jdk.internal.org.jline.utils.Log;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-=======
-import lombok.AllArgsConstructor;
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 
 
 @Controller("supportController")
 @RequestMapping("/support/*")
-@AllArgsConstructor
-<<<<<<< HEAD
 @Log4j
 public class SupportControllerImpl implements SupportController {
 	
@@ -50,28 +35,18 @@ public class SupportControllerImpl implements SupportController {
 	private NoticeBoardVO noticeBoardVO;
 
 	@Override
-=======
-public class SupportControllerImpl {
-	
-	private NoticeBoardService service;
-	private NoticeBoardVO noticeBoardVO;
-
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 	@RequestMapping(value= "/notice" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView notice(Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		List<NoticeBoardVO> noticeList = service.getList(cri);
 		int total = service.getTotal(cri);
-		mav.addObject("list", noticeList);
+		mav.addObject("list", noticeList);            
 		mav.addObject("pageMaker", new PageDTO(cri, total));
 		return mav;
 	}
 	
-<<<<<<< HEAD
 	@Override
-=======
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 	@RequestMapping(value= "/noticeView" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String) request.getAttribute("viewName");
@@ -81,11 +56,10 @@ public class SupportControllerImpl {
 		mav.addObject("article", noticeBoardVO);
 		return mav;
 	}
-<<<<<<< HEAD
 
 	@Override
-	@GetMapping(value= "/noticeWrite")
-	public ModelAndView noticeWrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value= "/noticeWrite" ,method={RequestMethod.POST,RequestMethod.GET})
+	public ModelAndView noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
@@ -102,17 +76,34 @@ public class SupportControllerImpl {
 
 	@Override
 	@RequestMapping(value="/modifyWrite", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView modifyWrite(@RequestParam("bno") Long bno,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		noticeBoardVO = service.get(bno);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("notice", noticeBoardVO);
+		mav.addObject("cri", cri);
 		return mav;
 	}
 
+	@Override
+	@GetMapping(value="/modifyConfirm")
+	public String modifyConfirm(@ModelAttribute("cri") Criteria cri, @ModelAttribute("vo") NoticeBoardVO vo, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+		log.info(vo);
+		service.updateNotice(vo);
+		log.info("cri " + cri);
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		return "redirect:/support/notice";
+	}
+
+	@Override
+	@GetMapping(value="/deleteConfirm")
+	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+		service.deleteNotice(bno);
+		return "redirect:/support/notice";
+	}
+
 	
-=======
 	
 
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 }

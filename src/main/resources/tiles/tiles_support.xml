@@ -28,16 +28,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/support/noticeView.jsp" />
 	</definition>
 	
-<<<<<<< HEAD
 	<definition name="support/noticeWrite" extends="subLayout">
 		<put-attribute name="title" value="글쓰기"/>
 		<put-attribute name="subtit" value="글쓰기"/>
 		<put-attribute name="bg" value="bg2"/>
 		<put-attribute name="body" value="/WEB-INF/views/support/noticeWrite.jsp" />
 	</definition>
-=======
-
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
+	
+	<definition name="support/modifyWrite" extends="subLayout">
+		<put-attribute name="title" value="글 수정하기"/>
+		<put-attribute name="subtit" value="글 수정하기"/>
+		<put-attribute name="bg" value="bg2"/>
+		<put-attribute name="body" value="/WEB-INF/views/support/modifyWrite.jsp" />
+	</definition>
 </tiles-definitions>
 
 

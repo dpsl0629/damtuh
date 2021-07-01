@@ -43,12 +43,19 @@ public class SupportDAOImpl implements SupportDAO {
 		return hits;
 	}
 
-<<<<<<< HEAD
 	@Override
 	public void insertNotice(NoticeBoardVO vo) throws DataAccessException {
 		sqlSession.insert("com.damtuh.mapper.SupportMapper.insert", vo);
 	}
 
-=======
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
+	@Override
+	public void updateNotice(NoticeBoardVO vo) throws DataAccessException {
+		sqlSession.update("com.damtuh.mapper.SupportMapper.updateNotice", vo);
+	}
+
+	@Override
+	public void deleteNotice(Long bno) throws DataAccessException {
+		sqlSession.delete("com.damtuh.mapper.SupportMapper.deleteNotice", bno);
+	}
+
 }

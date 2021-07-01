@@ -29,6 +29,8 @@ public interface MemberService {
 	
 	public int delete2(String userid);
 	
+	public void deleteProductOrder(String userid);
+	
 	public OrderVO readOrderDetail(OrderVO orderVO);
 	
 	public int comment(CommentVO commentVO);

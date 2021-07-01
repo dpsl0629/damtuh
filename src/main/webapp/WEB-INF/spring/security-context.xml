@@ -22,14 +22,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 
 <http>
-<<<<<<< HEAD
 		<intercept-url pattern="/member/myPage" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
 		<intercept-url pattern="/order/orderPage" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
 		<intercept-url pattern="/support/noticeWrite" access="hasRole('ROLE_ADMIN')"/>
-=======
-		<intercept-url pattern="/member/myPage" access="hasRole('ROLE_MEMBER')"/>
-		<intercept-url pattern="/order/orderPage" access="hasRole('ROLE_MEMBER')"/>
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
 		<access-denied-handler ref="customAccessFail"/>
 		<!-- <security:intercept-url pattern="/member/member" access="hasRole('ROLE_MEMBER')"/> -->
 		<!-- <security:intercept-url pattern="/product/likeCheck" access="hasRole('ROLE_MEMBER')"/> -->

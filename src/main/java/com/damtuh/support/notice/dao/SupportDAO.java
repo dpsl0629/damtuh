@@ -14,11 +14,11 @@ public interface SupportDAO {
 	
 	public int getTotal(Criteria cri) throws DataAccessException;
 	
-<<<<<<< HEAD
 	public Long countHits(Long bno) throws DataAccessException;
 	
 	public void insertNotice(NoticeBoardVO vo) throws DataAccessException;
-=======
-	public Long countHits(Long bno);
->>>>>>> 9171caaede43bca28dce6d3fa4d511e24ad137e7
+	
+	public void updateNotice(NoticeBoardVO vo) throws DataAccessException;
+	
+	public void deleteNotice(Long bno) throws DataAccessException;
 }
