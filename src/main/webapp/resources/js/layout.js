@@ -1,18 +1,18 @@
 
 /* :: responsive s :: */
-var INJEGYM = INJEGYM || {};
-INJEGYM.UI = INJEGYM.UI || {};
-INJEGYM.VIEWPORT_WIDTH = null;
-INJEGYM.VIEWPORT_HEIGHT = null;
-INJEGYM.IS_MOBILE = false;
-INJEGYM.IS_VIEWTYPE = null;
-INJEGYM.IS_SIZE = INJEGYM.IS_SIZE || {};
-INJEGYM.IS_SIZE.MAXMOBILE = 768;
-INJEGYM.IS_SIZE.MAXTABLET = 1023;
-INJEGYM.IS_TABLET = false;
-INJEGYM.FOCUS_ELEM = null;
+var DAMTUH = DAMTUH || {};
+DAMTUH.UI = DAMTUH.UI || {};
+DAMTUH.VIEWPORT_WIDTH = null;
+DAMTUH.VIEWPORT_HEIGHT = null;
+DAMTUH.IS_MOBILE = false;
+DAMTUH.IS_VIEWTYPE = null;
+DAMTUH.IS_SIZE = DAMTUH.IS_SIZE || {};
+DAMTUH.IS_SIZE.MAXMOBILE = 768;
+DAMTUH.IS_SIZE.MAXTABLET = 1023;
+DAMTUH.IS_TABLET = false;
+DAMTUH.FOCUS_ELEM = null;
 
-INJEGYM.DELAY_FUNC = (function(){
+DAMTUH.DELAY_FUNC = (function(){
     var timer = 0;
     return function(callback, ms){
         clearTimeout (timer);
@@ -21,31 +21,31 @@ INJEGYM.DELAY_FUNC = (function(){
 })();
 
 var SetViewSize = function(){
-    INJEGYM.VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    INJEGYM.VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    DAMTUH.VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    DAMTUH.VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 };
 
 var CheckMobile = function(){
     var mobileInfo = ['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson'];
     $.each(mobileInfo, function(index){
         if (navigator.userAgent.match(mobileInfo[index]) != null){
-            INJEGYM.IS_MOBILE = true;
+            DAMTUH.IS_MOBILE = true;
         }
     });
 };
 
 var DeivceChkFn= function() {
-    if(INJEGYM.VIEWPORT_WIDTH < INJEGYM.IS_SIZE.MAXMOBILE && INJEGYM.IS_MOBILE){
-        INJEGYM.IS_VIEWTYPE = 'mobile';
-    } else if(INJEGYM.VIEWPORT_WIDTH <= INJEGYM.IS_SIZE.MAXTABLET && INJEGYM.IS_MOBILE){
-        INJEGYM.IS_VIEWTYPE = 'tablet';
+    if(DAMTUH.VIEWPORT_WIDTH < DAMTUH.IS_SIZE.MAXMOBILE && DAMTUH.IS_MOBILE){
+        DAMTUH.IS_VIEWTYPE = 'mobile';
+    } else if(DAMTUH.VIEWPORT_WIDTH <= DAMTUH.IS_SIZE.MAXTABLET && DAMTUH.IS_MOBILE){
+        DAMTUH.IS_VIEWTYPE = 'tablet';
     } else {
-        if(INJEGYM.VIEWPORT_WIDTH < INJEGYM.IS_SIZE.MAXMOBILE ) {
-            INJEGYM.IS_VIEWTYPE = 'mobile';
-        } else if (INJEGYM.VIEWPORT_WIDTH <= INJEGYM.IS_SIZE.MAXTABLET ) {
-            INJEGYM.IS_VIEWTYPE = 'tablet';
+        if(DAMTUH.VIEWPORT_WIDTH < DAMTUH.IS_SIZE.MAXMOBILE ) {
+            DAMTUH.IS_VIEWTYPE = 'mobile';
+        } else if (DAMTUH.VIEWPORT_WIDTH <= DAMTUH.IS_SIZE.MAXTABLET ) {
+            DAMTUH.IS_VIEWTYPE = 'tablet';
         } else {
-            INJEGYM.IS_VIEWTYPE = 'web';
+            DAMTUH.IS_VIEWTYPE = 'web';
         }
     }
 };
@@ -126,7 +126,7 @@ $(document).ready(dotLineFunc);
     function webGnbFn() {
         $dep1.on({
             mouseenter : function() {
-                if(INJEGYM.IS_VIEWTYPE == "web") {
+                if(DAMTUH.IS_VIEWTYPE == "web") {
                     var $this = $(this);
                     $(".gnb-dep2-wrap").addClass("active"); 
                     $(".gnb-dimed").addClass("active");
@@ -139,7 +139,7 @@ $(document).ready(dotLineFunc);
 
         $dep1.on({
             mouseleave : function() {
-                if(INJEGYM.IS_VIEWTYPE == "web") {
+                if(DAMTUH.IS_VIEWTYPE == "web") {
                     var $this = $(this);
                     $(".gnb-dep2-wrap").removeClass("active"); 
                     $(".gnb-dimed").removeClass("active");
@@ -153,7 +153,7 @@ $(document).ready(dotLineFunc);
 
         $dep2.on({
             mouseenter : function() {
-                if(INJEGYM.IS_VIEWTYPE == "web") {
+                if(DAMTUH.IS_VIEWTYPE == "web") {
                     var $this = $(this);
                     $this.parent().siblings().removeClass('active');
                     $this.parent().addClass('active');
@@ -165,7 +165,7 @@ $(document).ready(dotLineFunc);
 
         $header.on({
             mouseleave : function() {
-                if(INJEGYM.IS_VIEWTYPE == "web") {
+                if(DAMTUH.IS_VIEWTYPE == "web") {
                     $(this).removeClass('active');
                     $dep1.removeClass('active');
                 }
@@ -176,7 +176,7 @@ $(document).ready(dotLineFunc);
     function mobGnbFn() {
         $mobBtn.mouseenter({
             click: function() {
-                if(INJEGYM.IS_VIEWTYPE == "tablet" || INJEGYM.IS_VIEWTYPE == "mobile") {
+                if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
                     var $this = $(this);
                     $this.toggleClass("active");
                     $gnb.toggleClass("active");
@@ -193,7 +193,7 @@ $(document).ready(dotLineFunc);
 
         $dep1.on({
             mouseenter: function(e) {
-                if(INJEGYM.IS_VIEWTYPE == "tablet" || INJEGYM.IS_VIEWTYPE == "mobile") {
+                if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
                     var $this = $(this),
                         $thisParent = $this.parent(),
                         $thisDep2 = $this.find($dep2);
@@ -206,7 +206,7 @@ $(document).ready(dotLineFunc);
 
         $dep1.on({
             mouseleave: function(e) {
-                if(INJEGYM.IS_VIEWTYPE == "tablet" || INJEGYM.IS_VIEWTYPE == "mobile") {
+                if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
                     var $this = $(this),
                         $thisParent = $this.parent(),
                         $thisDep2 = $thisParent.find($dep2);

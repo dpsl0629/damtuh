@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="/images/layout/114xfavi.ico">
     <meta name="title" content="담터">
     <meta name="description" content="담터입니다">
-    <meta name="keywords" content="양양시설관리사업소, 양양군, 문화시설, 체육시설, 예약">
+    <meta name="keywords" content="담터">
     <meta name="author" content="주식회사 나모">
     <meta name="keywords" content="담터">
     <meta name="author" content="김예원">

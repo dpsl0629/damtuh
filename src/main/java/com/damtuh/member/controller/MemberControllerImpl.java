@@ -292,7 +292,7 @@ public class MemberControllerImpl implements MemberController {
 		vo.setUserId(userDetails.getUsername());
 		memberService.comment(vo);
 		log.info(vo);
-		return mav;
+		return mav;ㄴ
 	}
 	
 //	// 작성한 코멘트 확인 페이지
