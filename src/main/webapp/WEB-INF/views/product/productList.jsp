@@ -68,8 +68,6 @@
 				                                               </a>
 				                                               <div class="txt-box">
 				                                                   <p class="title"><c:out value="${list.productName}"/></p>
-				                                                   <p class="title"><c:out value="${list.fileName}"/></p>
-				                                                   <p class="title"><c:out value="${list.productId}"/></p>
 				                                                   <p class="price"><span class="bold"><fmt:formatNumber type="number" maxFractionDigits="3" value="${list.productPrice}"/> </span>원</p>
 				                                               </div>
 				                                           </div>

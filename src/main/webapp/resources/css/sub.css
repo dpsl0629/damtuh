@@ -43,7 +43,7 @@
     text-align: center;
     color:#fff;
     font-size:32px;
-    padding:150px 0 0;
+    padding:200px 0 0;
     font-weight: 600;
 }
 
@@ -104,11 +104,6 @@
 
 .sub-wrapper {
     position: relative;
-}
-
-.contents {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* --- intro --- */
@@ -654,6 +649,10 @@
     font-size: 18px;
 }
 
+.img-box .like-ico {
+	margin-left: 20px;
+}
+
 .item-detail {
     margin: 0 -20px;
 }
@@ -690,9 +689,9 @@
 
 .visual-cont .img-box {
     border: 1px solid #a9a9a9;
-    height: 500px;
-    line-height: 500px;
+    height: 400px;
     text-align: center;
+    display: table;
 }
 
 .visual-cont .img-box img {
@@ -707,7 +706,7 @@
     margin-bottom: 20px;
     background: url("../images/sub/like.png") no-repeat center center;
     background-size: 20px;
-    display: block
+    display: block;
 }
 
 .like-after {
@@ -1336,12 +1335,12 @@
     padding-right:0;
 }
 
-.board-view-file .file-list {
+.board-view-file .file-lst {
     border-bottom: 1px solid #dedede;
     padding: 10px;
 }
 
-.board-view-file .file-list .file {
+.board-view-file .file-lst .file {
     margin: 10px 15px;
     display: inline-block;
     vertical-align: middle;
@@ -1895,7 +1894,7 @@
 }
 
 
-.btn-list {
+.btn-lst {
     text-align: center;
     margin-top: 100px;
 }
@@ -1987,4 +1986,108 @@
 		padding: 0;
 	}
 	
+}
+
+@media all and (max-width: 767px) {
+	
+	.sub-top {
+		height: 320px;
+	}
+	
+	.sub-tit {
+		padding: 100px 0 0;
+	}
+	
+	.sub-container {
+		padding: 0 20px;
+	}	
+	
+	.ideo-cont .col {
+		width: auto;
+	}
+	
+	.ideo-goal .col:nth-child(2n):before {
+		display: none;
+	}
+	
+	.ideo-goal .col:last-child:before {
+		display: none;
+	}
+	
+	.ci-cont .img-box, .ci-cont .txt-box {
+		float: none;
+		width: 100%;
+	}
+	
+	.history-box .year {
+		float: none;
+		margin-bottom: 10px;
+	}
+	
+	.history-box .desc {
+		float: none;
+	}
+	
+	.item-lst .tab li {
+		float: none;
+		width: 100%;
+	}
+	
+	.buy-cont {
+		margin: 0;
+	}
+	
+	.buy-lst li {
+		float: none;
+		width: 100%;
+		padding: 0;
+	}
+	
+	.item-visual, .item-desc {
+		float: none;
+		width: 100%;
+	}
+	
+	.item-visual {
+		margin-bottom: 20px;
+	}
+	
+	.detail-cont .tit, .detail-cont .desc {
+		display: block;
+	}
+	
+	.login-cont {
+		width: 100%;
+	}
+	
+	.login-lst {
+		width: 100%;
+	}
+	
+	.btn-member {
+		width: 100%;
+	}
+	
+	.join-cont {
+		width: 100%;
+	}
+	
+	.board-header .board-lst {
+		display: none;
+	}
+	
+	.board-item {
+		position: relative;
+		padding: 15px 15px 15px 55px;
+	}
+	
+	.board-col {
+		display: block;
+	}
+	
+	.board-col .num {
+		position: absolute;
+		top: 50%;
+		left: 0;
+	}
 }

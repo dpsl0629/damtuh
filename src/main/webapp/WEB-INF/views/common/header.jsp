@@ -43,7 +43,6 @@
 	<script src="${contextPath }/resources/js/libs/config.js"></script>
 	<script src="${contextPath }/resources/js/layout.js"></script>
 	<script src="${contextPath }/resources/js/contents.js"></script>
-	<script src="${contextPath }/resources/js/common.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 	    $(".gnb-list>li").mouseover(function() { 

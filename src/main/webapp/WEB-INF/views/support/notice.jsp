@@ -52,7 +52,7 @@
                     </div>
                     <div class="board">
                         <div class="board-header">
-                            <ul class="board-list">
+                            <ul class="board-lst">
                                 <li class="board-item">
                                     <span class="board-col num">번호</span>
                                     <span class="board-col tit">제목</span>
@@ -63,7 +63,7 @@
                             </ul>
                         </div>
                         <div class="board-body">
-                            <ul class="board-list">
+                            <ul class="board-lst">
                             <c:choose>
                             	<c:when test="${list == null }">
                             		<p>dddd</p>

@@ -17,8 +17,10 @@
 
                 <div class="main-visual-item">
                     <div class="main-visual-txt">
-                        <span class="tit">건강한 삶을 위한<br>차 한잔의 여유</span>
-                        <p class="desc">담터와 함께 건강하고 행복한 삶을 시작하세요.</p>
+                        <div class="txt">
+	                        <span class="tit">건강한 삶을 위한<br>차 한잔의 여유</span>
+	                        <p class="desc">담터와 함께 건강하고 행복한 삶을 시작하세요.</p>
+                        </div>
                     </div>
                 </div>
         </div>

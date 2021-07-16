@@ -1,4 +1,3 @@
-
 /* :: responsive s :: */
 var DAMTUH = DAMTUH || {};
 DAMTUH.UI = DAMTUH.UI || {};
@@ -79,16 +78,14 @@ $(document).ready(dotLineFunc);
 
 
 
-
-/* :: gnb s :: */
+/* :: header s :: */
 (function($) {
     $(document).ready(init);
 
     var $win = $(window),
-        $header, $dep1, $dep2, $moveH, $dimed, $depTit,
+        $header, $svg,
         $mobBtn, $gnb,
-        $winW = $win.outerWidth(),
-        $winH = $win.outerHeight();
+        $winW = $win.outerWidth();
 
     function init() {
         $header = $('.header');
@@ -96,34 +93,43 @@ $(document).ready(dotLineFunc);
         $dep2 = $('.gnb-dep2-wrap');
         $dimed = $('.gnb-dimed');
         $depTit = $('.js-gnb-dep-tit');
-        $moveH = 310; // 높이값
         $mobBtn = $('.mob-gnb-btn');
         $gnb = $('.gnb');
         $lnb = $(".lnb");
+        $mainWrapper = $(".main-wrapper");
+        $subWrapper = $(".sub-wrapper");
 
-        webGnbFn();
+        scrollFunc($win);
         mobGnbFn();
+        webGnbFn();
     }
 
     $win.on({
         resize : function() {
             var $newWindW = $(this).width();
-            $winH = $(this).height();
             if($newWindW !== $winW){
                 SetViewSize();
                 removeStyleFn($header);
-                removeStyleFn($dep1);
-                removeStyleFn($dep2);
-                removeStyleFn($dimed);
-                removeStyleFn($depTit);
                 removeStyleFn($mobBtn);
                 removeStyleFn($gnb);
+                $svg.contents().find('g').removeClass('active');
                 $winW = $newWindW;
             }
+        },
+        scroll : function() {
+            scrollFunc($(this));
         }
     });
 
-    function webGnbFn() {
+    function scrollFunc($target) {
+        var st = $target.scrollTop(),
+            $header = $('.header');
+
+        if (st > 50) $header.addClass('scroll');
+        else $header.removeClass('scroll');
+    }
+    
+     function webGnbFn() {
         $dep1.on({
             mouseenter : function() {
                 if(DAMTUH.IS_VIEWTYPE == "web") {
@@ -173,38 +179,39 @@ $(document).ready(dotLineFunc);
         });
     }
 
+
     function mobGnbFn() {
-        $mobBtn.mouseenter({
+        $mobBtn.on({
             click: function() {
                 if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
-                    var $this = $(this);
+                     var $this = $(this);
                     $this.toggleClass("active");
                     $gnb.toggleClass("active");
                     $header.toggleClass("active");
                     $dimed.toggleClass("active");
                     removeStyleFn($dep1);
                     console.log("모바일");
-                    $(".gnb-dimed").removeClass("active");
-                    $(".main-wrapper").toggleClass("active");
-                    $(".sub-wrapper").toggleClass("active");
+                    $dimed.removeClass("active");
+                    $mainWrapper.toggleClass("active");
+                    $subWrapper.toggleClass("active");
                 }
             }
         });
-
-        $dep1.on({
-            mouseenter: function(e) {
-                if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
-                    var $this = $(this),
-                        $thisParent = $this.parent(),
-                        $thisDep2 = $this.find($dep2);
-                        $this.addClass("active");
-                        $thisDep2.stop().slideDown(); 
-                        console.log("모모");
-                }
+        
+      $dep1.on({
+        mouseenter: function(e) {
+            if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
+                var $this = $(this),
+                    $thisParent = $this.parent(),
+                    $thisDep2 = $this.find($dep2);
+                    $this.addClass("active");
+                    $thisDep2.stop().slideDown(); 
+                    console.log("모모");
             }
-        });
-
-        $dep1.on({
+        }
+    });
+    
+    $dep1.on({
             mouseleave: function(e) {
                 if(DAMTUH.IS_VIEWTYPE == "tablet" || DAMTUH.IS_VIEWTYPE == "mobile") {
                     var $this = $(this),
@@ -215,13 +222,11 @@ $(document).ready(dotLineFunc);
                         console.log("모모");
                 }
             }
-        });
+    });
     }
-
 
     function removeStyleFn($target) {
         $target.removeClass("active").removeAttr("style");
     }
-}
-)(jQuery);
-/* :: gnb e :: */
+})(jQuery);
+/* :: header e :: */
