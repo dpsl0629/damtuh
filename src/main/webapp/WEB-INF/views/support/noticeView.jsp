@@ -42,7 +42,7 @@
 
                             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
                             <div class="board-view-file">
-                                <div class="file-list">
+                                <div class="file-lst">
                                     <p class="file">
                                         <a href="#lnk">
                                             <span class="ico-download"></span>
@@ -77,7 +77,7 @@
                        </form>
                            
                            
-                        <div class="btn-list">
+                        <div class="btn-lst">
                             <a class="move btn-green" href="#lnk">목록</a>
                         </div>
                         
@@ -103,27 +103,34 @@
 <!-- :: wrapper e :: -->
 
 <script>
-    
-    	$(document).ready(function() {
-    		var operForm = $("#operForm");
-    		
-    		$(".move").on("click", function(e) {
-				e.preventDefault();
-    			
-				operForm.find("#bno").remove();
-				operForm.attr("action", "/support/notice");
-				operForm.submit();
-    		});
-    		
-    		$(".btn-modify").on("click", function(e) {
-    			operForm.attr("action", "/support/modifyWrite");
-    			operForm.submit();
-    		});
-    		
-    		$(".btn-delete").on("click", function() {
-    			operForm.attr("action", "/support/deleteConfirm");
-    			operForm.submit();
-    		});
-    		
-    	});
-    </script>
+  
+$(document).ready(function() {
+	var operForm = $("#operForm");
+	
+	$(".move").on("click", function(e) {
+		e.preventDefault();
+	 			
+		operForm.find("#bno").remove();
+		operForm.attr("action", "/support/notice");
+		operForm.submit();
+	});
+	
+	$(".btn-modify").on("click", function(e) {
+		operForm.attr("action", "/support/modifyWrite");
+		operForm.submit();
+	});
+	
+	$(".btn-delete").on("click", function() {
+		operForm.attr("action", "/support/deleteConfirm");
+		operForm.submit();
+	});
+	
+});
+</script>
+<script>
+window.onpopstate = function(event) {
+	history.pushState({pageNum:3, searchDt:'2019-05-07'}, null, '/support/notice');
+	 history.back();
+	 alert("뒤로가기");
+}
+</script>

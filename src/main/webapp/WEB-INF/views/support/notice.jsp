@@ -73,7 +73,7 @@
 		                                <li class="board-item">
 		                                    <span class="board-col num">
 		                                        <span class="opt-screen-out">번호</span>
-		                                        <span class="ico-notice"><c:out value="${board.bno}"/></span>
+		                                        <span class="notice-num"><c:out value="${board.bno}"/></span>
 		                                    </span>
 		                                    <span class="board-col tit opt-tl opt-dotline">
 		                                        <span class="opt-screen-out">제목</span>

@@ -51,6 +51,10 @@ public class SupportControllerImpl implements SupportController {
 	public ModelAndView noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		response.setHeader("pragma","No-cache");
+		response.setHeader("Cache-Control","no-cache");
+		response.addHeader("Cache-Control","No-store");
+		response.setDateHeader("Expires",1L);
 		noticeBoardVO = service.get(bno);
 		mav.setViewName(viewName);
 		mav.addObject("article", noticeBoardVO);

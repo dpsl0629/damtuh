@@ -92,9 +92,9 @@
 	<select id="selectComment" resultMap="commentResult">
 		SELECT *
 
-FROM product_comment
-
-WHERE content LIKE DECODE(content, NULL, '%', content) and productnum = #{productId}
+		FROM product_comment
+		
+		WHERE content LIKE DECODE(content, NULL, '%', content) and productnum = #{productId}
 
 	</select>
 	
