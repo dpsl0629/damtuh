@@ -14,7 +14,7 @@
                 </ul>
                 <div class="footer-cont opt-clearfix">
                     <div class="footer-logo">
-                        <img src="${contextPath }/resources/images/layout/footer-logo.png" alt="">
+                        <img src="${contextPath }/resources/images/layout/footer-logo.png" alt="푸터 로고">
                     </div>
                     <div class="footer-txt">
                         <div class="footer-address">

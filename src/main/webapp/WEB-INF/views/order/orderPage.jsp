@@ -56,7 +56,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="img"><img src="${contextPath }/thumbnails.do?fileName=${product2.productImage}"/></td>
+                                        <td class="img"><img src="${contextPath }/thumbnails.do?fileName=${product2.productImage}" alt="상품 사진"/></td>
                                         <td class="tit">${product2.productName }</td>
                                         <td>${product2.quantity }</td>
                                         <td class="total-price">${product2.totalPrice }</td>

@@ -35,7 +35,7 @@
 	                        <div class="item-visual">
 	                            <div class="visual-cont">
 	                                <div class="img-box">
-	                                    <img src="${contextPath }/thumbnails.do?fileName=${product.fileName}" alt="">
+	                                    <img src="${contextPath }/thumbnails.do?fileName=${product.fileName}" alt="상품 사진">
 	                                    <input type="hidden" name="productImage" value="${product.fileName }"/>
 	                                </div>
 	                                <div class="">
@@ -44,24 +44,24 @@
 	                                    		<div class="img">
 			                                    	<c:choose>
 				                                    	<c:when test="${product.thumbnail1 !=null}">
-				                                        <img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail1}" alt="">
+				                                        <img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail1}" alt="상품 썸네일 사진">
 				                                        </c:when>
 			                                        </c:choose>
 		                                        </div>
 	                                        </li>
 	                                        <c:choose>
 		                                    	<c:when test="${product.thumbnail2 !=null}">
-		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail2}" alt=""></div>
+		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail2}" alt="상품 썸네일 사진"></div>
 		                                        </c:when>
 	                                        </c:choose>
 	                                        <c:choose>
 		                                    	<c:when test="${product.thumbnail3 !=null}">
-		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail3}" alt=""></div>
+		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail3}" alt="상품 썸네일 사진"></div>
 		                                        </c:when>
 	                                        </c:choose>
 	                                        <c:choose>
 		                                    	<c:when test="${product.thumbnail4 !=null}">
-		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail4}" alt=""></div>
+		                                        <div class="img"><img src="${contextPath }/thumbnails.do?fileName=${product.thumbnail4}" alt="상품 썸네일 사진"></div>
 		                                        </c:when>
 	                                        </c:choose>
 	                                    </ul>

@@ -79,7 +79,7 @@
 	                       				 	</thead>
 	                       				 	<tbody>
 	                       				 		<tr>
-	                       				 			<td><img src="${contextPath }/thumbnails.do?fileName=${orderDetail.productImage}"/></td>
+	                       				 			<td><img src="${contextPath }/thumbnails.do?fileName=${orderDetail.productImage}" alt="상품 사진"/></td>
 	                       				 			<td><c:out value="${orderDetail.productName }"/></td>
 	                       				 	</tbody>
 	                       				 </table>

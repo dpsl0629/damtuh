@@ -31,7 +31,7 @@
                     <div class="ci-box opt-clearfix">
                         <div class="ci-cont">
                             <div class="img-box">
-                                <img src="${contextPath }/resources/images/sub/ci.png" alt="">
+                                <img src="${contextPath }/resources/images/sub/ci.png" alt="심볼마크 이미지">
                             </div>
                             <div class="txt-box">
                                 <h3 class="basic-h3">심볼마크 이야기</h3>

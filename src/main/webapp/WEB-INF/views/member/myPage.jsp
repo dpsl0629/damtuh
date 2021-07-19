@@ -156,7 +156,7 @@
 	                                                        <tbody>
 	                                                            <tr>
 	                                                                <td><span class="date"><fmt:formatDate pattern="yyyy-MM-dd" value="${order.orderVO.orderDate}"/> </span></td>
-	                                                                <td><img src="${contextPath }/thumbnails.do?fileName=${order.orderVO.productImage}" alt=""></td>
+	                                                                <td><img src="${contextPath }/thumbnails.do?fileName=${order.orderVO.productImage}" alt="상품 사진"></td>
 	                                                                <td>
 	                                                                    <p class="name">
 	                                                                        <a href="#lnk"><c:out value="${order.orderVO.productName}"/></a>

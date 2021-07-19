@@ -62,7 +62,7 @@
 				                                           <div class="item-box">
 				                                               <a href="${list.productId }" class="move">
 				                                               	   <div class="img-box">
-					                                                   <img class="item-img" src="${contextPath}/thumbnails.do?fileName=${list.fileName}">
+					                                                   <img class="item-img" src="${contextPath}/thumbnails.do?fileName=${list.fileName}" alt="상품 사진">
 					                                                   <a href="#lnk" class="like-ico like"></a>
 				                                                   </div>
 				                                               </a>

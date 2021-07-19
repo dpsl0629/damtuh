@@ -97,19 +97,19 @@
                         <ul class="quick-lst opt-clearfix">
                             <li>
                                 <div class="quick-cont">
-                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick1.png" alt=""></a>
+                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick1.png" alt="연락처"></a>
                                     <p>1899-3931<br><span>(09~18)</span></p>
                                 </div>
                             </li>
                             <li>
                                 <div class="quick-cont">
-                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick2.png" alt=""></a>
+                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick2.png" alt="문의사항"></a>
                                     <p>FAQ</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="quick-cont">
-                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick3.png" alt=""></a>
+                                    <a href="#lnk"><img src="${contextPath}/resources/images/main/quick3.png" alt="오시는 길"></a>
                                     <p>오시는 길</p>
                                 </div>
                             </li>
@@ -126,7 +126,7 @@
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store1.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store1.png" alt="GS25">
                                     </a>
                                     <p>GS25</p>
                                 </div>
@@ -134,7 +134,7 @@
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store2.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store2.png" alt="농협 하나로마트">
                                     </a>
                                     <p>농협 하나로마트</p>
                                 </div>
@@ -142,7 +142,7 @@
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store3.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store3.png" alt="이마트">
                                     </a>
                                     <p>이마트</p>
                                 </div>
@@ -150,35 +150,39 @@
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store4.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store4.png" alt="홈플러스">
                                     </a>
                                     <p>홈플러스</p>
-                                </div>                            </li>
+                                </div>             
+                            </li>             
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store5.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store5.png" alt="롯데마트">
                                     </a>
                                     <p>롯데마트</p>
-                                </div>                            </li>
+                                </div>                            
+                            </li>
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store6.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store6.png" alt="지마켓">
                                     </a>
                                     <p>지마켓</p>
-                                </div>                            </li>
+                                </div>                            
+                            </li>
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store7.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store7.png" alt="옥션">
                                     </a>
                                     <p>옥션</p>
-                                </div>                            </li>
+                                </div>                            
+                            </li>
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store8.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store8.png" alt="미니스톱">
                                     </a>
                                     <p>미니스톱</p>
                                 </div>      
@@ -186,7 +190,7 @@
                             <li>
                                 <div class="store-box">
                                     <a href="#lnk">
-                                        <img src="${contextPath}/resources/images/main/store9.png" alt="">
+                                        <img src="${contextPath}/resources/images/main/store9.png" alt="세븐일레븐">
                                     </a>
                                     <p>세븐일레븐</p>
                                 </div>      
