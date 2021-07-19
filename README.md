@@ -9,6 +9,8 @@
 3. Spring Security
 4. lombok
 5. Jquery
+6. HTML5
+7. CSS3
 
 ##### 구현 페이지
 
