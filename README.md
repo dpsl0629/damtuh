@@ -13,7 +13,7 @@
 5. Jquery
 6. HTML5
 7. CSS3
-8. RDBMS(Oracle)
+8. sql(Oracle)
 
 ##### 사용 툴
 
