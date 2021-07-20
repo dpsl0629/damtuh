@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,7 +18,6 @@ import com.damtuh.support.notice.service.NoticeBoardService;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 import com.damtuh.support.notice.vo.PageDTO;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 
@@ -72,7 +70,6 @@ public class SupportControllerImpl implements SupportController {
 	@Override
 	@PostMapping(value= "/noticeConfirm")
 	public String noticeConfirm(@ModelAttribute("vo") NoticeBoardVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String content = request.getParameter("content");
 		log.info(vo);
 		service.insert(vo);
 		return "redirect:/support/notice";

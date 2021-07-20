@@ -51,7 +51,7 @@
                                     <h4>고객센터</h4>
                                     <ul>
                                         <li><a href="#lnk">자주묻는 질문</a></li>
-                                        <li><a href="#lnk">Q&A</a></li>
+                                        <li><a href="#lnk">Q&#38;A</a></li>
                                     </ul>
                                 </div>
                             </div>

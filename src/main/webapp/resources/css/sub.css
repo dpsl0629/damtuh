@@ -393,16 +393,6 @@
     margin-bottom: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
 .search-form {
     margin-bottom: 20px;
 }
@@ -449,6 +439,7 @@
     vertical-align: top;
     width: 100%;
     position: relative;
+    padding-top: 10px;
 }
 
 .search-form-inp input {
@@ -2119,5 +2110,16 @@
 		width: 100%;
 	}
 	
+	.order-lst li {
+		float: none;
+		width: 100%;
+	}
 	
+	.order-lst li .order-box:before {
+		display: none;
+	}
+	
+	.order-lst li .order-box:after {
+		display: none;
+	}
 }

@@ -123,7 +123,7 @@ public class OrderControllerImpl implements OrderController {
 		orderVO.setOrdererAddressDetail(request.getParameter("ordererAddressDetail"));
 		log.info(orderVO.toString());
 		orderService.insertOrder(orderVO);
-		int insertNum = orderService.insertComment(orderVO);
+		orderService.insertComment(orderVO);
 		String delivery = orderVO.getDeliveryId(); 
 		OrderVO order = orderService.selectOrder(delivery);
 		ModelAndView mav = new ModelAndView(viewName);

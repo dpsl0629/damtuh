@@ -46,10 +46,7 @@ public class MemberControllerImpl implements MemberController {
 	private MemberVO memberVO;
 	
 	@Autowired
-	private OrderVO orderVO; 
-	
-	@Autowired
-	private CommentVO commentVO;
+	private OrderVO orderVO;
 	
 	@Autowired
     private JavaMailSender mailSender;

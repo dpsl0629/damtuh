@@ -85,11 +85,11 @@
                     <div class="info-box">
                         <div class="notice-banner">
                             <ul class="notice-lst">
-                            <form id="noticeForm" action="${contextPath }/support/noticeView">
-	                            <c:forEach items="${noticeList}" var="board" end="1">
-	                                <li><a href="${board.bno }" class="opt-clearfix board-bno"><span class="notice-tit main-tit"><c:out value="${board.title }"/></span><span class="notice-date"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.writeDate}"/></span></a></li>
-	                            </c:forEach>
-                            </form>
+	                            <form id="noticeForm" action="${contextPath}/support/noticeView" method="get">
+		                            <c:forEach items="${noticeList}" var="board" end="1">
+		                                <li><a href="${board.bno }" class="opt-clearfix board-bno"><span class="notice-tit main-tit"><c:out value="${board.title }"/></span><span class="notice-date"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.writeDate}"/></span></a></li>
+		                            </c:forEach>
+	                            </form>
                             </ul>
                         </div>
                     </div>

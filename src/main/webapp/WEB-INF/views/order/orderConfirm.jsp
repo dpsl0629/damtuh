@@ -32,7 +32,7 @@
 				 <div class="orderConfirm-box">
                     <h4 class="basic-h4">주문이 완료되었습니다.</h3>
                     <p class="desc">주문번호 : ${order.deliveryId }</p>
-                        <div class="orderConfirm-cont  opt-clearfix">
+                        <div class="orderConfirm-cont opt-clearfix">
                             <div class="left-box">
                                 <p class="tit">배송 정보</p>
                                 <table class="basic-tbl">

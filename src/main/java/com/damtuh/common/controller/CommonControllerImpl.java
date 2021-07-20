@@ -1,24 +1,9 @@
 package com.damtuh.common.controller;
 
-import java.util.Locale;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import lombok.extern.log4j.Log4j;
 
 @Controller("CommonController")
-@Log4j
 @EnableAspectJAutoProxy
 public class CommonControllerImpl implements CommonController {
 

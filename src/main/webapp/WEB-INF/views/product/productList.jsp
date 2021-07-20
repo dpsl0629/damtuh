@@ -63,7 +63,7 @@
 				                                               <a href="${list.productId }" class="move">
 				                                               	   <div class="img-box">
 					                                                   <img class="item-img" src="${contextPath}/thumbnails.do?fileName=${list.fileName}" alt="상품 사진">
-					                                                   <a href="#lnk" class="like-ico like"></a>
+					                                                   <a href="#lnk" class="like-ico like"><span class="opt-screen-out">찜하기</span></a>
 				                                                   </div>
 				                                               </a>
 				                                               <div class="txt-box">

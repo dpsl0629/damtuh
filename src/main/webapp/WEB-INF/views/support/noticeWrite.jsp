@@ -51,7 +51,7 @@
 	                            </div>
 		                     
 		                        <div class="btn-list">
-		                            <button type="submit" class="move btn-green" href="#lnk">글쓰기</a>
+		                            <button type="submit" class="move btn-green" href="#lnk">글쓰기</button>
 		                        </div>
                        		</div>
                     	</div>

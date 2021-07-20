@@ -64,7 +64,7 @@
                         <div class="col opt-clearfix">
                             <span class="year">2008</span>
                             <ul class="desc">
-                                <li>자회사 담터 F&B설립 (순천)</li>
+                                <li>자회사 담터 F&#38;B설립 (순천)</li>
                                 <li>이마트 매출 100억 달성</li>
                             </ul>                                                
                         </div>

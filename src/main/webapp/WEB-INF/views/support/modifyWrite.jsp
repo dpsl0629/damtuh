@@ -53,12 +53,9 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
-
                             <div class="board-view-con">
                                 <textarea id="editor" cols="30" rows="10"><c:out  value="${ notice.content}"/></textarea>
                             </div>
-                     
                         </div>
                          	<div class="btn-list">
                             	<button type="button" class="move btn-green">글 수정하기</button>

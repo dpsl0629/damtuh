@@ -190,7 +190,6 @@ $(document).ready(dotLineFunc);
                     $header.toggleClass("active");
                     $dimed.toggleClass("active");
                     removeStyleFn($dep1);
-                    console.log("모바일");
                     $dimed.removeClass("active");
                     $mainWrapper.toggleClass("active");
                     $subWrapper.toggleClass("active");
@@ -206,7 +205,6 @@ $(document).ready(dotLineFunc);
                     $thisDep2 = $this.find($dep2);
                     $this.addClass("active");
                     $thisDep2.stop().slideDown(); 
-                    console.log("모모");
             }
         }
     });

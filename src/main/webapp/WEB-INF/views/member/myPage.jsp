@@ -53,7 +53,7 @@
                                     <h4>고객센터</h4>
                                     <ul>
                                         <li><a href="#lnk">자주묻는 질문</a></li>
-                                        <li><a href="#lnk">Q&A</a></li>
+                                        <li><a href="#lnk">Q&#38;A</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -135,63 +135,63 @@
 			                            	<c:when test="${empty orderList}">
 			                            		<div class="empty-txt">주문 내역이 없습니다.</div>
 			                            	</c:when>
-			                            		<c:when test="${orderList != null}">
-					                            <c:forEach items="${orderList}" var="order">
-                                                <div class="order-detail-cont${rating }">
-                                                    <table class="order-detail-tbl basic-tbl">
-                                                        <caption>주문조회</caption>
-                                                        <colgroup>
-                                                            <col style="width:30%;">
-                                                            <col style="width:15%;">
-                                                            <col style="width:35%;">
-                                                            <col style="width:20%;">
-                                                        </colgroup>
-                                                        <thead>
+		                            		<c:when test="${orderList != null}">
+				                            <c:forEach items="${orderList}" var="order">
+                                               <div class="order-detail-cont${rating }">
+                                                   <table class="order-detail-tbl basic-tbl">
+                                                       <caption>주문조회</caption>
+                                                       <colgroup>
+                                                           <col style="width:30%;">
+                                                           <col style="width:15%;">
+                                                           <col style="width:30%;">
+                                                           <col style="width:25%;">
+                                                       </colgroup>
+                                                       <thead>
+                                                           <tr>
+                                                               <th scope="col">주문일(결제번호)</th>
+                                                               <th scope="col" colspan="2">상품명/주문옵션/주문번호</th>
+                                                               <th scope="col">주문상태</th>
+                                                           </tr>
+                                                       </thead>
+                                                        <tbody>
                                                             <tr>
-                                                                <th scope="col">주문일(결제번호)</th>
-                                                                <th scope="col" colspan="2">상품명/주문옵션/주문번호</th>
-                                                                <th scope="col">주문상태</th>
+                                                                <td><span class="date"><fmt:formatDate pattern="yyyy-MM-dd" value="${order.orderVO.orderDate}"/> </span></td>
+                                                                <td><img src="${contextPath }/thumbnails.do?fileName=${order.orderVO.productImage}" alt="상품 사진"></td>
+                                                                <td>
+                                                                    <p class="name">
+                                                                        <a href="#lnk" style="display: block;"><c:out value="${order.orderVO.productName}"/></a>
+                                                                        <span class="number">(<c:out value="${order.orderVO.deliveryId }"/>)</span>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="state">거래완료</span>
+                                                                </td>
                                                             </tr>
-                                                        </thead>
-	                                                        <tbody>
-	                                                            <tr>
-	                                                                <td><span class="date"><fmt:formatDate pattern="yyyy-MM-dd" value="${order.orderVO.orderDate}"/> </span></td>
-	                                                                <td><img src="${contextPath }/thumbnails.do?fileName=${order.orderVO.productImage}" alt="상품 사진"></td>
-	                                                                <td>
-	                                                                    <p class="name">
-	                                                                        <a href="#lnk"><c:out value="${order.orderVO.productName}"/></a>
-	                                                                        <span class="number">(<c:out value="${order.orderVO.deliveryId }"/>)</span>
-	                                                                    </p>
-	                                                                </td>
-	                                                                <td>
-	                                                                    <span class="state">거래완료</span>
-	                                                                </td>
-	                                                            </tr>
-	                                                            <tr>
-	                                                                <td>
-	                                                                    <a class="detail-view" href="#lnk">주문상세보기</a>
-	                                                                </td>
-	                                                                <td colspan="2">
-	                                                                    <a class="re-print" href="#lnk">구매영수증 출력</a>
-	                                                                </td>
-	                                                                <td>
-	                                                                	<c:choose>
-	                                                                		<c:when test="${empty order.commentVO.content }">
-	                                                                    		<a class="review" href="${contextPath }/member/productCommentForm?deliveryId=${order.orderVO.deliveryId}">구매후기작성</a>
-	                                                                    	</c:when>
-	                                                                    	<c:when test="${order.commentVO.content != null }">
-	                                                                    		<a class="review" href="${contextPath }/member/productCommentConfirm?deliveryId=${order.orderVO.deliveryId}">구매후기확인</a>
-	                                                                    	</c:when>
-                                                                    	</c:choose>
-	                                                                </td>
-	                                                            </tr>
-	                                                            <tr>
-	                                                                <td class="price" colspan="4">결제금액 : <span><fmt:formatNumber type="number" maxFractionDigits="3" value="${order.orderVO.totalPrice}"/>원</span></td>
-	                                                            </tr>
-	                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </li>
+                                                            <tr>
+                                                                <td>
+                                                                    <a class="detail-view" href="#lnk">주문상세보기</a>
+                                                                </td>
+                                                                <td colspan="2">
+                                                                    <a class="re-print" href="#lnk">구매영수증 출력</a>
+                                                                </td>
+                                                                <td>
+                                                                	<c:choose>
+                                                                		<c:when test="${empty order.commentVO.content }">
+                                                                    		<a class="review" href="${contextPath }/member/productCommentForm?deliveryId=${order.orderVO.deliveryId}">구매후기작성</a>
+                                                                    	</c:when>
+                                                                    	<c:when test="${order.commentVO.content != null }">
+                                                                    		<a class="review" href="${contextPath }/member/productCommentConfirm?deliveryId=${order.orderVO.deliveryId}">구매후기확인</a>
+                                                                    	</c:when>
+                                                                   	</c:choose>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="price" colspan="4">결제금액 : <span><fmt:formatNumber type="number" maxFractionDigits="3" value="${order.orderVO.totalPrice}"/>원</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                   </table>
+                                               </div>
+                                           </li>
                                           </c:forEach>
                                           </c:when>
                                           </c:choose>
