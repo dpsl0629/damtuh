@@ -2,6 +2,7 @@ package com.damtuh.common.controller;
 
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller("CommonController")
 @EnableAspectJAutoProxy
@@ -12,4 +13,5 @@ public interface CommonController {
 //	public void logout(Locale locale, Model model) throws Exception;
 //	
 //	public void accessDenied(Authentication auth, Model model);
+	
 }

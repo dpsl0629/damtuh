@@ -40,8 +40,9 @@
 	                            <div class="board-view-file">
 	                                <div class="file-list">
 	                                    <p class="file">
-	                                        <input type="file">
+	                                        <input name="uploadFile" type="file" multiple>
 	                                    </p>
+	                                    <div class="uploadResult"></div>
 	                                </div>
 	                            </div>
 	                            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
@@ -76,13 +77,43 @@
 <!-- :: wrapper e :: -->
 <script>CKEDITOR.replace('editor');</script>
 <script>
-	var writeForm = $("#write-form");
-$(".move").on("click",function(e) {
-	alert($(".title").val());
-	var data = CKEDITOR.instances.editor.getData();	
-		writeForm.append("<input type='hidden' name='content' value='" + data + "'/>");
-		writeForm.submit();
-});
+	$(document).ready(function() {
+		var writeForm = $("#write-form");
+		$(".move").on("click",function(e) {
+			alert($(".title").val());
+			//var data = CKEDITOR.instances.editor.getData();	
+				//writeForm.append("<input type='hidden' name='content' value='" + data + "'/>");
+				//writeForm.submit();
+		});
+		
+		$("input[type='file']").on("change", function(e) {
+			var formData = new FormData();
+			
+			var inputFile = $("input[name='uploadFile']");
+			
+			var files = inputFile[0].files;
+			
+			console.log(files);
+			
+			for (var i = 0; i < files.length; i++) {
+				formData.append("uploadFile", files[i]);
+			}
+			
+			$.ajax({
+				url : "/support/upload",
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'POST',
+				success : function(result) {
+					alert("Uploaded");
+				},
+			    error:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+			});
+		});
+		
+	});
 </script>
 
 

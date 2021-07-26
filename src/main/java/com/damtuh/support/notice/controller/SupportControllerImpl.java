@@ -1,5 +1,6 @@
 package com.damtuh.support.notice.controller;
 
+import java.io.File;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -102,6 +104,33 @@ public class SupportControllerImpl implements SupportController {
 	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		service.deleteNotice(bno);
 		return "redirect:/support/notice";
+	}
+
+	@Override
+	@PostMapping(value="/upload")
+	public void upload(MultipartFile[] uploadFile) throws Exception {
+		log.info("uploadAjax");
+		
+		String uploadFolder = "C:\\upload";
+		
+		for (MultipartFile multipartFile : uploadFile ) {
+			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
+			log.info("Upload File Size : " + multipartFile.getSize());
+			
+			String uploadFileName = multipartFile.getOriginalFilename();
+			
+			// IE
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+			log.info("only File Name " + uploadFileName);
+			
+			File saveFile = new File(uploadFolder, uploadFileName);
+			
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
 	}
 
 	

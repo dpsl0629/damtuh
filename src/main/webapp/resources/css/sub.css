@@ -491,6 +491,7 @@
     top:50%;
     margin-top:-6px;
 }
+
 .board-header .board-col:first-child:before {
     display: none;
 }
@@ -552,6 +553,10 @@
 
 .board-col.desc:hover {
     text-decoration: underline;
+}
+
+.board-view-file {
+	padding: 20px;
 }
 
 .item-lst .tab-cont {

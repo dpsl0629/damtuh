@@ -41,6 +41,13 @@
 		<put-attribute name="bg" value="bg2"/>
 		<put-attribute name="body" value="/WEB-INF/views/support/modifyWrite.jsp" />
 	</definition>
+	
+	<definition name="support/upload" extends="subLayout">
+		<put-attribute name="title" value="글 수정하기"/>
+		<put-attribute name="subtit" value="글 수정하기"/>
+		<put-attribute name="bg" value="bg2"/>
+		<put-attribute name="body" value="/WEB-INF/views/support/modifyWrite.jsp" />
+	</definition>
 </tiles-definitions>
 
 
