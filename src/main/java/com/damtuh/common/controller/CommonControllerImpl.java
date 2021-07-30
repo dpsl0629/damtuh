@@ -1,13 +1,19 @@
 package com.damtuh.common.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller("CommonController")
+@Log4j
 @EnableAspectJAutoProxy
 public class CommonControllerImpl implements CommonController {
 
@@ -35,31 +41,5 @@ public class CommonControllerImpl implements CommonController {
 //		log.info("access Denied : " + auth);
 //	}
 	
-	@Override
-	@GetMapping(value="/upload")
-	public void upload(MultipartFile[] uploadFile) throws Exception {
-		log.info("uploadAjax");
-		
-		String uploadFolder = "C:\\upload";
-		
-		for (MultipartFile multipartFile : uploadFile ) {
-			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
-			log.info("Upload File Size : " + multipartFile.getSize());
-			
-			String uploadFileName = multipartFile.getOriginalFilename();
-			
-			// IE
-			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-			log.info("only File Name " + uploadFileName);
-			
-			File saveFile = new File(uploadFolder, uploadFileName);
-			
-			try {
-				multipartFile.transferTo(saveFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-		}
-	}
 
 }

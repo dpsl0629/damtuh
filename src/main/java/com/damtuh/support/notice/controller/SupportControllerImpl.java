@@ -1,6 +1,8 @@
 package com.damtuh.support.notice.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,6 +66,7 @@ public class SupportControllerImpl implements SupportController {
 	@Override
 	@RequestMapping(value= "/noticeWrite" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		log.info("noticeWrite");
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
@@ -113,6 +116,13 @@ public class SupportControllerImpl implements SupportController {
 		
 		String uploadFolder = "C:\\upload";
 		
+		File uploadPath = new File(uploadFolder, getFolder());
+		log.info("uploadPath : " + uploadPath);
+		
+		if(uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		
 		for (MultipartFile multipartFile : uploadFile ) {
 			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
 			log.info("Upload File Size : " + multipartFile.getSize());
@@ -123,7 +133,7 @@ public class SupportControllerImpl implements SupportController {
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 			log.info("only File Name " + uploadFileName);
 			
-			File saveFile = new File(uploadFolder, uploadFileName);
+			File saveFile = new File(uploadPath, uploadFileName);
 			
 			try {
 				multipartFile.transferTo(saveFile);
@@ -131,6 +141,16 @@ public class SupportControllerImpl implements SupportController {
 				log.error(e.getMessage());
 			}
 		}
+	}
+	
+	private String getFolder() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date date = new Date();
+		
+		String str = sdf.format(date);
+		
+		return str.replace("-", File.separator);
 	}
 
 	
