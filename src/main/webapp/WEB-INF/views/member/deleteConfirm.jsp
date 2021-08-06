@@ -11,6 +11,6 @@
     	<div class="tit-box">
     		<p class="tit">삭제 완료되었습니다.</p>
     	</div>
-    	<a href="${contextPath }/main/main.do">마이페이지로 돌아가기</a>
+    	<a href="${contextPath }/member/myPage">마이페이지로 돌아가기</a>
     </div>
 </div>
