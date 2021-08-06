@@ -8,16 +8,14 @@
 <%
   request.setCharacterEncoding("utf-8");
 %>
-
 <!DOCTYPE html>
 <html lang="ko">
-
+<head>
+	<tiles:insertAttribute name="header" />
 </head>
 <body>
-	<header>
-		   <tiles:insertAttribute name="header" />
-	</header>
-	<article>
+	<article id="main-body">
+		<div class="layout-skip"><a href="#main-wrapper">본문바로가기</a></div>
 	 	<tiles:insertAttribute name="body" />
 	</article>
 	<footer class="footer">

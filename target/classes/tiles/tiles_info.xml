@@ -14,18 +14,18 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="chaStory/kind" extends="subLayout">
-		<put-attribute name="title" value="인사말"/>
-		<put-attribute name="subtit" value="회사소개"/>
+	<definition name="info/kind" extends="subLayout">
+		<put-attribute name="title" value="차의 종류"/>
+		<put-attribute name="subtit" value="차의 종류"/>
 		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/chaStory/kind.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/info/kind.jsp" />
 	</definition>
 	
-	<definition name="chaStory/origin" extends="subLayout">
-		<put-attribute name="title" value="회사연혁"/>
-		<put-attribute name="subtit" value="회사연혁"/>
+	<definition name="info/origin" extends="subLayout">
+		<put-attribute name="title" value="차의 기원"/>
+		<put-attribute name="subtit" value="차의 기원"/>
 		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/chaStory/origin.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/info/origin.jsp" />
 	</definition>
 	
 </tiles-definitions>

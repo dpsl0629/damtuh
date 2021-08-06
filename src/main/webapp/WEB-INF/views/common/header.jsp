@@ -157,14 +157,14 @@
                                             <a href="${contextPath }/product/productList" style="font-weight: 600;">제품구매</a>
                                         </li>
                                         <li>
-                                            <a href="${contextPath }/chaStory/kind">차이야기</a>
+                                            <a href="${contextPath }/info/kind">차이야기</a>
                                             <div class="gnb-dep2-wrap">
                                                 <ul class="gnb-dep2-lst">
                                                     <li>
-                                                        <a href="${contextPath }/chaStory/kind">차의 종류</a>
+                                                        <a href="${contextPath }/info/kind">차의 종류</a>
                                                     </li>
                                                     <li>
-                                                        <a href="${contextPath }/chaStory/origin">차의 기원</a>
+                                                        <a href="${contextPath }/info/origin">차의 기원</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -190,4 +190,3 @@
                     </div>
                 </div>
             </header>
-         </html>

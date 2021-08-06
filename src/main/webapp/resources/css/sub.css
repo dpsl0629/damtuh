@@ -1969,6 +1969,10 @@
 
 @media all and (max-width:1023px) {
 	
+	.sub-tit {
+		padding: 100px 0 0;
+	}
+	
 	.myPage-box .lnb {
 		margin-bottom: 20px;
 	}
@@ -2035,10 +2039,6 @@
 	
 	.sub-top {
 		height: 320px;
-	}
-	
-	.sub-tit {
-		padding: 100px 0 0;
 	}
 	
 	.sub-container {

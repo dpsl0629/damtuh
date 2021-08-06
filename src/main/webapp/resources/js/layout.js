@@ -99,36 +99,10 @@ $(document).ready(dotLineFunc);
         $mainWrapper = $(".main-wrapper");
         $subWrapper = $(".sub-wrapper");
 
-        scrollFunc($win);
         mobGnbFn();
         webGnbFn();
     }
 
-    $win.on({
-        resize : function() {
-            var $newWindW = $(this).width();
-            if($newWindW !== $winW){
-                SetViewSize();
-                removeStyleFn($header);
-                removeStyleFn($mobBtn);
-                removeStyleFn($gnb);
-                $svg.contents().find('g').removeClass('active');
-                $winW = $newWindW;
-            }
-        },
-        scroll : function() {
-            scrollFunc($(this));
-        }
-    });
-
-    function scrollFunc($target) {
-        var st = $target.scrollTop(),
-            $header = $('.header');
-
-        if (st > 50) $header.addClass('scroll');
-        else $header.removeClass('scroll');
-    }
-    
      function webGnbFn() {
         $dep1.on({
             mouseenter : function() {

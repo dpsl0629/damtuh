@@ -18,15 +18,7 @@
 	<header>
 	   <tiles:insertAttribute name="header" />
 	</header>
-		<!--
-	    1depth 마다 sub-top에 각각 다른 클래스 개발 필요
-	    공공체육시설: bg1
-	    이용안내: bg2
-	    예약하기: bg3
-	    예약확인/취소: bg4
-	    공지사항: bg5
-	    개인정보처리방침: bg6
-	-->
+	<div class="layout-skip"><a href="#contents">본문바로가기</a></div>
 	<div class="sub-top <tiles:insertAttribute name="bg" />">
 	    <h2 class="sub-tit"><tiles:insertAttribute name="subtit" /></h2>
 	</div>
@@ -39,11 +31,19 @@
 	        </ul>
 	    </div>
 	</div>
-	<article>
-	 	<tiles:insertAttribute name="body" />
+	<article id="sub-body">
+		<div class="wrapper">
+	        <div class="sub-wrapper">
+	            <div class="sub-contents">
+	                <div class="sub-container">
+	                	<tiles:insertAttribute name="body" />
+	                </div>
+	           </div>
+	        </div>
+       </div>
 	</article>
 	<footer class="footer">
-      		<tiles:insertAttribute name="footer" />
+     	<tiles:insertAttribute name="footer" />
    	</footer>
 </body>      
         

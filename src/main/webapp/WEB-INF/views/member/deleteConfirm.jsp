@@ -6,55 +6,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<!--#include virtual="/html/include/sub-head.html"-->
-<body class="sub-body">
-
-    <div class="layout-skip"><a href="#container">본문바로가기</a></div>
-
-    <!-- :: wrapper s :: -->
-    <div class="wrapper">
-
-        <!-- :: header s :: -->
-        <!--#include virtual="/html/include/header.html"-->
-        <!-- :: header e :: -->
-
-        <div class="sub-wrapper">
-
-            <!-- :: sub-top s :: -->
-            <!--#include virtual="/html/include/sub-top.html"-->
-            <!-- :: sub-top e :: -->
-
-            <div class="sub-contents">
-                <div class="sub-container">
-
-                <!-- :: content s :: -->
-                <div class="contents">
-                    <div class="joinConfirm-box">
-                    	<div class="tit-box">
-                    		<p class="tit">삭제 완료되었습니다.</p>
-                    	</div>
-                    	<a href="${contextPath }/main/main.do">마이페이지로 돌아가기</a>
-                    </div>
-                </div>
-                
-                <!-- :: content e :: -->
-                
-                </div>
-            </div>
-
-            <div class="btn-top-box">
-                <a href="#lnk" class="btn-top js-btn-top"><span class="opt-screen-out">상단으로 이동</span></a>
-            </div>
-        </div>
-
-        <!-- :: footer s :: -->
-        <!--#include virtual="/html/include/footer.html"-->
-        <!-- :: footer e :: -->
-
+<div class="contents">
+    <div class="joinConfirm-box">
+    	<div class="tit-box">
+    		<p class="tit">삭제 완료되었습니다.</p>
+    	</div>
+    	<a href="${contextPath }/main/main.do">마이페이지로 돌아가기</a>
     </div>
-    <!-- :: wrapper e :: -->
+</div>
+
     
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
