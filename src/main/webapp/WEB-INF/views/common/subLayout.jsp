@@ -13,11 +13,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title><tiles:insertAttribute name="title" /></title>
+   <tiles:insertAttribute name="header" />
 </head>
 <body>
-	<header>
-	   <tiles:insertAttribute name="header" />
-	</header>
 	<div class="layout-skip"><a href="#contents">본문바로가기</a></div>
 	<div class="sub-top <tiles:insertAttribute name="bg" />">
 	    <h2 class="sub-tit"><tiles:insertAttribute name="subtit" /></h2>

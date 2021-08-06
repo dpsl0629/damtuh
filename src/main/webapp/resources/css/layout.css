@@ -14,7 +14,7 @@
 }
 .layout-skip a:focus{
     width:100%;
-    z-index:9999;
+    z-index:999999999999999999;
     padding:10px 0;
     font-size:13px;
     text-indent:0;
