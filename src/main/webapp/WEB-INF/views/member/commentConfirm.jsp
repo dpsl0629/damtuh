@@ -9,7 +9,7 @@
 <div class="contents">
     <div class="joinConfirm-box">
     	<div class="tit-box">
-    		<p class="tit">삭제 완료되었습니다.</p>
+    		<p class="tit">리뷰 작성 완료되었습니다.</p>
     	</div>
     	<a href="${contextPath }/member/myPage">마이페이지로 돌아가기</a>
     </div>

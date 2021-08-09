@@ -38,4 +38,5 @@ public interface MemberMapper {
 	public OrderVO readDeliveryId(String userid);
 	
 	public OrderVO productCommentConfirm(String deliveryId);
+	
 }

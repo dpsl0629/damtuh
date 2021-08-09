@@ -1349,6 +1349,10 @@
     line-height: 1.5;
 }
 
+.board-view .btn-lst {
+	margin-top: 20px;
+}
+
 .myPage-box .lnb {
     float: left;
     width: 20%;

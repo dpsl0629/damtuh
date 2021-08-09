@@ -35,7 +35,7 @@
                 <textarea id="editor" cols="30" rows="10"><c:out  value="${ notice.content}"/></textarea>
             </div>
         </div>
-         	<div class="btn-list">
+         	<div class="btn-lst">
             	<button type="button" class="move btn-green">글 수정하기</button>
        		</div>
         	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum }'/>">

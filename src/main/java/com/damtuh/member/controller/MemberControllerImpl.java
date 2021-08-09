@@ -164,7 +164,9 @@ public class MemberControllerImpl implements MemberController {
 		String userid = userDetails.getUsername();
 		log.info(userDetails.getUsername());
 		List<CommentOrderVO> orderList = memberService.readOrder(userid);
+		int count = orderList.size();
 		mav.setViewName(viewName);
+		mav.addObject("count", count);
 		mav.addObject("orderList", orderList);
 		return mav;
 	}

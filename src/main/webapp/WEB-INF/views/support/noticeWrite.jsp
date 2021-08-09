@@ -29,7 +29,7 @@
                  <textarea id="editor" cols="30" rows="10"></textarea>
              </div>
        
-          <div class="btn-list">
+          <div class="btn-lst">
               <button type="submit" class="move btn-green" href="#lnk">글쓰기</button>
           </div>
        		</div>
@@ -37,15 +37,17 @@
     </form>
 </div>
 <!-- :: wrapper e :: -->
-<script>CKEDITOR.replace('editor');</script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor' );
+</script>
 <script>
 	$(document).ready(function() {
 		var writeForm = $("#write-form");
 		$(".move").on("click",function(e) {
 			alert($(".title").val());
-			//var data = CKEDITOR.instances.editor.getData();	
-				//writeForm.append("<input type='hidden' name='content' value='" + data + "'/>");
-				//writeForm.submit();
+			var data = CKEDITOR.instances.editor.getData();	
+				writeForm.append("<input type='hidden' name='content' value='" + data + "'/>");
+				writeForm.submit();
 		});
 		
 		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");

@@ -17,7 +17,7 @@
     <meta name="title" content="담터">
     <meta name="description" content="담터입니다">
     <meta name="keywords" content="담터">
-    <meta name="author" content="주식회사 나모">
+    <meta name="author" content="김예원">
     <meta name="keywords" content="담터">
     <meta name="author" content="김예원">
     <meta property="og:title" content="담터">

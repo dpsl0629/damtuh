@@ -315,18 +315,17 @@
        count++;
        countEl.val(count);
        console.log(count);
-   	console.log($(".total-price").val());
    	price = Number(price) + (Number(price)/(count-1));
     	console.log(price);
    	}
    	$(".total-price").text(price.format());
    }
+   
    function minus(){
        if (count > 1) {
            count--;
            countEl.val(count);
            price = Number(price) - (Number(price)/(count+1));
-        	console.log(price);
        	}
    	$(".total-price").text(price.format());
    }

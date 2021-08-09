@@ -133,4 +133,5 @@
 	<select id="productCommentConfirm" resultMap="commentResult">
 		SELECT * FROM product_comment WHERE deliveryNum = #{deliveryId}
 	</select>
+
 </mapper>

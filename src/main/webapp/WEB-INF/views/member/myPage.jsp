@@ -85,7 +85,7 @@
 	           </div>
 	           <div class="order-detail">
 	               <h2>전체 쇼핑내역</h2>
-	               <a class="total-order" href="#lnk">0</a>
+	               <a class="total-order" href="#lnk"><c:out value="${count }"/></a>
 	               <div class="total-order-cont">
 	                   <div class="order-date">
 	                       <ul>

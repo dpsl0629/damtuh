@@ -39,6 +39,6 @@ public interface MemberDAO {
 	public List<CommentVO> selectComment(String deliveryId) throws DataAccessException;
 	
 	public CommentVO productCommentConfirm(String deliveryId) throws DataAccessException;
-
+	
 }
  

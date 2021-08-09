@@ -13,7 +13,7 @@
     <form id="orderConfirm" action="/order/orderConfirm">
         <div class="buyDetail-top">
    <sec:authentication property="principal.username" var="currentUserName"/>
-<div class="id">${currentUserName}</div>
+<div class="id" style="display: none;">${currentUserName}</div>
             <table class="buyDetail-tbl basic-tbl">
                 <caption>상품 리스트</caption>
                 <colgroup>
@@ -341,7 +341,7 @@
    </div>
 </div>
             
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+ <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({

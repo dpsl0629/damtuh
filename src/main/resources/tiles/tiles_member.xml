@@ -92,8 +92,8 @@
 	</definition>
 	
 	<definition name="member/productCommentConfirm" extends="subLayout">
-		<put-attribute name="title" value="후기작성"/>
-		<put-attribute name="subtit" value="후기작성"/>
+		<put-attribute name="title" value="후기확인"/>
+		<put-attribute name="subtit" value="후기확인"/>
 		<put-attribute name="bg" value="bg1"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/productCommentConfirm.jsp" />
 	</definition>
