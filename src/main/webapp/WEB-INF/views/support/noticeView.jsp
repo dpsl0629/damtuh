@@ -9,7 +9,7 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <div class="contents">
     <div class="contents-box notice-box">
-        <div class="board-view">
+        <div class="board-view opt-clearfix">
             <div class="board-view-header">
                 <p class="tit"><span class="opt-screen-out">공지</span></span><span class="ico-badge badge-region"><c:out value="${article.title }"/></p>
                 <p class="desc">
@@ -44,9 +44,9 @@
            <form id="operForm" method="get">
         
 	          <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-		     <div class="btn-box right-box opt-clearfix">
-		     	<button class="btn-green btn-modify" type="button">글 수정하기</button>
+		     <div class="btn-box right-box">
 		     	<button class="btn-green btn-delete" type="button">글 삭제하기</button>
+		     	<button class="btn-green btn-modify" type="button">글 수정하기</button>
 		     </div>
 		     </sec:authorize>
 		       	<input type="hidden" id="bno" name="bno" value="<c:out value='${article.bno }'/>">
@@ -84,11 +84,4 @@ $(document).ready(function() {
 	});
 	
 });
-</script>
-<script>
-window.onpopstate = function(event) {
-	history.pushState({pageNum:3, searchDt:'2019-05-07'}, null, '/support/notice');
-	 history.back();
-	 alert("뒤로가기");
-}
 </script>

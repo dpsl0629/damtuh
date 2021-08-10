@@ -1,6 +1,7 @@
 package com.damtuh.support.notice.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -17,4 +18,5 @@ public class NoticeBoardVO {
 	private Date writeDate;
 	private Long hits;
 	
+	private List<BoardAttachVO> attachList;
 }

@@ -20,7 +20,9 @@
                      <p class="file">
                          <input name="uploadFile" type="file" multiple>
                      </p>
-                     <div class="uploadResult"></div>
+                     <div class="uploadResult">
+                     	<ul></ul>
+                     </div>
                  </div>
              </div>
              <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
@@ -66,6 +68,43 @@
 			
 			return true;
 		}
+
+		
+		var uploadResult = $(".uploadResult ul");
+		
+		function showUploadedFile(uploadResultArr) {
+
+			var str = "";
+			
+			$(uploadResultArr).each(function(i, obj) {
+				if (!obj.image) {
+					str += "<li><div><img src='/resources/images/sub/attach.png'>" + obj.fileName + "<span data-file=\'" + fileCallPath + "\' data-type='file'>X</span>" + "</div></li>";
+				} else {
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+					str += "<li><div><img src='/support/display?fileName=" + fileCallPath + "'>" + "<span data-file=\'" + fileCallPath + "\' data-type='file'>X</span>" + "</div></li>";
+				}
+			});
+			
+			$(".uploadResult ul").append(str);
+		}
+		
+		$(".uploadResult").on("click", "span", function(e) {
+			var targetFile = $(this).data("file");
+			var type = $(this).data("type");
+			console.log(targetFile);
+			
+			$.ajax({
+				url: "/support/deleteFile",
+				data : {fileName : targetFile, type:type},
+				dataType : "text",
+				type : "POST",
+				success : function(result) {
+					alert(result);
+				}
+			});
+		});
+		
+		var cloneObj = $(".file").clone();
 		
 		$("input[type='file']").on("change", function(e) {
 			var formData = new FormData();
@@ -83,17 +122,21 @@
 				formData.append("uploadFile", files[i]);
 			}
 			
+			
 			$.ajax({
 				url : "/support/upload",
 				processData : false,
 				contentType : false,
 				data : formData,
 				type : 'POST',
+				dataType : 'json',
 				success : function(result) {
-					alert("Uploaded");
-				},
-			    error:function(request,status,error){
-			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+					console.log(result);
+					
+					showUploadedFile(result);
+					
+					$(".file").html(cloneObj.html());
+				}
 			});
 		});
 		

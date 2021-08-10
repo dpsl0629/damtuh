@@ -10,6 +10,15 @@
 		<result property="attach" column="attach"/> 
 		<result property="writeDate" column="writedate"/> 
 		<result property="hits" column="hits"/> 
+		<result property="attachList" column="attachList"/>
+	</resultMap>
+	
+	<resultMap id="boardAttachResult" type="com.damtuh.support.notice.vo.BoardAttachVO">
+		<result property="uuid" column="uuid"/> 
+		<result property="uploadPath" column="uploadPath"/> 
+		<result property="fileName" column="fileName"/> 
+		<result property="fileType" column="fileType"/> 
+		<result property="bno" column="bno"/> 
 	</resultMap>
 	
 <select id="getList" resultMap="boardResult">
@@ -83,4 +92,17 @@
 	<delete id="deleteNotice">
 		delete from tbl_notice where bno = #{bno}
 	</delete>
+	
+	<insert id="insert">
+		insert into tbl_attach (uuid, uploadPath, filename, filetype, bno)
+		values (#{uuid}, #{uploadPath}, #{filename}, #{filetype}, #{bno})
+	</insert>
+	
+	<delete id="delete">
+		delete from tbl_attach where uuid = #{uuid}
+	</delete>
+	
+	<select id="findByBno" resultMap="boardAttachResult">
+		select * from tbl_attach where bno = #{bno}
+	</select>
 </mapper>
