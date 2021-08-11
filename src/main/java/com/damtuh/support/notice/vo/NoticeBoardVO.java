@@ -14,7 +14,7 @@ public class NoticeBoardVO {
 	private Long bno;
 	private String title;
 	private String content;
-	private int attach;
+	private Long attach;
 	private Date writeDate;
 	private Long hits;
 	

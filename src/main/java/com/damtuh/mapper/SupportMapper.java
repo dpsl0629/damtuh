@@ -23,7 +23,7 @@ public interface SupportMapper {
 	
 	public void deleteNotice(Long bno);
 	
-	public void insert(BoardAttachVO vo);
+	public void insertAttach(BoardAttachVO vo);
 	
 	public void delete(String uuid);
 	

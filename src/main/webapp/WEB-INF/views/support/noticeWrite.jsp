@@ -46,9 +46,21 @@
 	$(document).ready(function() {
 		var writeForm = $("#write-form");
 		$(".move").on("click",function(e) {
-			alert($(".title").val());
-			var data = CKEDITOR.instances.editor.getData();	
+				
+				var str = "";
+				
+				$(".uploadResult ul li").each(function(i, obj) {
+					var jobj = $(obj);
+					
+					str += "<input type='hidden' name='attachList["+i+"].fileName' value='" + jobj.data("filename") + "'>";
+					str += "<input type='hidden' name='attachList["+i+"].uuid' value='" + jobj.data("uuid") + "'>";
+					str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='" + jobj.data("path") + "'>";
+					str += "<input type='hidden' name='attachList["+i+"].fileType' value='" + jobj.data("type") + "'>";
+				});
+
+				var data = CKEDITOR.instances.editor.getData();	
 				writeForm.append("<input type='hidden' name='content' value='" + data + "'/>");
+				writeForm.append(str);
 				writeForm.submit();
 		});
 		
@@ -69,44 +81,32 @@
 			return true;
 		}
 
-		
-		var uploadResult = $(".uploadResult ul");
-		
 		function showUploadedFile(uploadResultArr) {
+			
+			if (!uploadResultArr || uploadResultArr.length == 0) {return;}
+			
+			var uploadUL = $(".uploadResult ul");
 
 			var str = "";
 			
 			$(uploadResultArr).each(function(i, obj) {
 				if (!obj.image) {
-					str += "<li><div><img src='/resources/images/sub/attach.png'>" + obj.fileName + "<span data-file=\'" + fileCallPath + "\' data-type='file'>X</span>" + "</div></li>";
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+					str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'><div><img src='/resources/images/sub/attach.png'>" + obj.fileName + "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
 				} else {
 					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
-					str += "<li><div><img src='/support/display?fileName=" + fileCallPath + "'>" + "<span data-file=\'" + fileCallPath + "\' data-type='file'>X</span>" + "</div></li>";
+					str += "<li data-path='" + obj.uploadPath + "' data-filename='" + obj.fileName + "' data-uuid='" + obj.uuid + "' data-type='" + obj.image + "'/><div><span>" + obj.fileName + "</span><img src='/support/display?fileName=" + fileCallPath + "'>" + "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
 				}
 			});
 			
-			$(".uploadResult ul").append(str);
+			uploadUL.append(str).submit();
 		}
-		
-		$(".uploadResult").on("click", "span", function(e) {
-			var targetFile = $(this).data("file");
-			var type = $(this).data("type");
-			console.log(targetFile);
-			
-			$.ajax({
-				url: "/support/deleteFile",
-				data : {fileName : targetFile, type:type},
-				dataType : "text",
-				type : "POST",
-				success : function(result) {
-					alert(result);
-				}
-			});
-		});
 		
 		var cloneObj = $(".file").clone();
 		
 		$("input[type='file']").on("change", function(e) {
+			console.log("파일 등록");
+			
 			var formData = new FormData();
 			
 			var inputFile = $("input[name='uploadFile']");
@@ -136,6 +136,24 @@
 					showUploadedFile(result);
 					
 					$(".file").html(cloneObj.html());
+				}
+			});
+		});
+		
+		$(".uploadResult").on("click", "button", function(e) {
+			var targetFile = $(this).data("file");
+			var type = $(this).data("type");
+
+			var targetLi = $(this).closest("li");
+			
+			$.ajax({
+				url: "/support/deleteFile",
+				data : {fileName : targetFile, type:type},
+				dataType : "text",
+				type : "POST",
+				success : function(result) {
+					alert(result);
+					targetLi.remove();
 				}
 			});
 		});

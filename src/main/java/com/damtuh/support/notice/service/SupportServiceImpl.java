@@ -3,8 +3,10 @@ package com.damtuh.support.notice.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.damtuh.support.notice.dao.SupportDAO;
+import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -14,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class NoticeBoardServiceImpl implements NoticeBoardService {
+public class SupportServiceImpl implements SupportService {
 
 	private SupportDAO supportDao;
 	
@@ -42,9 +44,20 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return count;
 	}
 
+	@Transactional
 	@Override
 	public void insert(NoticeBoardVO vo) {
 		supportDao.insertNotice(vo);
+		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
+			return;
+		}
+		
+		log.info(vo.getBno());
+		
+		vo.getAttachList().forEach(attach -> {
+			attach.setBno(vo.getBno());
+			supportDao.insertAttach(attach);
+		});
 	}
 
 	@Override
@@ -55,6 +68,11 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	@Override
 	public void deleteNotice(Long bno) {
 		supportDao.deleteNotice(bno);
+	}
+
+	@Override
+	public List<AttachFileDTO> findByBno(Long bno) {
+		return supportDao.findByBno(bno);
 	}
 
 

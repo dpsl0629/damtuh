@@ -33,10 +33,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.damtuh.support.notice.service.NoticeBoardService;
+import com.damtuh.support.notice.service.SupportService;
 import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
@@ -51,7 +52,7 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class SupportControllerImpl implements SupportController {
 	
 	@Autowired
-	private NoticeBoardService service;
+	private SupportService service;
 	
 	@Autowired
 	private NoticeBoardVO noticeBoardVO;
@@ -78,8 +79,11 @@ public class SupportControllerImpl implements SupportController {
 		response.addHeader("Cache-Control","No-store");
 		response.setDateHeader("Expires",1L);
 		noticeBoardVO = service.get(bno);
+		List<AttachFileDTO> attachList = service.findByBno(bno);
+		log.info(attachList);
 		mav.setViewName(viewName);
 		mav.addObject("article", noticeBoardVO);
+		mav.addObject("attachList", attachList);
 		return mav;
 	}
 
@@ -94,8 +98,12 @@ public class SupportControllerImpl implements SupportController {
 	
 	@Override
 	@PostMapping(value= "/noticeConfirm")
-	public String noticeConfirm(@ModelAttribute("vo") NoticeBoardVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String noticeConfirm(NoticeBoardVO vo, RedirectAttributes rttr) throws Exception {
 		log.info(vo);
+		if (vo.getAttachList() != null) {
+			vo.getAttachList().forEach(attach -> log.info(attach));
+		}
+		log.info(vo.getBno());
 		service.insert(vo);
 		return "redirect:/support/notice";
 	}

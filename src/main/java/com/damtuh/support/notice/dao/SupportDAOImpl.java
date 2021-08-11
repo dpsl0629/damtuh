@@ -8,6 +8,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.damtuh.support.notice.vo.AttachFileDTO;
+import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -56,6 +59,16 @@ public class SupportDAOImpl implements SupportDAO {
 	@Override
 	public void deleteNotice(Long bno) throws DataAccessException {
 		sqlSession.delete("com.damtuh.mapper.SupportMapper.deleteNotice", bno);
+	}
+
+	@Override
+	public void insertAttach(BoardAttachVO vo) throws DataAccessException {
+		sqlSession.insert("com.damtuh.mapper.SupportMapper.insertAttach", vo);
+	}
+
+	@Override
+	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException {
+		return sqlSession.selectList("com.damtuh.mapper.SupportMapper.findByBno", bno);
 	}
 
 }

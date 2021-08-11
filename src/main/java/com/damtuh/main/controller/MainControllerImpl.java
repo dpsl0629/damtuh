@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.damtuh.product.service.ProductService;
 import com.damtuh.product.vo.ProductVO;
-import com.damtuh.support.notice.service.NoticeBoardService;
+import com.damtuh.support.notice.service.SupportService;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -23,7 +23,7 @@ import lombok.AllArgsConstructor;
 public class MainControllerImpl {
 
 	@Autowired
-	private NoticeBoardService boardService;
+	private SupportService boardService;
 	
 	@Autowired
 	private ProductService productService;

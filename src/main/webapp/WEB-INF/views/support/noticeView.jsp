@@ -21,18 +21,21 @@
             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
             <div class="board-view-file">
                 <div class="file-lst">
-                    <p class="file">
-                        <a href="#lnk">
-                            <span class="ico-download"></span>
-                            홈페이지 오픈.jpg
-                        </a>
-                    </p>
-                    <p class="file">
-                        <a href="#lnk">
-                            <span class="ico-download"></span>
-                            홈페이지 오픈.pdf
-                        </a>
-                    </p>
+                <c:choose>
+	            	<c:when test="${attachList == null }">
+	            		<p>파일이 없습니다.</p>
+	            	</c:when>
+	            		<c:when test="${attachList != null}">
+	                	<c:forEach items="${attachList}" var="attach">
+	                    <p class="file">
+	                        <a href="#lnk">
+	                            <span class="ico-download"></span>
+	                            <c:out value="${attach.fileName}"/>
+	                        </a>
+	                    </p>
+	                    </c:forEach>
+	                </c:when>
+                </c:choose>
                 </div>
             </div>
 	            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import com.damtuh.support.notice.vo.AttachFileDTO;
+import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -21,4 +23,8 @@ public interface SupportDAO {
 	public void updateNotice(NoticeBoardVO vo) throws DataAccessException;
 	
 	public void deleteNotice(Long bno) throws DataAccessException;
+	
+	public void insertAttach(BoardAttachVO attach) throws DataAccessException;
+	
+	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException;
 }

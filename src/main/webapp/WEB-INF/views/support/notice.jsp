@@ -44,7 +44,7 @@
             <ul class="board-lst">
             <c:choose>
             	<c:when test="${list == null }">
-            		<p>dddd</p>
+            		<p>게시글이 없습니다.</p>
             	</c:when>
             		<c:when test="${list != null}">
               <c:forEach items="${list}" var="board">
