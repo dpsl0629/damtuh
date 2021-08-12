@@ -14,9 +14,8 @@
                  <p class="tit"><span style="margin-right: 10px;">제목</span><input type="text" class="title" name="title"></p>
              </div>
 
-             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
              <div class="board-view-file">
-                 <div class="file-list">
+                 <div class="file-lst">
                      <p class="file">
                          <input name="uploadFile" type="file" multiple>
                      </p>
@@ -25,7 +24,6 @@
                      </div>
                  </div>
              </div>
-             <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
 
              <div class="board-view-con">
                  <textarea id="editor" cols="30" rows="10"></textarea>
@@ -92,10 +90,10 @@
 			$(uploadResultArr).each(function(i, obj) {
 				if (!obj.image) {
 					var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
-					str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'><div><img src='/resources/images/sub/attach.png'>" + obj.fileName + "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
+					str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'><div><img class='ico' src='/resources/images/sub/attach.png'>" + obj.fileName + "<button type='button' class='delete-btn' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
 				} else {
 					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
-					str += "<li data-path='" + obj.uploadPath + "' data-filename='" + obj.fileName + "' data-uuid='" + obj.uuid + "' data-type='" + obj.image + "'/><div><span>" + obj.fileName + "</span><img src='/support/display?fileName=" + fileCallPath + "'>" + "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
+					str += "<li data-path='" + obj.uploadPath + "' data-filename='" + obj.fileName + "' data-uuid='" + obj.uuid + "' data-type='" + obj.image + "'/><div><span>" + obj.fileName + "</span><img src='/support/display?fileName=" + fileCallPath + "'>" + "<button type='button' class='delete-btn' data-file=\'" + fileCallPath + "\' data-type='file'>X</button>" + "</div></li>";
 				}
 			});
 			

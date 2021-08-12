@@ -31,7 +31,7 @@
 		select seq_notice.nextval from dual
 	</selectKey>
 	insert into tbl_notice (bno, title, content, attach, hits)
-	values (${bno}, #{title}, #{content}, 1, 0)
+	values (${bno}, #{title}, #{content}, 0, 0)
 </insert>
 
 <select id="read" resultMap="boardResult">
@@ -92,7 +92,7 @@
 	</update> 
 	
 	<delete id="deleteNotice">
-		delete from tbl_notice where bno = #{bno}
+			delete from tbl_notice where bno = #{bno}
 	</delete>
 	
 	<insert id="insertAttach">
@@ -107,5 +107,17 @@
 	<select id="findByBno" resultMap="boardAttachResult">
 		select * from tbl_attach where bno = #{bno}
 	</select>
+	
+	<update id="updateAttach1">
+		update tbl_notice set attach = 1 where bno = #{bno}
+	</update>
+	
+	<update id="updateAttach2">
+		update tbl_notice set attach = 0 where bno = #{bno}
+	</update>
+	
+	<delete id="deleteAttach">
+		delete tbl_attach where bno = #{bno}
+	</delete>
 	
 </mapper>

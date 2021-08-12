@@ -28,4 +28,11 @@ public interface SupportMapper {
 	public void delete(String uuid);
 	
 	public List<BoardAttachVO> findByBno(Long bno);
+	
+	public void updateAttach1(Long bno);
+	
+	public void updateAttach2(Long bno);
+	
+	public void deleteAttach(Long bno);
+	
 }

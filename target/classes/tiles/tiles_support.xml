@@ -14,11 +14,11 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="support/notice" extends="subLayout">
+	<definition name="support/noticeList" extends="subLayout">
 		<put-attribute name="title" value="담터소식"/>
 		<put-attribute name="subtit" value="담터소식"/>
 		<put-attribute name="bg" value="bg2"/>
-		<put-attribute name="body" value="/WEB-INF/views/support/notice.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/support/noticeList.jsp" />
 	</definition>
 	
 	<definition name="support/noticeView" extends="subLayout">

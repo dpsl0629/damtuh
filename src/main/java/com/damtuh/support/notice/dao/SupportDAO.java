@@ -20,11 +20,17 @@ public interface SupportDAO {
 	
 	public void insertNotice(NoticeBoardVO vo) throws DataAccessException;
 	
-	public void updateNotice(NoticeBoardVO vo) throws DataAccessException;
+	public int updateNotice(NoticeBoardVO vo) throws DataAccessException;
 	
 	public void deleteNotice(Long bno) throws DataAccessException;
 	
 	public void insertAttach(BoardAttachVO attach) throws DataAccessException;
 	
 	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException;
+	
+	public void updateAttach1(Long bno) throws DataAccessException;
+	
+	public void updateAttach2(Long bno) throws DataAccessException;
+	
+	public void deleteAttach(Long bno) throws DataAccessException;
 }

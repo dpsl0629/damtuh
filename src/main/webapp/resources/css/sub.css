@@ -1344,7 +1344,7 @@
 
 .board-view-file .file-lst {
     border-bottom: 1px solid #dedede;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
 .board-view-file .file-lst .file {
@@ -1352,6 +1352,10 @@
     display: inline-block;
     vertical-align: middle;
     font-size:13px;
+}
+
+.board-view-file .ico {
+	margin-right: 10px;
 }
 
 .board-view-con {
@@ -1362,6 +1366,17 @@
 
 .board-view .btn-lst {
 	margin-top: 40px;
+}
+
+.delete-btn {
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	margin-left: 10px;
+	background: #a29b96;
+	color: #fff;
 }
 
 .myPage-box .lnb {

@@ -58,7 +58,7 @@ public class SupportControllerImpl implements SupportController {
 	private NoticeBoardVO noticeBoardVO;
 
 	@Override
-	@RequestMapping(value= "/notice" ,method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value= "/noticeList" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView notice(Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -105,7 +105,7 @@ public class SupportControllerImpl implements SupportController {
 		}
 		log.info(vo.getBno());
 		service.insert(vo);
-		return "redirect:/support/notice";
+		return "redirect:/support/noticeList";
 	}
 
 	@Override
@@ -123,18 +123,28 @@ public class SupportControllerImpl implements SupportController {
 	@GetMapping(value="/modifyConfirm")
 	public String modifyConfirm(@ModelAttribute("cri") Criteria cri, @ModelAttribute("vo") NoticeBoardVO vo, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		log.info(vo);
-		service.updateNotice(vo);
+		service.deleteAttach(vo.getBno());
+		boolean modifyResult = service.updateNotice(vo) == 1;
+		service.updateAttach2(vo.getBno());
+		
+		if (modifyResult && vo.getAttachList() != null && vo.getAttachList().size() > 0) {
+			vo.getAttachList().forEach(attach -> {
+				attach.setBno(vo.getBno());
+				service.insertAttach(attach);
+				service.updateAttach1(vo.getBno());
+			});	
+		}
 		log.info("cri " + cri);
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
-		return "redirect:/support/notice";
+		return "redirect:/support/noticeList";
 	}
 
 	@Override
 	@GetMapping(value="/deleteConfirm")
 	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		service.deleteNotice(bno);
-		return "redirect:/support/notice";
+		return "redirect:/support/noticeList";
 	}
 
 	@Override
@@ -256,6 +266,8 @@ public class SupportControllerImpl implements SupportController {
 		
 		String resourceName = resource.getFilename();
 		
+		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_") + 1);
+		
 		HttpHeaders headers = new HttpHeaders();
 		
 		try {
@@ -264,18 +276,18 @@ public class SupportControllerImpl implements SupportController {
 			if (userAgent.contains("Trident")) {
 				log.info("IE");
 				
-				downloadName = URLEncoder.encode(resourceName, "utf-8").replaceAll("\\+", " ");
+				downloadName = URLEncoder.encode(resourceOriginalName, "utf-8").replaceAll("\\+", " ");
 			} else if (userAgent.contains("Edge")) {
 				log.info("edge");
 				
-				downloadName = URLEncoder.encode(resourceName, "utf-8");
+				downloadName = URLEncoder.encode(resourceOriginalName, "utf-8");
 				
 			} else {
 				log.info("chrome");
 				
-				downloadName = new String(resourceName.getBytes("utf-8"), "ISO-8859-1");
+				downloadName = new String(resourceOriginalName.getBytes("utf-8"), "ISO-8859-1");
 			}
-			headers.add("Content-Disposition", "attachment; filename=" + new String(resourceName.getBytes("utf-8"),"ISO-8859-1"));
+			headers.add("Content-Disposition", "attachment; filename=" + new String(resourceOriginalName.getBytes("utf-8"),"ISO-8859-1"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

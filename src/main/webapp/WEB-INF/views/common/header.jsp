@@ -43,19 +43,6 @@
 	<script src="${contextPath }/resources/js/libs/config.js"></script>
 	<script src="${contextPath }/resources/js/layout.js"></script>
 	<script src="${contextPath }/resources/js/contents.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-	    $(".gnb-list>li").mouseover(function() { 
-	        $(this).addClass("active");
-	        $(this).stop().children(".gnb-dep2-wrap").slideDown(); }); 
-	        $(".gnb-list>li").mouseleave(function() {
-	           $(this).removeClass("active");
-	             $(this).children(".gnb-dep2-wrap").slideUp(); 
-	       });
-	   });
-	
-	
-	</script>
 <body>
 	 <div class="layout-skip"><a href="#container">본문바로가기</a></div>
 
@@ -170,11 +157,11 @@
                                             </div>
                                         </li>
                                         <li class="">
-                                            <a href="${contextPath }/support/notice">고객지원</a>
+                                            <a href="${contextPath }/support/noticeList">고객지원</a>
                                             <div class="gnb-dep2-wrap">
                                                 <ul class="gnb-dep2-lst">
                                                     <li>
-                                                        <a href="${contextPath }/support/notice">공지사항</a>
+                                                        <a href="${contextPath }/support/noticeList">공지사항</a>
                                                     </li>
                                                     <li>
                                                         <a href="#lnk">자주 묻는 질문</a>

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.damtuh.support.notice.dao.SupportDAO;
 import com.damtuh.support.notice.vo.AttachFileDTO;
+import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
@@ -56,13 +57,14 @@ public class SupportServiceImpl implements SupportService {
 		
 		vo.getAttachList().forEach(attach -> {
 			attach.setBno(vo.getBno());
+			supportDao.updateAttach1(vo.getBno());
 			supportDao.insertAttach(attach);
 		});
 	}
 
 	@Override
-	public void updateNotice(NoticeBoardVO vo) {
-		supportDao.updateNotice(vo);
+	public int updateNotice(NoticeBoardVO vo) {
+		return supportDao.updateNotice(vo);
 	}
 	
 	@Override
@@ -74,6 +76,25 @@ public class SupportServiceImpl implements SupportService {
 	public List<AttachFileDTO> findByBno(Long bno) {
 		return supportDao.findByBno(bno);
 	}
+	
+	@Override
+	public void insertAttach(BoardAttachVO vo) {
+		supportDao.insertAttach(vo);
+	}
+	
+	@Override
+	public void deleteAttach(Long bno) {
+		supportDao.deleteAttach(bno);
+	}
 
+	@Override
+	public void updateAttach1(Long bno) {
+		supportDao.updateAttach1(bno);
+	}
+	
+	@Override
+	public void updateAttach2(Long bno) {
+		supportDao.updateAttach2(bno);
+	}
 
 }

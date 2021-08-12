@@ -52,8 +52,8 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 
 	@Override
-	public void updateNotice(NoticeBoardVO vo) throws DataAccessException {
-		sqlSession.update("com.damtuh.mapper.SupportMapper.updateNotice", vo);
+	public int updateNotice(NoticeBoardVO vo) throws DataAccessException {
+		return sqlSession.update("com.damtuh.mapper.SupportMapper.updateNotice", vo);
 	}
 
 	@Override
@@ -70,5 +70,19 @@ public class SupportDAOImpl implements SupportDAO {
 	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException {
 		return sqlSession.selectList("com.damtuh.mapper.SupportMapper.findByBno", bno);
 	}
-
+	
+	@Override
+	public void updateAttach1(Long bno) throws DataAccessException {
+		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttach1", bno);
+	}
+	
+	@Override
+	public void updateAttach2(Long bno) throws DataAccessException {
+		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttach2", bno);
+	}
+	
+	@Override
+	public void deleteAttach(Long bno) throws DataAccessException {
+		sqlSession.delete("com.damtuh.mapper.SupportMapper.deleteAttach", bno);
+	}
 }

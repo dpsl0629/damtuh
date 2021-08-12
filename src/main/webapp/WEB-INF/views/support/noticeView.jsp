@@ -18,27 +18,24 @@
                 </p>
             </div>
 
-            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 s :: -->
-            <div class="board-view-file">
-                <div class="file-lst">
                 <c:choose>
 	            	<c:when test="${attachList == null }">
 	            		<p>파일이 없습니다.</p>
 	            	</c:when>
-	            		<c:when test="${attachList != null}">
+            		<c:when test="${attachList != null}">
 	                	<c:forEach items="${attachList}" var="attach">
-	                    <p class="file">
-	                        <a href="#lnk">
-	                            <span class="ico-download"></span>
-	                            <c:out value="${attach.fileName}"/>
-	                        </a>
-	                    </p>
-	                    </c:forEach>
-	                </c:when>
-                </c:choose>
-                </div>
-            </div>
-	            <!-- :: 첨부파일 없을 경우 해당 영역 삭제 e :: -->
+					            <div class="board-view-file">
+					                <div class="file-lst">
+					                     <p class="file">
+					                        <a href="#lnk" data-path="${attach.uploadPath }" data-uuid="${attach.uuid }" data-filename="${attach.fileName }">
+					                            <img class="ico" src="${contextPath }/resources/images/sub/attach.png"/><c:out value="${attach.fileName}"/>
+					                        </a>
+					                    </p>
+					                </div>
+				                </div>
+        				</c:forEach>
+		            </c:when>
+	           </c:choose>
 	
             <div class="board-view-con">
                 ${article.content }
@@ -72,7 +69,7 @@ $(document).ready(function() {
 		e.preventDefault();
 	 			
 		operForm.find("#bno").remove();
-		operForm.attr("action", "/support/notice");
+		operForm.attr("action", "/support/noticeList");
 		operForm.submit();
 	});
 	
@@ -84,6 +81,13 @@ $(document).ready(function() {
 	$(".btn-delete").on("click", function() {
 		operForm.attr("action", "/support/deleteConfirm");
 		operForm.submit();
+	});
+	
+	$(".file a").on("click", function(e) {
+		var liObj = $(this);
+		
+		var path = encodeURIComponent(liObj.data("path") +"/" + liObj.data("uuid") + "_" + liObj.data("filename"));
+		self.location = "/support/download?fileName=" + path;
 	});
 	
 });
