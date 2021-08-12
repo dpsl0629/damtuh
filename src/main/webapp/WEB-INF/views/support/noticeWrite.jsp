@@ -7,7 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <div class="contents">
-    <form id="write-form" action="/support/noticeConfirm" method="post">
+    <form id="write-form" action="${contextPath }/support/noticeConfirm" method="post">
     	<div class="contents-box">
          <div class="board-view">
              <div class="board-view-header">

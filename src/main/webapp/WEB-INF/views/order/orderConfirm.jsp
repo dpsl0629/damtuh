@@ -7,8 +7,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
-           <div class="contents">
-<div class="orderConfirm-box">
+        <div class="contents">
+			<div class="orderConfirm-box">
                <h4 class="basic-h4">주문이 완료되었습니다.</h3>
                <p class="desc">주문번호 : ${order.deliveryId }</p>
         <div class="orderConfirm-cont opt-clearfix">

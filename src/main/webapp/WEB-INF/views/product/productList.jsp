@@ -8,7 +8,7 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
   <div class="contents">
       <div class="item-lst">
-          <form id="actionForm" action="/product/productDetail" method="get">
+          <form id="action-form" action="${contextpath }/product/productDetail" method="get">
            <div class="tab">
                <ul class="tab-menu opt-clearfix">
                    <li class="active" data-tab="tab1"><a href="#lnk">분말차</a></li>
@@ -92,7 +92,7 @@
     
     <script>
     
-    actionForm = $("#actionForm");
+    actionForm = $("#action-form");
     
     $(".move").on("click", function(e) {
 		e.preventDefault();

@@ -41,7 +41,7 @@
                 ${article.content }
             </div>
 	           
-           <form id="operForm" method="get">
+           <form id="oper-form" method="get">
         
 	          <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
 		     <div class="btn-box right-box">
@@ -63,7 +63,7 @@
 <script>
   
 $(document).ready(function() {
-	var operForm = $("#operForm");
+	var operForm = $("#oper-form");
 	
 	$(".move").on("click", function(e) {
 		e.preventDefault();

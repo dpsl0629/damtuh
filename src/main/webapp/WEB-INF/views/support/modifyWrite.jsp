@@ -7,7 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <div class="contents">
-   	<form id="operForm" action="/support/modifyConfirm" method="get">
+   	<form id="operForm" action="${contextPath }/support/modifyConfirm" method="get">
 	   	<div class="contents-box">
 	        <div class="board-view">
 	            <div class="board-view-header">

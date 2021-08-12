@@ -10,7 +10,7 @@
 
 <div class="contents">
     <div class="join-box">
-        <form id="join-form" action="/member/joinConfirm" class="join-form" method="post">
+        <form id="join-form" action="${contextPath }/member/joinConfirm" class="join-form" method="post">
             <fieldset>
                 <legend>회원가입</legend>
                 <div class="join-cont">

@@ -10,7 +10,7 @@
 
 <div class="contents">
     <div class="item-detail opt-clearfix">
-        <form action="${contextPath }/order/orderPage" id="orderForm" method="get">
+        <form id="order-form" action="${contextPath }/order/orderPage" method="get">
          <div class="item-visual">
              <div class="visual-cont">
                  <div class="img-box">
@@ -368,7 +368,7 @@
   	
 
 
-var orderForm = $("#orderForm");
+var orderForm = $("#order-form");
    
    $(".btn-buy").on("click", function(e) {
 	e.preventDefault();

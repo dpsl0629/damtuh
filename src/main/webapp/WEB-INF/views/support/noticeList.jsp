@@ -10,7 +10,7 @@
 <div class="contents">
     <div class="notice-box">
     	<div class="search-form">
-    <form id="searchForm" action="/support/notice" method="get">
+    <form id="search-form" action="/support/notice" method="get">
         <div class="search-form-box">
             <div class="search-form-select">
                 <select title="검색 필터 선택" name="type">
@@ -81,7 +81,7 @@
         </div>
     </div>
      <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-    <form id="writeForm" action="/support/noticeWrite" method="get">
+    <form id="write-form" action="${contextPath }/support/noticeWrite" method="get">
      <div class="btn-box right-box opt-clearfix">
      	<a href="${contextPath }/support/noticeWrite" class="btn-green" type="button">글쓰기</a>
      </div>
@@ -101,7 +101,7 @@
         </div>
     </div>
     
-    <form id="actionForm" action="/support/notice" method="get">
+    <form id="action-form" action="${contextPath }/support/notice" method="get">
     	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
     	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
     	<input type="hidden" name="type" value="${pageMaker.cri.type }">
@@ -113,7 +113,7 @@
     <script>
     
     	$(document).ready(function() {
-    		var actionForm = $("#actionForm");
+    		var actionForm = $("#action-form");
     		
     		$(".paging-item").on("click", function(e) {
     			e.preventDefault();
@@ -130,20 +130,20 @@
     			actionForm.submit();
     		});
     		
-			var searchForm = $("#searchForm");
+			var searchForm = $("#search-form");
       		
-      		$("#searchForm button").on("click", function(e) {
+      		$("#search-form").on("click","button", function(e) {
       			if(!$("#searchForm").find("option:selected").val()) {
       				alert("검색 종류를 선택하세요.");
       				return false;
       			}
       			
-      			if(!$("#searchForm").find("input[name='keyword']").val()) {
+      			if(!searchForm.find("input[name='keyword']").val()) {
       				alert("키워드를 입력하세요.");
       				return false;
       			}
       			
-      			$("#searchForm").find("input[name='pageNum']").val("1");
+      			searchForm.find("input[name='pageNum']").val("1");
       			e.preventDefault();
       			
       			searchForm.submit();

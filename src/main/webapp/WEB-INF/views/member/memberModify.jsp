@@ -8,7 +8,7 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <div class="contents">
     <div class="join-box">
-        <form id="modifyConfirm" action="/member/modifyConfirm" class="join-form">
+        <form id="modify-confirm" action="${contextPath }/member/modifyConfirm" class="join-form">
             <fieldset>
                 <legend>회원가입</legend>
                 <div class="join-cont">

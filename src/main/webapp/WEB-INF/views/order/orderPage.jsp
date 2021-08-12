@@ -10,7 +10,7 @@
 
 <div class="contents">
     <div class="buyDetail-box">
-    <form id="orderConfirm" action="/order/orderConfirm">
+    <form id="order-confirm" action="${contextPath }/order/orderConfirm">
         <div class="buyDetail-top">
    <sec:authentication property="principal.username" var="currentUserName"/>
 <div class="id" style="display: none;">${currentUserName}</div>
@@ -491,7 +491,7 @@
 			$(".email-input").focus();
 		});
 		
-		var orderConfirm = $("#orderConfirm");
+		var orderConfirm = $("#order-confirm");
 		
 		$(".btn-result").click(function(e) {
 			var email = "";
