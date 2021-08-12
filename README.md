@@ -1,7 +1,7 @@
 #### 담터
 
 현재는 담터에서 이미 자체적으로 리뉴얼을 했으나, 그 전에 제가 리뉴얼한 작업물입니다.<br>
-디자인부터, 퍼블리싱, 개발까지 저 혼자 진행한 프로젝트입니다.<br>
+디자인, 퍼블리싱, 개발(100%) 개인 프로젝트 입니다.<br>
 
 * Operating System : Windows 10 home
 * Programming Language : JAVA (JDK 1.8)
