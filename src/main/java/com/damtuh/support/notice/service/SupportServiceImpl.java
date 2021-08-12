@@ -57,7 +57,7 @@ public class SupportServiceImpl implements SupportService {
 		
 		vo.getAttachList().forEach(attach -> {
 			attach.setBno(vo.getBno());
-			supportDao.updateAttach1(vo.getBno());
+			supportDao.updateAttachFile(vo.getBno());
 			supportDao.insertAttach(attach);
 		});
 	}
@@ -88,13 +88,13 @@ public class SupportServiceImpl implements SupportService {
 	}
 
 	@Override
-	public void updateAttach1(Long bno) {
-		supportDao.updateAttach1(bno);
+	public void updateAttachFile(Long bno) {
+		supportDao.updateAttachFile(bno);
 	}
 	
 	@Override
-	public void updateAttach2(Long bno) {
-		supportDao.updateAttach2(bno);
+	public void updateAttachNone(Long bno) {
+		supportDao.updateAttachNone(bno);
 	}
 
 }

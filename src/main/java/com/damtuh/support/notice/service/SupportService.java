@@ -25,9 +25,9 @@ public interface SupportService {
 
 	public void insertAttach(BoardAttachVO vo);
 	
-	public void updateAttach1(Long bno);
+	public void updateAttachFile(Long bno);
 	
-	public void updateAttach2(Long bno);
+	public void updateAttachNone(Long bno);
 	
 	public void deleteAttach(Long bno);
 

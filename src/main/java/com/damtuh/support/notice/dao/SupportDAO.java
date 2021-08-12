@@ -28,9 +28,9 @@ public interface SupportDAO {
 	
 	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException;
 	
-	public void updateAttach1(Long bno) throws DataAccessException;
+	public void updateAttachFile(Long bno) throws DataAccessException;
 	
-	public void updateAttach2(Long bno) throws DataAccessException;
+	public void updateAttachNone(Long bno) throws DataAccessException;
 	
 	public void deleteAttach(Long bno) throws DataAccessException;
 }

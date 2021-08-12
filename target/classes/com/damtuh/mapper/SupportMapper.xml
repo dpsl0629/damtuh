@@ -108,11 +108,11 @@
 		select * from tbl_attach where bno = #{bno}
 	</select>
 	
-	<update id="updateAttach1">
+	<update id="updateAttachFile">
 		update tbl_notice set attach = 1 where bno = #{bno}
 	</update>
 	
-	<update id="updateAttach2">
+	<update id="updateAttachNone">
 		update tbl_notice set attach = 0 where bno = #{bno}
 	</update>
 	

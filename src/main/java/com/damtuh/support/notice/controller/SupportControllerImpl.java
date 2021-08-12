@@ -125,13 +125,13 @@ public class SupportControllerImpl implements SupportController {
 		log.info(vo);
 		service.deleteAttach(vo.getBno());
 		boolean modifyResult = service.updateNotice(vo) == 1;
-		service.updateAttach2(vo.getBno());
+		service.updateAttachNone(vo.getBno());
 		
 		if (modifyResult && vo.getAttachList() != null && vo.getAttachList().size() > 0) {
 			vo.getAttachList().forEach(attach -> {
 				attach.setBno(vo.getBno());
 				service.insertAttach(attach);
-				service.updateAttach1(vo.getBno());
+				service.updateAttachFile(vo.getBno());
 			});	
 		}
 		log.info("cri " + cri);

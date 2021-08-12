@@ -72,13 +72,13 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 	
 	@Override
-	public void updateAttach1(Long bno) throws DataAccessException {
-		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttach1", bno);
+	public void updateAttachFile(Long bno) throws DataAccessException {
+		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachFile", bno);
 	}
 	
 	@Override
-	public void updateAttach2(Long bno) throws DataAccessException {
-		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttach2", bno);
+	public void updateAttachNone(Long bno) throws DataAccessException {
+		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachNone", bno);
 	}
 	
 	@Override
