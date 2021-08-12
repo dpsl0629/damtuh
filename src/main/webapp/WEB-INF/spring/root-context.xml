@@ -35,7 +35,7 @@
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
       <property name="username" value="dpsl0629@gmail.com" />
-      <property name="password" value="?Dnjsepdl^12" />
+      <property name="password" value="비밀번호" />
     
 
       <!-- email 요청시는 SMTP -->
