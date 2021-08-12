@@ -2,13 +2,9 @@ package com.damtuh.product.vo;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@ToString
-@Setter
-@Getter
+@Data
 @Component("ProductVO")
 public class ProductVO {
 
@@ -36,5 +32,5 @@ public class ProductVO {
 	private String thumbnail2;
 	private String thumbnail3;
 	private String thumbnail4;
-	
+
 }

@@ -20,7 +20,6 @@ import lombok.extern.log4j.Log4j;
 public class SupportServiceImpl implements SupportService {
 
 	private SupportDAO supportDao;
-	
 
 	@Override
 	public List<NoticeBoardVO> getList(Criteria cri) {
@@ -28,7 +27,7 @@ public class SupportServiceImpl implements SupportService {
 		List<NoticeBoardVO> boardList = supportDao.view(cri);
 		return boardList;
 	}
-	
+
 	@Override
 	public NoticeBoardVO get(Long bno) {
 		log.info("read........");
@@ -36,11 +35,11 @@ public class SupportServiceImpl implements SupportService {
 		board.setHits(supportDao.countHits(bno));
 		return board;
 	}
-	
+
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("get Total......");
-		int count = supportDao.getTotal(cri); 
+		int count = supportDao.getTotal(cri);
 		System.out.println("service total" + count);
 		return count;
 	}
@@ -52,9 +51,9 @@ public class SupportServiceImpl implements SupportService {
 		if (vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
 			return;
 		}
-		
+
 		log.info(vo.getBno());
-		
+
 		vo.getAttachList().forEach(attach -> {
 			attach.setBno(vo.getBno());
 			supportDao.updateAttachFile(vo.getBno());
@@ -66,7 +65,7 @@ public class SupportServiceImpl implements SupportService {
 	public int updateNotice(NoticeBoardVO vo) {
 		return supportDao.updateNotice(vo);
 	}
-	
+
 	@Override
 	public void deleteNotice(Long bno) {
 		supportDao.deleteNotice(bno);
@@ -76,12 +75,12 @@ public class SupportServiceImpl implements SupportService {
 	public List<AttachFileDTO> findByBno(Long bno) {
 		return supportDao.findByBno(bno);
 	}
-	
+
 	@Override
 	public void insertAttach(BoardAttachVO vo) {
 		supportDao.insertAttach(vo);
 	}
-	
+
 	@Override
 	public void deleteAttach(Long bno) {
 		supportDao.deleteAttach(bno);
@@ -91,7 +90,7 @@ public class SupportServiceImpl implements SupportService {
 	public void updateAttachFile(Long bno) {
 		supportDao.updateAttachFile(bno);
 	}
-	
+
 	@Override
 	public void updateAttachNone(Long bno) {
 		supportDao.updateAttachNone(bno);

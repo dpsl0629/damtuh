@@ -17,23 +17,21 @@ import com.damtuh.support.notice.vo.NoticeBoardVO;
 
 import lombok.AllArgsConstructor;
 
-
 @Controller("mainController")
 @AllArgsConstructor
 public class MainControllerImpl {
 
 	@Autowired
 	private SupportService boardService;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	NoticeBoardVO noticeBoardVO;
-	
-	
-	@RequestMapping(value= "/main/main" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView main(Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/main/main", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView main(Criteria cri, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		List<NoticeBoardVO> noticeList = boardService.getList(cri);

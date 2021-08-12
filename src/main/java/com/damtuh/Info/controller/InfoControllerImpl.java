@@ -13,19 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/info/*")
 public class InfoControllerImpl implements InfoController {
 
-	@RequestMapping(value= "/kind" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView kind(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = "/kind", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView kind(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/origin" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView origin(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/origin", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView origin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
 
 }
-

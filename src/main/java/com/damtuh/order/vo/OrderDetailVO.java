@@ -2,13 +2,9 @@ package com.damtuh.order.vo;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@ToString
-@Setter
-@Getter
+@Data
 @Component("OrderDetailVO")
 public class OrderDetailVO {
 

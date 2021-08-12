@@ -8,10 +8,10 @@ import com.damtuh.product.vo.ProductVO;
 public interface ProductService {
 
 	public List<ProductVO> productList();
-	
+
 	public ProductVO productDetailList(int productId);
-	
+
 	public int likeCheck(ProductVO productVO);
-	
+
 	public List<CommentVO> readComment(int productId);
 }

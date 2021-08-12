@@ -13,12 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 public interface CompanyController {
 
 	public ModelAndView damtuh(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+
 	public ModelAndView history(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+
 	public ModelAndView ci(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+
 	public ModelAndView ideology(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }
-

@@ -3,102 +3,120 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	
+
 	<definition name="subLayout"
 		template="/WEB-INF/views/common/subLayout.jsp">
 		<put-attribute name="title" value="서브 레이아웃 페이지" />
-		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="subtit" value=""/>
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="subtit" value="" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-	
+
 	<definition name="member/loginPage" extends="subLayout">
-		<put-attribute name="title" value="로그인"/>
-		<put-attribute name="subtit" value="로그인"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/loginPage.jsp" />
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="subtit" value="로그인" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/loginPage.jsp" />
 	</definition>
-	
+
 	<definition name="member/join" extends="subLayout">
-		<put-attribute name="title" value="회원가입"/>
-		<put-attribute name="subtit" value="회원가입"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/join.jsp" />
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="subtit" value="회원가입" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/join.jsp" />
 	</definition>
-	
+
 	<definition name="member/myPage" extends="subLayout">
-		<put-attribute name="title" value="마이페이지"/>
-		<put-attribute name="subtit" value="마이페이지"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/myPage.jsp" />
+		<put-attribute name="title" value="마이페이지" />
+		<put-attribute name="subtit" value="마이페이지" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/myPage.jsp" />
 	</definition>
-	
+
 	<definition name="member/joinConfirm" extends="subLayout">
-		<put-attribute name="title" value="회원가입"/>
-		<put-attribute name="subtit" value="회원가입"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/joinConfirm.jsp" />
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="subtit" value="회원가입" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/joinConfirm.jsp" />
 	</definition>
-	
-	<definition name="member/modifyCheckForm" extends="subLayout">
-		<put-attribute name="title" value="회원정보 수정"/>
-		<put-attribute name="subtit" value="회원정보 수정"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/modifyCheckForm.jsp" />
+
+	<definition name="member/modifyCheckForm"
+		extends="subLayout">
+		<put-attribute name="title" value="회원정보 수정" />
+		<put-attribute name="subtit" value="회원정보 수정" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/modifyCheckForm.jsp" />
 	</definition>
-	
+
 	<definition name="member/memberModify" extends="subLayout">
-		<put-attribute name="title" value="회원정보 수정"/>
-		<put-attribute name="subtit" value="회원정보 수정"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/memberModify.jsp" />
+		<put-attribute name="title" value="회원정보 수정" />
+		<put-attribute name="subtit" value="회원정보 수정" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/memberModify.jsp" />
 	</definition>
-	
+
 	<definition name="member/modifyConfirm" extends="subLayout">
-		<put-attribute name="title" value="회원정보 수정"/>
-		<put-attribute name="subtit" value="회원정보 수정"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/modifyConfirm.jsp" />
+		<put-attribute name="title" value="회원정보 수정" />
+		<put-attribute name="subtit" value="회원정보 수정" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/modifyConfirm.jsp" />
 	</definition>
-	
-	<definition name="member/deleteCheckForm" extends="subLayout">
-		<put-attribute name="title" value="회원탈퇴"/>
-		<put-attribute name="subtit" value="회원탈퇴"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/deleteCheckForm.jsp" />
+
+	<definition name="member/deleteCheckForm"
+		extends="subLayout">
+		<put-attribute name="title" value="회원탈퇴" />
+		<put-attribute name="subtit" value="회원탈퇴" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/deleteCheckForm.jsp" />
 	</definition>
-	
+
 	<definition name="member/deleteConfirm" extends="subLayout">
-		<put-attribute name="title" value="회원탈퇴"/>
-		<put-attribute name="subtit" value="회원탈퇴"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/deleteConfirm.jsp" />
+		<put-attribute name="title" value="회원탈퇴" />
+		<put-attribute name="subtit" value="회원탈퇴" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/deleteConfirm.jsp" />
 	</definition>
-	
-	<definition name="member/productCommentForm" extends="subLayout">
-		<put-attribute name="title" value="후기작성"/>
-		<put-attribute name="subtit" value="후기작성"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/productCommentForm.jsp" />
+
+	<definition name="member/productCommentForm"
+		extends="subLayout">
+		<put-attribute name="title" value="후기작성" />
+		<put-attribute name="subtit" value="후기작성" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/productCommentForm.jsp" />
 	</definition>
-	
+
 	<definition name="member/commentConfirm" extends="subLayout">
-		<put-attribute name="title" value="후기작성"/>
-		<put-attribute name="subtit" value="후기작성"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/commentConfirm.jsp" />
+		<put-attribute name="title" value="후기작성" />
+		<put-attribute name="subtit" value="후기작성" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/commentConfirm.jsp" />
 	</definition>
-	
-	<definition name="member/productCommentConfirm" extends="subLayout">
-		<put-attribute name="title" value="후기확인"/>
-		<put-attribute name="subtit" value="후기확인"/>
-		<put-attribute name="bg" value="bg1"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/productCommentConfirm.jsp" />
+
+	<definition name="member/productCommentConfirm"
+		extends="subLayout">
+		<put-attribute name="title" value="후기확인" />
+		<put-attribute name="subtit" value="후기확인" />
+		<put-attribute name="bg" value="bg1" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/productCommentConfirm.jsp" />
 	</definition>
-	
-	
+
+
 </tiles-definitions>                                                
 
 

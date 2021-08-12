@@ -13,8 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface InfoController {
 
 	public ModelAndView kind(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+
 	public ModelAndView origin(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }
-

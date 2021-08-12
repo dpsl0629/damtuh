@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
-	
+
 	@Autowired
 	ProductDAO productDAO;
 
@@ -37,12 +37,11 @@ public class ProductServiceImpl implements ProductService {
 		int result = productDAO.likeCheck(productVO);
 		return result;
 	}
-	
+
 	@Override
 	public List<CommentVO> readComment(int productId) {
 		List<CommentVO> productList = productDAO.readComment(productId);
 		return productList;
 	}
-
 
 }

@@ -13,6 +13,5 @@ public interface CommonController {
 //	public void logout(Locale locale, Model model) throws Exception;
 //	
 //	public void accessDenied(Authentication auth, Model model);
-	
-	
+
 }

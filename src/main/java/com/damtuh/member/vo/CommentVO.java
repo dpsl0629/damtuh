@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Component("CommentVO")
-public class CommentVO  implements Serializable{
+public class CommentVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String deliveryNum;
@@ -16,5 +16,5 @@ public class CommentVO  implements Serializable{
 	private String content;
 	private int likeCount;
 	private Date writeDate;
-	
+
 }

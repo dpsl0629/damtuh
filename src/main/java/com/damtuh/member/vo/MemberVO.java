@@ -10,8 +10,8 @@ import lombok.ToString;
 @ToString
 @Data
 @Component("MemberVO")
-public class MemberVO implements Serializable{
-	
+public class MemberVO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private int numberId;
 	private String name;
@@ -25,5 +25,5 @@ public class MemberVO implements Serializable{
 	private String birth;
 	private Date joinDate;
 	private List<AuthVO> authList;
-	
+
 }

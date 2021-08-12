@@ -7,10 +7,10 @@ import com.damtuh.order.vo.OrderVO;
 
 @Repository("OrderDAO")
 public class OrderDAOImpl implements OrderDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public int insertOrder(OrderVO orderVO) {
 		int orderInsert = sqlSession.insert("com.damtuh.mapper.OrderMapper.insertOrder", orderVO);

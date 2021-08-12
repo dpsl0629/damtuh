@@ -13,33 +13,32 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/company/*")
 public class CompanyControllerImpl implements CompanyController {
 
-	@RequestMapping(value= "/damtuh" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView damtuh(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = "/damtuh", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView damtuh(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/history" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView history(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/history", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView history(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/ci" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView ci(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/ci", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView ci(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
-	
-	@RequestMapping(value= "/ideology" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView ideology(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/ideology", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView ideology(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
 
 }
-

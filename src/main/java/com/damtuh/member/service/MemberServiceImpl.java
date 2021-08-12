@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
-	
+
 	@Override
 	public int idCheck(String id) {
 		int result = memberDAO.idCheck(id);
@@ -29,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 	public void join(MemberVO vo) {
 		memberDAO.join(vo);
 	}
-	
+
 	@Override
 	public void auth(MemberVO vo) {
 		memberDAO.auth(vo);
@@ -45,43 +45,43 @@ public class MemberServiceImpl implements MemberService {
 		List<CommentOrderVO> orderList = memberDAO.readOrder(userid);
 		return orderList;
 	}
-	
+
 	@Override
 	public MemberVO read(String userid) {
 		MemberVO vo = memberDAO.read(userid);
 		return vo;
 	}
-	
+
 	@Override
 	public int modify(MemberVO memberVO) {
 		int modifyNum = memberDAO.modify(memberVO);
 		return modifyNum;
 	}
-	
+
 	@Override
 	public String modifyCheck(String userid) {
 		String pw = memberDAO.modifyCheck(userid);
 		return pw;
 	}
-	
+
 	@Override
 	public int delete1(String userid) {
 		int deleteNum = memberDAO.delete1(userid);
 		return deleteNum;
 	}
-	
+
 	@Override
 	public int delete2(String userid) {
 		int deleteNum = memberDAO.delete2(userid);
 		return deleteNum;
 	}
-	
+
 	@Override
 	public OrderVO readOrderDetail(OrderVO orderVO) {
 		OrderVO orderDetail = memberDAO.readOrderDetail(orderVO);
 		return orderDetail;
 	}
-	
+
 	@Override
 	public int comment(CommentVO commentVO) {
 		int commentNum = memberDAO.comment(commentVO);
@@ -94,7 +94,6 @@ public class MemberServiceImpl implements MemberService {
 		return comment;
 	}
 
-
 	@Override
 	public CommentVO productCommentConfirm(String deliveryId) {
 		CommentVO order = memberDAO.productCommentConfirm(deliveryId);
@@ -105,5 +104,5 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteProductOrder(String userid) {
 		memberDAO.deleteProductOrder(userid);
 	}
-	
+
 }

@@ -30,34 +30,39 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @EnableAspectJAutoProxy
 public class OrderControllerImpl implements OrderController {
-	
+
 	@Autowired
 	MemberVO memberVO;
-	
+
 	@Autowired
 	ProductVO productVO;
-	
+
 	@Autowired
 	OrderDetailVO orderDetailVO;
-	
+
 	@Autowired
 	OrderVO orderVO;
-	
+
 	@Autowired
 	ProductService service;
-	
+
 	@Autowired
 	OrderService orderService;
-	
+
 	@Autowired
 	MemberService memberService;
-	
-	@RequestMapping(value= "/orderPage" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView orderPage(@RequestParam("productId") int productId, @RequestParam("totalPrice") String totalPrice, @RequestParam("quantity") int quantity, @RequestParam("productName") String productName, @RequestParam("productPrice") String productPrice,   @RequestParam("productImage") String productImage,  @RequestParam("delivery") int delivery, @RequestParam("point") int point, HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	@RequestMapping(value = "/orderPage", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView orderPage(@RequestParam("productId") int productId,
+			@RequestParam("totalPrice") String totalPrice, @RequestParam("quantity") int quantity,
+			@RequestParam("productName") String productName, @RequestParam("productPrice") String productPrice,
+			@RequestParam("productImage") String productImage, @RequestParam("delivery") int delivery,
+			@RequestParam("point") int point, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		ProductVO productDetail= service.productDetailList(productId);
-		//log.info(productImageList.get(0));
+		ProductVO productDetail = service.productDetailList(productId);
+		// log.info(productImageList.get(0));
 		log.info(productDetail);
 		orderDetailVO.setTotalPrice(request.getParameter("totalPrice"));
 		orderDetailVO.setQuantity(quantity);
@@ -74,8 +79,8 @@ public class OrderControllerImpl implements OrderController {
 		log.info(orderDetailVO);
 		log.info("delivery : " + delivery);
 		log.info(productName);
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		UserDetails userDetails = (UserDetails)principal;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) principal;
 		MemberVO member = memberService.read(userDetails.getUsername());
 		mav.addObject("product", productDetail);
 		mav.addObject("product2", orderDetailVO);
@@ -83,22 +88,22 @@ public class OrderControllerImpl implements OrderController {
 		return mav;
 	}
 
-	@RequestMapping(value= "/orderConfirm" ,method={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/orderConfirm", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView orderConfirm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		log.info(request.getParameter("ordererName"));
 		log.info(request.getParameter("deliveryNum"));
 		Calendar cal = Calendar.getInstance();
-		 int year = cal.get(Calendar.YEAR);
-		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
-		 String subNum = "";
-		 
-		 for(int i = 1; i <= 6; i ++) {
-		  subNum += (int)(Math.random() * 10);
-		 }
-		 
-		 String orderId = ymd + "_" + subNum;
+		int year = cal.get(Calendar.YEAR);
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";
+
+		for (int i = 1; i <= 6; i++) {
+			subNum += (int) (Math.random() * 10);
+		}
+
+		String orderId = ymd + "_" + subNum;
 		orderVO.setDeliveryId(orderId);
 		orderVO.setCustomerId(request.getParameter("customerId"));
 		orderVO.setProductId(orderDetailVO.getProductId());
@@ -126,7 +131,7 @@ public class OrderControllerImpl implements OrderController {
 		log.info(orderVO.toString());
 		orderService.insertOrder(orderVO);
 		orderService.insertComment(orderVO);
-		String delivery = orderVO.getDeliveryId(); 
+		String delivery = orderVO.getDeliveryId();
 		OrderVO order = orderService.selectOrder(delivery);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("order", order);

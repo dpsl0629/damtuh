@@ -3,63 +3,66 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.damtuh.mapper.SupportMapper">
-	<resultMap id="boardResult" type="com.damtuh.support.notice.vo.NoticeBoardVO">
-		<result property="bno" column="bno"/> 
-		<result property="title" column="title"/> 
-		<result property="content" column="content"/> 
-		<result property="attach" column="attach"/> 
-		<result property="writeDate" column="writedate"/> 
-		<result property="hits" column="hits"/> 
+	<resultMap id="boardResult"
+		type="com.damtuh.support.notice.vo.NoticeBoardVO">
+		<result property="bno" column="bno" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="attach" column="attach" />
+		<result property="writeDate" column="writedate" />
+		<result property="hits" column="hits" />
 	</resultMap>
-	
-	<resultMap id="boardAttachResult" type="com.damtuh.support.notice.vo.BoardAttachVO">
-		<result property="uuid" column="uuid"/> 
-		<result property="uploadPath" column="uploadPath"/> 
-		<result property="fileName" column="fileName"/> 
-		<result property="fileType" column="fileType"/> 
-		<result property="bno" column="bno"/> 
+
+	<resultMap id="boardAttachResult"
+		type="com.damtuh.support.notice.vo.BoardAttachVO">
+		<result property="uuid" column="uuid" />
+		<result property="uploadPath" column="uploadPath" />
+		<result property="fileName" column="fileName" />
+		<result property="fileType" column="fileType" />
+		<result property="bno" column="bno" />
 	</resultMap>
-	
-<select id="getList" resultMap="boardResult">
+
+	<select id="getList" resultMap="boardResult">
 	<![CDATA[
 		select * from tbl_notice where bno > 0
 	]]>
-</select>
+	</select>
 
-<insert id="insert">
-	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
-		select seq_notice.nextval from dual
-	</selectKey>
-	insert into tbl_notice (bno, title, content, attach, hits)
-	values (${bno}, #{title}, #{content}, 0, 0)
-</insert>
+	<insert id="insert">
+		<selectKey keyProperty="bno" order="BEFORE"
+			resultType="long">
+			select seq_notice.nextval from dual
+		</selectKey>
+		insert into tbl_notice (bno, title, content, attach, hits)
+		values (${bno}, #{title}, #{content}, 0, 0)
+	</insert>
 
-<select id="read" resultMap="boardResult">
-	select * from tbl_notice where bno = #{bno}
-</select>
+	<select id="read" resultMap="boardResult">
+		select * from tbl_notice where bno = #{bno}
+	</select>
 
-<update id="getCount">
-	update tbl_notice set hits = hits + 1 where bno = #{bno}
-</update>
+	<update id="getCount">
+		update tbl_notice set hits = hits + 1 where bno = #{bno}
+	</update>
 
-<sql id="criteria">
-	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
-		<foreach item='type' collection="typeArr">
-			<trim prefix="OR">
-				<choose>
-					<when test="type == 'T'. toString()">
-						title like '%' || #{keyword}||'%'
-					</when>
-					<when test="type == 'C'.toString()">
-						content like '%' || #{keyword}||'%'
-					</when>
-				</choose>
-			</trim>
-		</foreach>
-	</trim>
-</sql>
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'. toString()">
+							title like '%' || #{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%' || #{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 
-<select id="getListWithPaging" resultMap="boardResult">
+	<select id="getListWithPaging" resultMap="boardResult">
 		<![CDATA[
 			select 
 				bno, title, content, attach, writedate, hits
@@ -71,7 +74,7 @@
 					tbl_notice
 				where 
 		]]>
-	<include refid="criteria"></include>
+		<include refid="criteria"></include>
 	
 	<![CDATA[
 		rownum <= #{pageNum} * #{amount}
@@ -79,45 +82,49 @@
 		where rn > (#{pageNum} -1 ) * #{amount}
 	]]>
 	</select>
-	
-	
+
+
 	<select id="getTotalCount" resultType="int">
 		select count(*) from tbl_notice where
 		<include refid="criteria"></include>
-		 bno > 0
+		bno > 0
 	</select>
-	
+
 	<update id="updateNotice">
-		update tbl_notice set title=#{title}, content=#{content} where bno = #{bno}
-	</update> 
-	
+		update tbl_notice set title=#{title},
+		content=#{content} where bno = #{bno}
+	</update>
+
 	<delete id="deleteNotice">
-			delete from tbl_notice where bno = #{bno}
+		delete from tbl_notice where bno = #{bno}
 	</delete>
-	
+
 	<insert id="insertAttach">
-		insert into tbl_attach (uuid, uploadPath, filename, filetype, bno)
-		values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
+		insert into tbl_attach (uuid, uploadPath, filename,
+		filetype, bno)
+		values (#{uuid}, #{uploadPath}, #{fileName},
+		#{fileType}, #{bno})
 	</insert>
-	
+
 	<delete id="delete">
 		delete from tbl_attach where uuid = #{uuid}
 	</delete>
-	
+
 	<select id="findByBno" resultMap="boardAttachResult">
-		select * from tbl_attach where bno = #{bno}
+		select * from tbl_attach where
+		bno = #{bno}
 	</select>
-	
+
 	<update id="updateAttachFile">
 		update tbl_notice set attach = 1 where bno = #{bno}
 	</update>
-	
+
 	<update id="updateAttachNone">
 		update tbl_notice set attach = 0 where bno = #{bno}
 	</update>
-	
+
 	<delete id="deleteAttach">
 		delete tbl_attach where bno = #{bno}
 	</delete>
-	
+
 </mapper>

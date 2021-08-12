@@ -17,7 +17,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public List<ProductVO> showList() throws DataAccessException {
 		List<ProductVO> productList = sqlSession.selectList("com.damtuh.mapper.ProductMapper.productList");
@@ -26,7 +26,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public ProductVO productDetailList(int productId) throws DataAccessException {
-		ProductVO productDetail= sqlSession.selectOne("com.damtuh.mapper.ProductMapper.productDetailList", productId);
+		ProductVO productDetail = sqlSession.selectOne("com.damtuh.mapper.ProductMapper.productDetailList", productId);
 		return productDetail;
 	}
 
@@ -40,10 +40,8 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public List<CommentVO> readComment(int productId) throws DataAccessException {
-		List<CommentVO> commentList  = sqlSession.selectList("com.damtuh.mapper.ProductMapper.selectComment", productId);
+		List<CommentVO> commentList = sqlSession.selectList("com.damtuh.mapper.ProductMapper.selectComment", productId);
 		return commentList;
 	}
-
-	
 
 }

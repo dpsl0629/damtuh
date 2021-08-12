@@ -12,10 +12,10 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	OrderDAO orderDAO;
-	
+
 	@Override
 	public int insertOrder(OrderVO orderVO) {
-		int orderInsert = orderDAO.insertOrder(orderVO); 
+		int orderInsert = orderDAO.insertOrder(orderVO);
 		return orderInsert;
 	}
 

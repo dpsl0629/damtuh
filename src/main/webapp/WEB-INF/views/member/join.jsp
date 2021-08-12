@@ -1,140 +1,143 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"
-    isELIgnored="false"
-    %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
+	pageEncoding="utf-8" isELIgnored="false"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<!--#include virtual="/html/include/sub-head.html"-->
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div class="contents">
-    <div class="join-box">
-        <form id="join-form" action="${contextPath }/member/joinConfirm" class="join-form" method="post">
-            <fieldset>
-                <legend>회원가입</legend>
-                <div class="join-cont">
-                    <div class="input-field">
-                        <div class="input-tit">
-                            <label class="tit">이름</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" class="name" name="name" placeholder="이름">
-                        </div>
-                    </div>
-                    <div class="input-field input-button input-id">
-                        <div class="input-tit">
-                            <label class="tit">아이디</label>
-                        </div>
-                        <div class="input-box">
-                            <div class="input-col">
-                                <input type="text" name="id" placeholder="아이디">
-                            </div>
-                            <div class="input-col">
-                                <button type="button">중복확인</button>
-                            </div>
-                        </div>
-                    </div>
-                        <p class="id-check1">사용 가능한 아이디입니다.</p>
-                        <p class="id-check2">이미 있는 아이디입니다.</p>
-                    <div class="input-field password">
-                        <div class="input-tit">
-                            <label class="tit">비밀번호</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" class="pw" name="pw" placeholder="비밀번호">
-                        </div>
-                    </div>
-                    <p class="desc">특수문자, 영어 대문자, 숫자 포함 9~12자</p>
-                     <div class="input-field password">
-                        <div class="input-tit">
-                            <label class="tit">비밀번호 확인</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" class="confirm-pw" placeholder="비밀번호 확인">
-                        </div>
-                    </div>
-                    <p class="pw-check">비밀번호가 일치하지 않습니다.</p>
-                    <div class="input-field  input-phone">
-                        <div class="input-tit">
-                            <label class="tit">핸드폰 번호</label>
-                        </div>
-                        <div class="input-box">
-                            <div class="input-col">
-                                <input type="text" name="phone" value="" placeholder="'-'을 제외한 핸드폰 번호를 입력해주세요.">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-field  input-phone">
-                        <div class="input-tit">
-                            <label class="tit">생년월일</label>
-                        </div>
-                        <div class="input-box">
-                            <div class="input-col">
-                                <input type="text" class="datepicker-here" data-position="right top" name="birth">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-field input-email">
-                        <div class="input-tit">
-                            <label class="tit">이메일</label>
-                        </div>
-                        <div class="input-box">
-                            <div class="input-col">
-                                <input type="text" class="email"  name="email" placeholder="이메일">
-                            </div>
-                            <div class="input-col">
-                                <span class="etc">@</span>
-                            </div>
-                            <div class="input-col">
-                                <select id="email-select">
-                                    <option value="0">naver.com</option>
-                                    <option value="1">nate.com</option>
-                           <option value="2">hanmail.com</option>	
-                                    <option value="3" name="3">직접 입력</option>	
-                                </select>
-                            </div>
-                        </div>
-                         <button class="btn-number send-email" class="" type="button">인증번호 받기</button>
-                        <div class="input-field input-button">
-                            <div class="input-box">
-                                <div class="input-col">
-                                    <input type="text" id="email-code">
-                                </div>
-                                <div class="input-col">
-                                    <button type="button" class="confirm-email">확인</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-field input-button input-address">
-                        <div class="input-tit">
-                            <label class="tit">주소</label>
-                        </div>
-                        <div class="input-box">
-                            <div class="input-col">
-                                <input type="text" name="zipcode" id="sample6_postcode" value="" placeholder="우편번호">
-                            </div>
-                            <div class="input-col">
-                                <button type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
-                            </div>
-                        </div>
-                        <div class="address-etc">
-                            <input type="text" name="address1" id="sample6_address" value="" placeholder="주소1">
-                            <input type="text" name="address2" id="sample6_detailAddress" value="" placeholder="나머지 주소">
-                        </div>
-                    </div>
-                </div>
-                <div class="button_wrap">
-                    <button type="submit" class="btn-member">회원가입</button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+	<div class="join-box">
+		<form id="join-form" action="${contextPath }/member/joinConfirm"
+			class="join-form" method="post">
+			<fieldset>
+				<legend>회원가입</legend>
+				<div class="join-cont">
+					<div class="input-field">
+						<div class="input-tit">
+							<label class="tit">이름</label>
+						</div>
+						<div class="input-box">
+							<input type="text" class="name" name="name" placeholder="이름">
+						</div>
+					</div>
+					<div class="input-field input-button input-id">
+						<div class="input-tit">
+							<label class="tit">아이디</label>
+						</div>
+						<div class="input-box">
+							<div class="input-col">
+								<input type="text" name="id" placeholder="아이디">
+							</div>
+							<div class="input-col">
+								<button type="button">중복확인</button>
+							</div>
+						</div>
+					</div>
+					<p class="id-check1">사용 가능한 아이디입니다.</p>
+					<p class="id-check2">이미 있는 아이디입니다.</p>
+					<div class="input-field password">
+						<div class="input-tit">
+							<label class="tit">비밀번호</label>
+						</div>
+						<div class="input-box">
+							<input type="password" class="pw" name="pw" placeholder="비밀번호">
+						</div>
+					</div>
+					<p class="desc">특수문자, 영어 대문자, 숫자 포함 9~12자</p>
+					<div class="input-field password">
+						<div class="input-tit">
+							<label class="tit">비밀번호 확인</label>
+						</div>
+						<div class="input-box">
+							<input type="password" class="confirm-pw" placeholder="비밀번호 확인">
+						</div>
+					</div>
+					<p class="pw-check">비밀번호가 일치하지 않습니다.</p>
+					<div class="input-field  input-phone">
+						<div class="input-tit">
+							<label class="tit">핸드폰 번호</label>
+						</div>
+						<div class="input-box">
+							<div class="input-col">
+								<input type="text" name="phone" value=""
+									placeholder="'-'을 제외한 핸드폰 번호를 입력해주세요.">
+							</div>
+						</div>
+					</div>
+					<div class="input-field  input-phone">
+						<div class="input-tit">
+							<label class="tit">생년월일</label>
+						</div>
+						<div class="input-box">
+							<div class="input-col">
+								<input type="text" class="datepicker-here"
+									data-position="right top" name="birth">
+							</div>
+						</div>
+					</div>
+					<div class="input-field input-email">
+						<div class="input-tit">
+							<label class="tit">이메일</label>
+						</div>
+						<div class="input-box">
+							<div class="input-col">
+								<input type="text" class="email" name="email" placeholder="이메일">
+							</div>
+							<div class="input-col">
+								<span class="etc">@</span>
+							</div>
+							<div class="input-col">
+								<select id="email-select">
+									<option value="0">naver.com</option>
+									<option value="1">nate.com</option>
+									<option value="2">hanmail.com</option>
+									<option value="3" name="3">직접 입력</option>
+								</select>
+							</div>
+						</div>
+						<button class="btn-number send-email" class="" type="button">인증번호
+							받기</button>
+						<div class="input-field input-button">
+							<div class="input-box">
+								<div class="input-col">
+									<input type="text" id="email-code">
+								</div>
+								<div class="input-col">
+									<button type="button" class="confirm-email">확인</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="input-field input-button input-address">
+						<div class="input-tit">
+							<label class="tit">주소</label>
+						</div>
+						<div class="input-box">
+							<div class="input-col">
+								<input type="text" name="zipcode" id="sample6_postcode" value=""
+									placeholder="우편번호">
+							</div>
+							<div class="input-col">
+								<button type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
+							</div>
+						</div>
+						<div class="address-etc">
+							<input type="text" name="address1" id="sample6_address" value=""
+								placeholder="주소1"> <input type="text" name="address2"
+								id="sample6_detailAddress" value="" placeholder="나머지 주소">
+						</div>
+					</div>
+				</div>
+				<div class="button_wrap">
+					<button type="submit" class="btn-member">회원가입</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 </div>
 
-    
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({

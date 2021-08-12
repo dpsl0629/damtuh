@@ -17,6 +17,6 @@ public class NoticeBoardVO {
 	private Long attach;
 	private Date writeDate;
 	private Long hits;
-	
+
 	private List<BoardAttachVO> attachList;
 }

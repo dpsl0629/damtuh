@@ -33,5 +33,5 @@ public class OrderVO {
 	private String ordererZip;
 	private String ordererAddress;
 	private String ordererAddressDetail;
-	
+
 }

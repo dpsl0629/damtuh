@@ -17,7 +17,6 @@ import lombok.extern.log4j.Log4j;
 @EnableAspectJAutoProxy
 public class CommonControllerImpl implements CommonController {
 
-
 //	@RequestMapping(value= "/login" ,method={RequestMethod.POST,RequestMethod.GET})
 //	public String loginGET(HttpServletRequest request, HttpServletResponse response) {
 //		RequestCache requestCache = new HttpSessionRequestCache();
@@ -40,6 +39,5 @@ public class CommonControllerImpl implements CommonController {
 //	public void accessDenied(Authentication auth, Model model) {
 //		log.info("access Denied : " + auth);
 //	}
-	
 
 }

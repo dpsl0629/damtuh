@@ -21,33 +21,31 @@ import lombok.Data;
 
 @Service("loginFailHandler")
 @Data
-public class CustomLoginFailHandler implements AuthenticationFailureHandler{
+public class CustomLoginFailHandler implements AuthenticationFailureHandler {
 
 	@Override
-	public void onAuthenticationFailure(HttpServletRequest request,
-			HttpServletResponse response, AuthenticationException exception)
-			throws IOException, ServletException {
-		
-		
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException exception) throws IOException, ServletException {
+
 		if (exception instanceof AuthenticationServiceException) {
 			request.setAttribute("loginFailMsg", "존재하지 않는 사용자입니다.");
-		
-		} else if(exception instanceof BadCredentialsException) {
+
+		} else if (exception instanceof BadCredentialsException) {
 			request.setAttribute("loginFailMsg", "비밀번호가 틀립니다.");
-			
-		} else if(exception instanceof LockedException) {
+
+		} else if (exception instanceof LockedException) {
 			request.setAttribute("loginFailMsg", "잠긴 계정입니다..");
-			
-		} else if(exception instanceof DisabledException) {
+
+		} else if (exception instanceof DisabledException) {
 			request.setAttribute("loginFailMsg", "비활성화된 계정입니다..");
-			
-		} else if(exception instanceof AccountExpiredException) {
+
+		} else if (exception instanceof AccountExpiredException) {
 			request.setAttribute("loginFailMsg", "만료된 계정입니다..");
-			
-		} else if(exception instanceof CredentialsExpiredException) {
+
+		} else if (exception instanceof CredentialsExpiredException) {
 			request.setAttribute("loginFailMsg", "비밀번호가 만료되었습니다.");
 		}
-		
+
 		// 로그인 페이지로 다시 포워딩
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginPage");
 		dispatcher.forward(request, response);

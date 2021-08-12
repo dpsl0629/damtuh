@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository("userAuthDAO")
 public class UserAuthDAO {
-    
-    @Autowired
-    private SqlSession sqlSession;
- 
-    public CustomUserDetails getUserById(String username) {
-        return sqlSession.selectOne("com.damtuh.mapper.MemberMapper.selectUserById", username);
-    }
- 
+
+	@Autowired
+	private SqlSession sqlSession;
+
+	public CustomUserDetails getUserById(String username) {
+		return sqlSession.selectOne("com.damtuh.mapper.MemberMapper.selectUserById", username);
+	}
+
 }

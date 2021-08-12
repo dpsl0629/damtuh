@@ -20,7 +20,7 @@ public class SupportDAOImpl implements SupportDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public List<NoticeBoardVO> view(Criteria cri) throws DataAccessException {
 		List<NoticeBoardVO> boardList = sqlSession.selectList("com.damtuh.mapper.SupportMapper.getListWithPaging", cri);
@@ -70,17 +70,17 @@ public class SupportDAOImpl implements SupportDAO {
 	public List<AttachFileDTO> findByBno(Long bno) throws DataAccessException {
 		return sqlSession.selectList("com.damtuh.mapper.SupportMapper.findByBno", bno);
 	}
-	
+
 	@Override
 	public void updateAttachFile(Long bno) throws DataAccessException {
 		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachFile", bno);
 	}
-	
+
 	@Override
 	public void updateAttachNone(Long bno) throws DataAccessException {
 		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachNone", bno);
 	}
-	
+
 	@Override
 	public void deleteAttach(Long bno) throws DataAccessException {
 		sqlSession.delete("com.damtuh.mapper.SupportMapper.deleteAttach", bno);
