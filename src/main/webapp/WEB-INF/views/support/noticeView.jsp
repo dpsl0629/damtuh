@@ -24,15 +24,15 @@
 	            	</c:when>
             		<c:when test="${attachList != null}">
 	                	<c:forEach items="${attachList}" var="attach">
-					            <div class="board-view-file">
-					                <div class="file-lst">
-					                     <p class="file">
-					                        <a href="#lnk" data-path="${attach.uploadPath }" data-uuid="${attach.uuid }" data-filename="${attach.fileName }">
-					                            <img class="ico" src="${contextPath }/resources/images/sub/attach.png"/><c:out value="${attach.fileName}"/>
-					                        </a>
-					                    </p>
-					                </div>
+				            <div class="board-view-file">
+				                <div class="file-lst">
+				                     <p class="file">
+				                        <a href="#lnk" data-path="${attach.uploadPath }" data-uuid="${attach.uuid }" data-filename="${attach.fileName }">
+				                            <img class="ico" src="${contextPath }/resources/images/sub/attach.png"/><c:out value="${attach.fileName}"/>
+				                        </a>
+				                    </p>
 				                </div>
+			                </div>
         				</c:forEach>
 		            </c:when>
 	           </c:choose>
