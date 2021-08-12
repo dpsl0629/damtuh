@@ -10,7 +10,7 @@
 <div class="contents">
     <div class="notice-box">
     	<div class="search-form">
-    <form id="search-form" action="/support/notice" method="get">
+    <form id="search-form" action="${contextPath}/support/noticeList" method="get">
         <div class="search-form-box">
             <div class="search-form-select">
                 <select title="검색 필터 선택" name="type">
@@ -101,7 +101,7 @@
         </div>
     </div>
     
-    <form id="action-form" action="${contextPath }/support/notice" method="get">
+    <form id="action-form" action="${contextPath }/support/noticeList" method="get">
     	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
     	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
     	<input type="hidden" name="type" value="${pageMaker.cri.type }">
