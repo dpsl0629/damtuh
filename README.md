@@ -3,24 +3,15 @@
 현재는 담터에서 이미 자체적으로 리뉴얼을 했으나, 그 전에 제가 리뉴얼한 작업물입니다.<br>
 디자인부터, 퍼블리싱, 개발까지 저 혼자 진행한 프로젝트입니다.<br>
 
-##### 사용기술
-
-1. Java
-2. Spring
-3. Spring Security
-4. lombok
-5. Jquery
-6. HTML5
-7. CSS3
-8. sql(Oracle)
-
-##### 사용 툴
-
-1. Eclipse
-2. Oracle
-3. Photoshop
-4. illustrator
-5. Visual Studio Code
+* Operating System : Windows 10 home
+* Programming Language : JAVA (JDK 1.8)
+* DBMS : ORACLE
+* Web Application Server : Tomcat 9.0
+* 형상관리 : GitHub (https://github.com/dpsl0629/damtuh)
+* Framework : Spring 5.0.7, Mybatis 3.0
+* Technology : JDBC, HTML5, CSS3, Javascript, jQuery, ajax
+* Tool : Eclipse, Visual Studio Code, sqldevelopr, PhotoShop, Illustrator
+* api : 다음 주소검색
 
 ##### 구현 페이지
 
