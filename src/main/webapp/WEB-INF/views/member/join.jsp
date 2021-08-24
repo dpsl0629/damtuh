@@ -6,8 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div class="contents">
 	<div class="join-box">
-		<form id="join-form" action="${contextPath }/member/joinConfirm"
-			class="join-form" method="post">
+		<form id="join-form" action="${contextPath }/member/joinConfirm" method="post">
 			<fieldset>
 				<legend>회원가입</legend>
 				<div class="join-cont">
@@ -25,7 +24,7 @@
 						</div>
 						<div class="input-box">
 							<div class="input-col">
-								<input type="text" name="id" placeholder="아이디">
+								<input type="text" class="id" name="id" placeholder="아이디">
 							</div>
 							<div class="input-col">
 								<button type="button">중복확인</button>
@@ -54,12 +53,12 @@
 					<p class="pw-check">비밀번호가 일치하지 않습니다.</p>
 					<div class="input-field  input-phone">
 						<div class="input-tit">
-							<label class="tit">핸드폰 번호</label>
+							<label class="tit">휴대폰 번호</label>
 						</div>
 						<div class="input-box">
 							<div class="input-col">
 								<input type="text" name="phone" value=""
-									placeholder="'-'을 제외한 핸드폰 번호를 입력해주세요.">
+									placeholder="'-'을 제외한 휴대폰 번호를 입력해주세요.">
 							</div>
 						</div>
 					</div>
@@ -122,13 +121,14 @@
 						</div>
 						<div class="address-etc">
 							<input type="text" name="address1" id="sample6_address" value=""
-								placeholder="주소1"> <input type="text" name="address2"
-								id="sample6_detailAddress" value="" placeholder="나머지 주소">
+								placeholder="주소1"> 
+							<input type="text" name="address2"
+							id="sample6_detailAddress" placeholder="나머지 주소">
 						</div>
 					</div>
 				</div>
 				<div class="button_wrap">
-					<button type="submit" class="btn-member">회원가입</button>
+					<button type="button" class="btn-member">회원가입</button>
 				</div>
 			</fieldset>
 		</form>
@@ -206,7 +206,6 @@
 $(document).ready(function() {
 	var emailData;
 	var email;
-	var joinForm = $("#join-form");
 	var emailCheck = false;
 	
 	$(".input-email select").on("change", function() {
@@ -255,7 +254,7 @@ $(document).ready(function() {
 			$(".pw-check").css("display", "block");
 		}
 	});
-
+	
 	
 	$(".send-email").on("click", function() {
 		alert("인증번호가 전송되었습니다. 바르게 입력해주세요.");
@@ -302,18 +301,53 @@ $(document).ready(function() {
 	
 	
 	$(".btn-member").on("click", function(e) {
-		e.preventDefault();
+
+		var joinForm = $("#join-form");
 		
-		if(emailCheck) {
-			joinForm.find("input[name='email']").attr('value', email);
-			joinForm.submit();
-		} else if(!$(".name").val()) {
-			alert("이름을 입력해주세요");
-		} else if(!$(".pw").val()) {
-			alert("비밀번호를 입력해주세요");
+		if (!$("input[name='name']").val()) {
+			alert("이름을 입력해주세요.");
+			$("input[name='name']").focus();
+			e.preventDefault();
+		} else if (!$("input[name='id']").val()) {
+			alert("아이디를 입력해주세요.");
+			$("input[name='id']").focus();
+			e.preventDefault();
+		} else if (!$("input[name='pw']").val()) {
+			alert("비밀번호를 입력해주세요.");
+			$("input[name='pw']").focus();
+			e.preventDefault();
+		} else if (!$(".confirm-pw").val()) {
+			alert("비밀번호 확인을 해주세요.")
+			$(".confirm-pw").focus();
+			e.preventDefault();
+		} else if (!$("input[name='phone']").val()) {
+			alert("휴대폰 번호를 입력해주세요.");
+			$("input[name='phone']").focus();
+			e.preventDefault();
+		} else if (!$("input[name='birth']").val()) {
+			alert("생년월일을 입력해주세요.");
+			$("input[name='birth']").focus();
+			e.preventDefault();
+		} else if (!$("input[name='email']").val()) {
+			alert("이메일을 입력해주세요.");
+			$(".email").focus();
+			e.preventDefault();
+		} else if (!$("#email-code").val()) {
+			alert("인증을 해주세요.");
+			$("#email-code").focus();
+			e.preventDefault();
+		} else if (!$("input[name='address1']").val()) {
+			alert("주소를 입력해주세요.");
+			$(".address1").focus();
+			e.preventDefault();
+		} else if (!$("input[name='address2']").val()) {
+			alert("상세 주소를 입력해주세요.");
+			$(".address2").focus();
+			e.preventDefault();
 		} else {
-			alert("노");
+			joinForm.submit();
 		}
+		
 	});
 	
 });

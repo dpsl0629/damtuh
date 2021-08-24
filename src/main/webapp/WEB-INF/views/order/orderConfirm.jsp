@@ -6,9 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div class="contents">
 	<div class="orderConfirm-box">
-		<h4 class="basic-h4">
-			주문이 완료되었습니다.
-			</h3>
+		<h4 class="basic-h4">주문이 완료되었습니다.</h4>
 			<p class="desc">주문번호 : ${order.deliveryId }</p>
 			<div class="orderConfirm-cont opt-clearfix">
 				<div class="left-box">

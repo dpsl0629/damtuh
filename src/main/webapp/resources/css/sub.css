@@ -1029,7 +1029,7 @@
 	margin-bottom: 20px;
 }
 
-.join-form {
+#join-form {
 	display: table-cell;
 	/* width: 500px; */
 	text-align: center;
@@ -1067,7 +1067,7 @@
 	display: table-cell;
 }
 
-.join-form input {
+#join-form input {
 	width: 100%;
 }
 

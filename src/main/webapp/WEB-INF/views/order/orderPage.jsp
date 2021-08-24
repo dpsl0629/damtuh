@@ -9,11 +9,14 @@
 
 <div class="contents">
 	<div class="buyDetail-box">
-		<form id="order-confirm" action="${contextPath }/order/orderConfirm">
+		<form id="order-form" action="${contextPath }/order/orderConfirm">
+			<input type="hidden" name="productImage" value="${product2.productImage}">
+			<input type="hidden" name="productPrice" value="${product2.productPrice}">	
+			<input type="hidden" name="productId" value="${product2.productId}">	
 			<div class="buyDetail-top">
 				<sec:authentication property="principal.username"
 					var="currentUserName" />
-				<div class="id" style="display: none;">${currentUserName}</div>
+				<div class="customer-id" style="display: none;">${currentUserName}</div>
 				<table class="buyDetail-tbl basic-tbl">
 					<caption>상품 리스트</caption>
 					<colgroup>
@@ -38,7 +41,7 @@
 							<td class="img"><img
 								src="${contextPath }/thumbnails.do?fileName=${product2.productImage}"
 								alt="상품 사진" /></td>
-							<td class="tit">${product2.productName }</td>
+							<td class="tit product-name">${product2.productName }</td>
 							<td>${product2.quantity }</td>
 							<td class="total-price">${product2.totalPrice }</td>
 							<td>${product2.point }</td>
@@ -54,7 +57,7 @@
 					style="font-weight: 600; color: #000; margin-left: 10px; font-size: 15px;">담터의
 					모든 약관을 확인 하고 전체 동의 합니다. (전체 동의에 선택항목도 포함됩니다.)</label>
 				<div class="agree-box">
-					<p class="tit">비회원 주문에 대한 개인정보 수집 이용 동의</p>
+					<p class="tit">주문에 대한 개인정보 수집 이용 동의</p>
 					<div class="agree-cont">
 						회사는 회원가입, 민원 등 고객상담 처리, 본인확인(14세 미만 아동 확인) 등 의사소통을 위한 정보 활용 및 이벤트
 						등과 같은 마케팅용도 활용, 회원의 서비스 이용에 대한 통계, 이용자들의 개인정보를 통한 서비스 개발을 위해 아래와
@@ -372,7 +375,7 @@
 							<span class="buy-price"></span>원
 						</div>
 					</div>
-					<button type="submit" class="btn-result btn-green">결제하기</button>
+					<button type="button" class="btn-result btn-green">결제하기</button>
 				</div>
 			</div>
 		</form>
@@ -495,166 +498,111 @@
 
 	$(".buy-price").text((totalPrice + delivery).format());
 
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
 
-						$("#all-check").click(function() {
-							if ($(this).is(":checked") == true) {
-								$("#agree-ico1").attr("checked", true);
-								$("#agree-ico2").attr("checked", true);
-								$("#agree-ico3").attr("checked", true);
-							} else {
-								$("#agree-ico1").attr("checked", false);
-								$("#agree-ico2").attr("checked", false);
-								$("#agree-ico3").attr("checked", false);
-							}
-						});
+			$("#all-check").click(function() {
+				if ($(this).is(":checked") == true) {
+					$("#agree-ico1").attr("checked", true);
+					$("#agree-ico2").attr("checked", true);
+					$("#agree-ico3").attr("checked", true);
+				} else {
+					$("#agree-ico1").attr("checked", false);
+					$("#agree-ico2").attr("checked", false);
+					$("#agree-ico3").attr("checked", false);
+				}
+			});
 
-						$("#equal")
-								.click(
-										function() {
-											$("input[name='receiverName']")
-													.val(
-															($("input[name='ordererName']")
-																	.val()));
-											$("input[name='receiverTel']")
-													.val(
-															($("input[name='ordererTel']")
-																	.val()));
-											$("input[name='receiverPhone']")
-													.val(
-															($("input[name='ordererPhone']")
-																	.val()));
-											$("input[name='receiverZip']")
-													.val(
-															($("input[name='ordererZip']")
-																	.val()));
-											$("input[name='receiverAddress']")
-													.val(
-															($("input[name='ordererAddress']")
-																	.val()));
-											$(
-													"input[name='receiverAddressDetail']")
-													.val(
-															($("input[name='ordererAddressDetail']")
-																	.val()));
-										});
+			$("#equal").click(function() {
+				$("input[name='receiverName']").val(($("input[name='ordererName']").val()));
+				$("input[name='receiverTel']").val(($("input[name='ordererTel']").val()));
+				$("input[name='receiverPhone']").val(($("input[name='ordererPhone']").val()));
+				$("input[name='receiverZip']").val(($("input[name='ordererZip']").val()));
+				$("input[name='receiverAddress']").val(($("input[name='ordererAddress']").val()));
+				$("input[name='receiverAddressDetail']").val(($("input[name='ordererAddressDetail']").val()));
+		});
 
-						$("#direct").click(function() {
-							$("input[name='receiverName']").val("");
-							$("input[name='receiverTel']").val("");
-							$("input[name='receiverPhone']").val("");
-						});
+		$("#direct").click(function() {
+			$("input[name='receiverName']").val("");
+			$("input[name='receiverTel']").val("");
+			$("input[name='receiverPhone']").val("");
+		});
 
-						$(".email select").on("change", function() {
-							$(".email-input").focus();
-						});
+		$(".email select").on("change", function() {
+			$(".email-input").focus();
+		});
 
-						var orderConfirm = $("#order-confirm");
+		var orderForm = $("#order-form");
 
-						$(".btn-result")
-								.click(
-										function(e) {
-											var email = "";
-											email = $(".email-input").val();
-
-											console.log("이메일 버튼");
-											console.log(email);
-											var state = $(
-													'#email-select option:selected')
-													.val();
-											var text = $(
-													'#email-select option:selected')
-													.text();
-											if (state == '3') {
-												console.log("ddd");
-												console.log(email);
-											} else {
-												email = email + "@" + text;
-												console.log("sss");
-												console.log(email);
-											}
-
-											orderConfirm
-													.append("<input type='hidden' name='totalProductPrice' value='"
-															+ $(".total-price")
-																	.text()
-															+ "'>");
-											orderConfirm
-													.append("<input type='hidden' name='totalPrice' value='"+ buyPrice +"'>");
-											orderConfirm
-													.append("<input type='hidden' name='ordererEmail' value='"+ email +"'>");
-											orderConfirm
-													.append("<input type='hidden' name='customerId' value='"
-															+ $(".id").text()
-															+ "'>");
-
-											if ($("#agree-ico1").is(":checked") == false) {
-												alert("필수조건은 동의하셔야합니다.");
-												$("#agree-ico1").focus();
-												e.preventDefault();
-											} else if ($("#agree-ico2").is(
-													":checked") == false) {
-												alert("필수조건은 동의하셔야합니다.");
-												$("#agree-ico2").focus();
-												e.preventDefault();
-											} else if ($("#agree-ico3").is(
-													":checked") == false) {
-												alert("필수조건은 동의하셔야합니다.");
-												$("#agree-ico3").focus();
-												e.preventDefault();
-											} else if (!$(
-													"input[name='ordererName']")
-													.val()) {
-												alert("주문자 성명을 입력해주세요.");
-												$("input[name='ordererName']")
-														.focus();
-												e.preventDefault();
-											} else if (!$(
-													"input[name='ordererPhone']")
-													.val()) {
-												alert("주문자 휴대폰 번호를 입력해주세요.");
-												$("input[name='ordererPhone']")
-														.focus();
-												e.preventDefault();
-											} else if (!$(".email-input").val()) {
-												alert("주문자 이메일을 입력해주세요.");
-												$(".email-input").focus();
-												e.preventDefault();
-											} else if (!$(
-													"input[name='receiverName']")
-													.val()) {
-												alert("배송지 성함을 입력해주세요.");
-												$("input[name='receiverName']")
-														.focus();
-												e.preventDefault();
-											} else if (!$("#sample6_postcode")
-													.val()) {
-												alert("배송지 우편번호를 입력해주세요.");
-												$("#sample6_postcode").focus();
-												e.preventDefault();
-											} else if (!$("#sample6_address")
-													.val()) {
-												alert("배송지 주소를 입력해주세요.");
-												$("#sample6_address").focus();
-												e.preventDefault();
-											} else if (!$(
-													"#sample6_detailAddress")
-													.val()) {
-												alert("배송지 주소를 입력해주세요.");
-												$("#sample6_detailAddress")
-														.focus();
-												e.preventDefault();
-											} else if (!$(
-													"input[name='receiverPhone']")
-													.val()) {
-												alert("배송지 휴대폰 번호를 입력해주세요.");
-												$("input[name='receiverPhone']")
-														.focus();
-												e.preventDefault();
-											}
-
-										});
-					});
+		$(".btn-result").click(function(e) {
+			var email = "";
+			email = $(".email-input").val();
+	
+			console.log("이메일 버튼");
+			console.log(email);
+			var state = $('#email-select option:selected').val();
+			var text = $('#email-select option:selected').text();
+			if (state == '3') {
+				console.log("ddd");
+				console.log(email);
+			} else {
+				email = email + "@" + text;
+				console.log("sss");
+				console.log(email);
+			}
+	
+			orderForm.append("<input type='hidden' name='totalProductPrice' value='"+ $(".total-price").text()+ "'>");
+			orderForm.append("<input type='hidden' name='totalPrice' value='"+ buyPrice +"'>");
+			orderForm.append("<input type='hidden' name='ordererEmail' value='"+ email +"'>");
+			orderForm.append("<input type='hidden' name='customerId' value='"+ $(".customer-id").text()+ "'>");
+			orderForm.append("<input type='hidden' name='productName' value='"+ $(".product-name").text()+ "'>");
+	
+			if ($("#agree-ico1").is(":checked") == false) {
+				alert("필수조건은 동의하셔야합니다.");
+				$("#agree-ico1").focus();
+				e.preventDefault();
+			} else if ($("#agree-ico2").is(":checked") == false) {
+				alert("필수조건은 동의하셔야합니다.");
+				$("#agree-ico2").focus();
+				e.preventDefault();
+			} else if ($("#agree-ico3").is(":checked") == false) {
+				alert("필수조건은 동의하셔야합니다.");
+				$("#agree-ico3").focus();
+				e.preventDefault();
+			} else if (!$("input[name='ordererName']").val()) {
+				alert("주문자 성명을 입력해주세요.");
+				$("input[name='ordererName']").focus();
+				e.preventDefault();
+			} else if (!$("input[name='ordererPhone']").val()) {
+				alert("주문자 휴대폰 번호를 입력해주세요.");
+				$("input[name='ordererPhone']").focus();
+				e.preventDefault();
+			} else if (!$(".email-input").val()) {
+				alert("주문자 이메일을 입력해주세요.");
+				$(".email-input").focus();
+				e.preventDefault();
+			} else if (!$("input[name='receiverName']").val()) {
+				alert("배송지 성함을 입력해주세요.");
+				$("input[name='receiverName']").focus();
+				e.preventDefault();
+			} else if (!$("#sample6_postcode").val()) {
+				alert("배송지 우편번호를 입력해주세요.");
+				$("#sample6_postcode").focus();
+				e.preventDefault();
+			} else if (!$("#sample6_address").val()) {
+				alert("배송지 주소를 입력해주세요.");
+				$("#sample6_address").focus();
+				e.preventDefault();
+			} else if (!$("#sample6_detailAddress").val()) {
+				alert("배송지 주소를 입력해주세요.");
+				$("#sample6_detailAddress").focus();
+				e.preventDefault();
+			} else if (!$("input[name='receiverPhone']").val()) {
+				alert("배송지 휴대폰 번호를 입력해주세요.");
+				$("input[name='receiverPhone']").focus();
+				e.preventDefault();
+			} else {
+				orderForm.submit();
+			}
+		});
+	});
 </script>
