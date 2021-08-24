@@ -34,6 +34,6 @@
 17. 파일 첨부, 수정, 삭제, 목록에서 파일 첨부 여부 
 
 ##### 테이블 구조
-![테이블 관계](https://user-images.githubusercontent.com/86272452/130547103-e2804879-4fdf-45f9-af15-5d46ac184a46.JPG)
+![테이블 구조](https://user-images.githubusercontent.com/86272452/130548201-02c52ee7-c278-47f0-93c2-0dd96f4026eb.JPG)
 
 http://www.dpsl0629.com
