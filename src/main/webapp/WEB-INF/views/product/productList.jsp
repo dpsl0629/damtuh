@@ -6,8 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div class="contents">
 	<div class="item-lst">
-		<form id="action-form" action="${contextpath }/product/productDetail"
-			method="get">
+		<form id="product-form" action="${contextpath }/product/productDetail" method="get">
 			<div class="tab">
 				<ul class="tab-menu opt-clearfix">
 					<li class="active" data-tab="tab1"><a href="#lnk">분말차</a></li>
@@ -97,27 +96,24 @@
 							</c:forEach>
 						</ul>
 					</div>
+				</div>
+			</div>
 		</form>
 	</div>
-</div>
-</div>
 </div>
 
 
 <script>
-	actionForm = $("#action-form");
+	var productForm = $("#product-form");
 
-	$(".move").on(
-			"click",
-			function(e) {
-				e.preventDefault();
+	$(".move").on("click",function(e) {
+			e.preventDefault();
 
-				actionForm
-						.append("<input type='hidden' name='productId' value='"
-								+ $(this).attr("href") + "'>");
-				actionForm.attr("action", "/product/productDetail.do");
-				actionForm.submit();
-			});
+			productForm.append("<input type='hidden' name='productId' value='"
+							+ $(this).attr("href") + "'>");
+			productForm.attr("action", "/product/productDetail");
+			productForm.submit();
+	});
 
 	$(".item-box .like").on("click", function(e) {
 		$(".item-box .like").toggleClass("like-after");

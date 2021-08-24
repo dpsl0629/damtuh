@@ -41,7 +41,7 @@ public class ProductControllerImpl implements ProductController {
 	}
 
 	@Override
-	@RequestMapping(value = "/productDetail.do", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productDetail", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView productDetail(@RequestParam("productId") int productId, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");

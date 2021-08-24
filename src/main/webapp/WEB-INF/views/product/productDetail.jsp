@@ -7,8 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div class="contents">
 	<div class="item-detail opt-clearfix">
-		<form id="order-form" action="${contextPath }/order/orderPage"
-			method="get">
+		<form id="order-form" action="${contextPath }/order/orderPage" method="get">
 			<div class="item-visual">
 				<div class="visual-cont">
 					<div class="img-box">
@@ -366,42 +365,33 @@
 
 	var orderForm = $("#order-form");
 
-	$(".btn-buy")
-			.on(
-					"click",
-					function(e) {
-						e.preventDefault();
-						console.log(price);
-						console.log(typeof (price));
+	$(".btn-buy").on("click",function(e) {
+		e.preventDefault();
+		console.log(price);
+		console.log(typeof (price));
 
-						if (price >= 100000) {
-							delivery = 0;
-						} else {
-							delivery = 3000;
-						}
+		if (price >= 100000) {
+			delivery = 0;
+		} else {
+			delivery = 3000;
+		}
 
-						point = price / 1000;
+		point = price / 1000;
 
-						console.log(delivery);
-						orderForm
-								.append("<input type='hidden' name='productId' value='"
-										+ $(this).attr("href") + "'>");
-						orderForm
-								.append("<input type='hidden' name='totalPrice' value='"
-										+ $(".total-price").text() + "'>");
-						orderForm
-								.append("<input type='hidden' name='productName' value='"
-										+ $(".productName").text() + "'>");
-						orderForm
-								.append("<input type='hidden' name='productPrice' value='"
-										+ $(".price span").text() + "'>");
-						orderForm
-								.append("<input type='hidden' name='delivery' value='"+ delivery +"'>");
-						orderForm
-								.append("<input type='hidden' name='point' value='"+ point +"'>");
-						orderForm.submit();
-						console.log($(".total-price").text());
-					});
+		console.log(delivery);
+		orderForm.append("<input type='hidden' name='productId' value='"
+						+ $(this).attr("href") + "'>");
+		orderForm.append("<input type='hidden' name='totalPrice' value='"
+						+ $(".total-price").text() + "'>");
+		orderForm.append("<input type='hidden' name='productName' value='"
+						+ $(".productName").text() + "'>");
+		orderForm.append("<input type='hidden' name='productPrice' value='"
+						+ $(".price span").text() + "'>");
+		orderForm.append("<input type='hidden' name='delivery' value='"+ delivery +"'>");
+		orderForm.append("<input type='hidden' name='point' value='"+ point +"'>");
+		orderForm.submit();
+		console.log($(".total-price").text());
+	});
 
 	$(document).ready(function() {
 		if ($(".like-count").val() == 5) {

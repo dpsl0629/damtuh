@@ -36,7 +36,6 @@
 
 
 	<insert id="insertOrder">
-
 		insert into customer_order values(#{deliveryId}, #{customerId},
 		#{productId}, #{productImage}, #{productName}, #{quantity},
 		#{delivery}, #{productPrice}, #{totalPrice}, #{point}, #{ordererName},

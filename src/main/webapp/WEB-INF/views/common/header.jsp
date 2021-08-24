@@ -45,23 +45,15 @@
 	type="text/css">
 <link href="${contextPath}/resources/css/sub.css" rel="stylesheet"
 	type="text/css">
-<link href="${contextPath}/resources/css/datepicker.css"
-	rel="stylesheet" type="text/css">
-<script src="${contextPath }/resources/js/libs/jquery-3.4.1.min.js"></script>
-<script src="${contextPath }/resources/js/libs/datepicker.js"></script>
-<script src="${contextPath }/resources/js/libs/ckeditor.js"></script>
-<script src="${contextPath }/resources/js/libs/config.js"></script>
-<script src="${contextPath }/resources/js/layout.js"></script>
-<script src="${contextPath }/resources/js/contents.js"></script>
+<link href="${contextPath}/resources/css/datepicker.css" rel="stylesheet" type="text/css">
+<script src="${contextPath}/resources/js/lib/jquery-3.4.1.min.js"></script>
+<script src="${contextPath}/resources/js/lib/datepicker.js"></script>
+<script src="${contextPath}/resources/js/lib/ckeditor.js"></script>
+<script src="${contextPath}/resources/js/lib/config.js"></script>
+<script src="${contextPath}/resources/js/layout.js"></script>
+<script src="${contextPath}/resources/js/contents.js"></script>
 <body>
-	<div class="layout-skip">
-		<a href="#container">본문바로가기</a>
-	</div>
-
-	<!-- :: wrapper s :: -->
 	<div class="wrapper">
-
-		<!-- :: header s :: -->
 		<header class="header">
 			<div class="header-wrap">
 				<div class="header-container">
@@ -163,10 +155,10 @@
 									</div>
 								</li>
 							</ul>
-						</div>
-					</nav>
-					<!--<div class="gnb-dimed"></div>-->
+						</nav>
+					</div>
 				</div>
 			</div>
-	</div>
+		</div>
+	</body>
 </header>

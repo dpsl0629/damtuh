@@ -11,7 +11,7 @@
 				method="post">
 				<fieldset>
 					<legend>로그인</legend>
-					<p style="color: #f00;">${requestScope.loginFailMsg}</p>
+					<p style="color: #f00;">${request.loginFailMsg}</p>
 					<div class="login-cont">
 						<div class="input-field">
 							<p class="tit">아이디</p>

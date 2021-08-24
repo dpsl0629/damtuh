@@ -305,7 +305,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		
 		if(emailCheck) {
-			alert("오케이");
 			joinForm.find("input[name='email']").attr('value', email);
 			joinForm.submit();
 		} else if(!$(".name").val()) {
@@ -315,8 +314,6 @@ $(document).ready(function() {
 		} else {
 			alert("노");
 		}
-		alert(emailData);
-		alert(email);
 	});
 	
 });

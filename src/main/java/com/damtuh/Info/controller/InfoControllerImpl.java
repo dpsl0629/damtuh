@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller("infoController")
-@EnableAspectJAutoProxy
 @RequestMapping("/info/*")
 public class InfoControllerImpl implements InfoController {
 

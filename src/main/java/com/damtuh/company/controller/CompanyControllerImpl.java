@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller("companyController")
-@EnableAspectJAutoProxy
 @RequestMapping("/company/*")
 public class CompanyControllerImpl implements CompanyController {
 

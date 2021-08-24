@@ -72,13 +72,6 @@ public class OrderControllerImpl implements OrderController {
 		orderDetailVO.setProductImage(productImage);
 		orderDetailVO.setDelivery(delivery);
 		orderDetailVO.setPoint(point);
-		log.info(orderDetailVO.getProductPrice());
-		log.info(orderDetailVO.getQuantity());
-		log.info(orderDetailVO.getProductName());
-		log.info(orderDetailVO.getProductPrice());
-		log.info(orderDetailVO);
-		log.info("delivery : " + delivery);
-		log.info(productName);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		MemberVO member = memberService.read(userDetails.getUsername());
@@ -129,8 +122,8 @@ public class OrderControllerImpl implements OrderController {
 		orderVO.setOrdererAddress(request.getParameter("ordererAddress"));
 		orderVO.setOrdererAddressDetail(request.getParameter("ordererAddressDetail"));
 		log.info(orderVO.toString());
-		orderService.insertOrder(orderVO);
 		orderService.insertComment(orderVO);
+		orderService.insertOrder(orderVO);
 		String delivery = orderVO.getDeliveryId();
 		OrderVO order = orderService.selectOrder(delivery);
 		ModelAndView mav = new ModelAndView(viewName);

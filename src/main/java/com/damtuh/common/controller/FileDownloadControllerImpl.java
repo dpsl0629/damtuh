@@ -36,7 +36,7 @@ public class FileDownloadControllerImpl implements FileDownloadController {
 
 		byte[] imgByte = jpegOutputStream.toByteArray();
 
-		response.setHeader("Cache-Control", "no-store");
+		
 		response.setHeader("Pragma", "no-cache");
 		response.setDateHeader("Expires", 0);
 		response.setContentType("image/jpeg");

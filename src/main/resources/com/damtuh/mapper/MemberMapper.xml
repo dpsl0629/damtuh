@@ -32,7 +32,6 @@
 		<result property="customerId" column="customerId" />
 		<result property="productId" column="productId" />
 		<result property="productImage" column="productImage" />
-		<result property="productImage" column="productImage" />
 		<result property="productName" column="productName" />
 		<result property="quantity" column="quantity" />
 		<result property="delivery" column="delivery" />
