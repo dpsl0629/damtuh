@@ -71,14 +71,6 @@ fieldset, blockquote, iframe, button {
 	border: none;
 }
 
-i, em, u, cite {
-	font-style: normal;
-}
-
-strong, em, b {
-	font-weight: normal;
-}
-
 a {
 	color: #555;
 	text-decoration: none;

@@ -38,10 +38,7 @@
 											<div class="item-box">
 												<a href="${list.productId }" class="move">
 													<div class="img-box">
-														<img class="item-img"
-															src="${contextPath}/thumbnails.do?fileName=${list.fileName}"
-															alt="상품 사진"> <a href="#lnk" class="like-ico like"><span
-															class="opt-screen-out">찜하기</span></a>
+														<img class="item-img" src="${contextPath}/thumbnails.do?fileName=${list.fileName}" alt="상품 사진"> 
 													</div>
 												</a>
 												<div class="txt-box">
@@ -76,14 +73,10 @@
 											<div class="img-box">
 												<a href="#lnk"><img class="item-img"
 													src="${contextPath}/thumbnails.do?fileName=${list.fileName}"></a>
-												<a href="#lnk" class="like like-ico"></a>
 											</div>
 											<div class="txt-box">
 												<p class="title">
 													<c:out value="${list.productName}" />
-												</p>
-												<p class="title">
-													<c:out value="${list.productId}" />
 												</p>
 												<p class="price">
 													<span class="bold"><fmt:formatNumber type="number"

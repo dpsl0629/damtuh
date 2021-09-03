@@ -5,19 +5,39 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller("companyController")
-@EnableAspectJAutoProxy
 @RequestMapping("/company/*")
-public interface CompanyController {
+public class CompanyController {
 
-	public ModelAndView damtuh(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	@RequestMapping(value = "/damtuh", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView damtuh(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 
-	public ModelAndView history(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	@RequestMapping(value = "/history", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView history(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 
-	public ModelAndView ci(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	@RequestMapping(value = "/ci", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView ci(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 
-	public ModelAndView ideology(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	@RequestMapping(value = "/ideology", method = { RequestMethod.POST, RequestMethod.GET })
+	public ModelAndView ideology(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 
 }
