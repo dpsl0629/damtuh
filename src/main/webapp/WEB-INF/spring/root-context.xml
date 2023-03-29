@@ -17,6 +17,12 @@
 		<property name="password" value="damtuh"></property>
 	</bean>
 
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2"></property>
+	</bean>
+
 	<!-- HikariCP configuration -->
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 			<constructor-arg ref="hikariConfig"/>
@@ -35,7 +41,7 @@
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
       <property name="username" value="dpsl0629@gmail.com" />
-      <property name="password" value="wcouxbbsrselplxx" />
+      <property name="password" value="s" />
     
 
       <!-- email 요청시는 SMTP -->
