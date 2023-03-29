@@ -31,7 +31,7 @@
 	<insert id="insert">
 		<selectKey keyProperty="bno" order="BEFORE"
 			resultType="long">
-			select seq_notice.nextval from dual
+			SELECT ISNULL(MAX(bno),0)+1 FROM tbl_notice
 		</selectKey>
 		insert into tbl_notice (bno, title, content, attach, hits)
 		values (${bno}, #{title}, #{content}, 0, 0)
@@ -67,20 +67,10 @@
 			select 
 				bno, title, content, attach, writedate, hits
 			from
-				(
-				select /*+INDEX_DESC(tbl_notice pk_notice) */
-					rownum rn, bno, title, content, attach, writedate, hits
-				from
-					tbl_notice
-				where 
+				tbl_notice
 		]]>
 		<include refid="criteria"></include>
-	
-	<![CDATA[
-		rownum <= #{pageNum} * #{amount}
-		)
-		where rn > (#{pageNum} -1 ) * #{amount}
-	]]>
+		limit #{pageNum}, #{amount}
 	</select>
 
 
