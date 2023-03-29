@@ -33,7 +33,6 @@ public class ProductController {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		List<ProductVO> productList = service.productList();
-		log.info(productList.get(0));
 		// log.info(productImageList.get(0));
 		mav.addObject("list", productList);
 		return mav;

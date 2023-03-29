@@ -11,12 +11,12 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-			<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
-		<property name="username" value="c##damtuh"></property>
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+			<property name="jdbcUrl" value="jdbc:mariadb://localhost:3306/damtuh"></property>
+		<property name="username" value="damtuh"></property>
 		<property name="password" value="damtuh"></property>
 	</bean>
-	
+
 	<!-- HikariCP configuration -->
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 			<constructor-arg ref="hikariConfig"/>
@@ -35,7 +35,7 @@
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
       <property name="username" value="dpsl0629@gmail.com" />
-      <property name="password" value="비밀번호" />
+      <property name="password" value="wcouxbbsrselplxx" />
     
 
       <!-- email 요청시는 SMTP -->

@@ -21,7 +21,7 @@
 	</resultMap>
 
 	<resultMap type="com.damtuh.member.vo.AuthVO" id="authMap">
-		<result property="userid" column="userid" />
+		<result property="userId" column="userid" />
 		<result property="auth" column="auth" />
 	</resultMap>
 
@@ -81,10 +81,14 @@
 	</select>
 
 	<insert id="join">
-		insert into tbl_member (numberid, name, id, pw,
+		<selectKey keyProperty="numberId" order="BEFORE"
+				   resultType="long">
+			SELECT ISNULL(MAX(numberId),0)+1 FROM tbl_member
+		</selectKey>
+		insert into tbl_member (numberId, name, id, pw,
 		email, zipcode, address1, address2, phone, birth, joindate, enabled)
-		values (seq_member.nextval, #{name}, #{id}, #{pw} , #{email},
-		#{zipcode}, #{address1}, #{address2}, #{phone}, #{birth}, sysdate,
+		values (#{numberId}, #{name}, #{id}, #{pw} , #{email},
+		#{zipcode}, #{address1}, #{address2}, #{phone}, #{birth}, now(),
 		'1')
 	</insert>
 
