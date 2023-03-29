@@ -15,9 +15,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-@Service
+@Service("BoardService")
 @AllArgsConstructor
-public class SupportServiceImpl implements SupportService {
+public class BoardServiceServiceImpl implements BoardService {
 
 	private SupportDAO supportDao;
 

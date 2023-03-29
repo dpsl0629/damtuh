@@ -11,7 +11,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<beans:bean id="customLoginSuccess" class="com.damtuh.security.CustomLoginSuccessHandler">
 		<beans:property name="targetUrlParameter" value="loginRedirect"/>
 		<beans:property name="useReferer" value="false"></beans:property>
-		<beans:property name="defaultUrl" value="/main/main.do"></beans:property>
+		<beans:property name="defaultUrl" value="/damtuh"></beans:property>
 	</beans:bean>
 	<beans:bean id="customLoginFail" class="com.damtuh.security.CustomLoginFailHandler"></beans:bean>
 	<beans:bean id="customAccessFail" class="com.damtuh.security.AccessFailHandler"></beans:bean>
@@ -31,12 +31,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		
 		<form-login
 		login-page="/member/loginPage"
-		default-target-url="/main/main"
+		default-target-url="/damtuh"
 		authentication-failure-handler-ref="customLoginFail"
 		authentication-success-handler-ref="customLoginSuccess"
 		authentication-failure-url="/member/loginPage"
 		always-use-default-target="true" /> 
-		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/main/main"
+		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/main"
 		delete-cookies="remember-me, JSESSIONID"/>
 		
 		<remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>

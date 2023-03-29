@@ -62,7 +62,7 @@
 							<span class="ico"></span>
 						</button>
 						<h1 class="header-logo">
-							<a href="${contextPath }/main/main.do" class="header-logo-link"><img
+							<a href="${contextPath }/damtuh" class="header-logo-link"><img
 								src="${contextPath }/resources/images/layout/header-logo.png"
 								title="헤더 로고"><span class="opt-screen-out"></span></a>
 						</h1>

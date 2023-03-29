@@ -11,7 +11,7 @@ import com.damtuh.member.vo.MemberVO;
 import com.damtuh.member.vo.OrderVO;
 import lombok.AllArgsConstructor;
 
-@Service
+@Service("MemberService")
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 

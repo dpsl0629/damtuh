@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.damtuh.member.service.MemberService;
 import com.damtuh.member.vo.CommentOrderVO;
@@ -39,19 +37,13 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/member/*")
 public class MemberController {
 
-	@Autowired
+	@Resource(name="MemberService")
 	private MemberService memberService;
 
-	@Autowired
-	private MemberVO memberVO;
-
-	@Autowired
-	private OrderVO orderVO;
-
-	@Autowired
+	@Resource
 	private JavaMailSender mailSender;
 
-	@Autowired(required = false)
+	@Resource
 	private BCryptPasswordEncoder pwdEncoder;
 
 	// 로그인
@@ -59,13 +51,13 @@ public class MemberController {
 	public String loginPage(HttpServletRequest request, HttpServletResponse response, Model model,
 			Authentication authentication) throws Exception {
 		log.info("로그인 페이지");
-		return "member/loginPage";
+		return "/member/loginPage";
 	}
 
 	// 회원가입
 	@RequestMapping(value = "/join", method = { RequestMethod.POST, RequestMethod.GET })
 	public String join(Locale locale, Model model) throws Exception {
-		return "member/join";
+		return "/member/join";
 	}
 
 	// 아이디 중복체크
@@ -97,7 +89,6 @@ public class MemberController {
 	@RequestMapping(value = "/emailCheck", method = RequestMethod.GET)
 	public String mailCheckGET(String email) throws Exception {
 
-		/* 뷰(View)로부터 넘어온 데이터 확인 */
 		log.info("이메일 데이터 전송 확인");
 		log.info("인증번호 : " + email);
 
@@ -128,23 +119,19 @@ public class MemberController {
 		String num = Integer.toString(checkNum);
 
 		return num;
-
 	}
 
 	// 회원가입 확인
 	@RequestMapping(value = "/joinConfirm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView joinConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
+	public String joinConfirm(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		log.info(vo.getPw());
-		log.info(pwdEncoder.encode(vo.getPw()));
-		vo.setPw(pwdEncoder.encode(vo.getPw()));
-		memberService.join(vo);
-		memberService.auth(vo);
-		mav.setViewName(viewName);
-		mav.addObject("memberVO", memberVO);
-		return mav;
+		log.info(memberVO.getPw());
+		log.info(pwdEncoder.encode(memberVO.getPw()));
+		memberVO.setPw(pwdEncoder.encode(memberVO.getPw()));
+		memberService.join(memberVO);
+		memberService.auth(memberVO);
+		model.addAttribute("memberVO", memberVO);
+		return "/member/joinConfirm";
 	}
 
 	// 마이페이지
@@ -167,16 +154,14 @@ public class MemberController {
 
 	// 수정 비밀번호 확인페이지
 	@RequestMapping(value = "/modifyCheckForm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView modifyCheckForm(HttpServletRequest request, HttpServletResponse response, Model model)
+	public String modifyCheckForm(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+		return "/member/modifyCheckForm";
 	}
 
 	// 수정 비밀번호 확인 페이지
 	@RequestMapping(value = "/modifyCheck", method = { RequestMethod.POST, RequestMethod.GET })
-	public String modifyCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String modifyCheck(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		// MemberVO memberVO = memberService.modifyCheck(userDetails.getUsername());
@@ -199,7 +184,7 @@ public class MemberController {
 		if (check) {
 			MemberVO memberVO = memberService.read(userDetails.getUsername());
 			model.addAttribute("memberVO", memberVO);
-			return "member/memberModify";
+			return "/member/memberModify";
 		} else {
 			return "redirect:/member/modifyCheckForm";
 		}
@@ -207,7 +192,7 @@ public class MemberController {
 
 	// 수정 확인
 	@RequestMapping(value = "/modifyConfirm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView modifyConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
+	public String modifyConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -215,15 +200,13 @@ public class MemberController {
 		log.info("modify : " + pwdEncoder.encode(vo.getPw()));
 		vo.setPw(pwdEncoder.encode(vo.getPw()));
 		memberService.modify(vo);
-		return mav;
+		return "/member/modifyConfirm";
 	}
 
 	// 삭제 비밀번호 확인 페이지
 	@RequestMapping(value = "/deleteCheckForm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+	public String memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "/member/deleteCheckForm";
 	}
 
 	// 삭제 확인 페이지
@@ -243,7 +226,7 @@ public class MemberController {
 			memberService.delete2(userDetails.getUsername());
 			memberService.deleteProductOrder(userDetails.getUsername());
 			SecurityContextHolder.clearContext();
-			return "member/deleteConfirm";
+			return "/member/deleteConfirm";
 		} else {
 			return "redirect:/member/deleteCheckForm";
 		}
@@ -251,9 +234,7 @@ public class MemberController {
 
 	// 제품 코멘트 등록 페이지
 	@RequestMapping(value = "/productCommentForm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView productCommentForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+	public String productCommentForm(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		String id = userDetails.getUsername();
@@ -263,32 +244,27 @@ public class MemberController {
 		OrderVO orderDetail = memberService.readOrderDetail(orderVO);
 		log.info("아이디 " + id);
 		log.info("딜리버리아이디 " + deliveryId);
-		mav.setViewName(viewName);
-		mav.addObject("orderDetail", orderDetail);
-		return mav;
+		model.addAttribute("orderDetail", orderDetail);
+		return "/member/productCommentForm";
 	}
 
 	// 제품 코멘트 작성 확인 페이지
 	@ResponseBody
 	@RequestMapping(value = "/commentConfirm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response)
+	public String commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		vo.setUserId(userDetails.getUsername());
 		memberService.comment(vo);
 		log.info(vo);
-		return mav;
+		return "/member/commentConfirm";
 	}
 
 	// 작성한 코멘트 확인 페이지
 	@RequestMapping(value = "/productCommentConfirm", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView productCommentConfirm(HttpServletRequest request, HttpServletResponse response)
+	public String productCommentConfirm(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		String deliveryId = request.getParameter("deliveryId");
@@ -296,9 +272,8 @@ public class MemberController {
 		orderVO.setCustomerId(userDetails.getUsername());
 		orderVO.setDeliveryId(deliveryId);
 		OrderVO orderDetail = memberService.readOrderDetail(orderVO);
-		mav.addObject("order", order);
-		mav.addObject("orderDetail", orderDetail);
-		return mav;
+		model.addAttribute("order", order);
+		model.addAttribute("orderDetail", orderDetail);
+		return "/member/productCommentConfirm";
 	}
-
 }

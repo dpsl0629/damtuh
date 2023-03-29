@@ -13,10 +13,10 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="main/main" extends="baseLayout">
+	<definition name="/damtuh/index" extends="baseLayout">
 		<put-attribute name="title" value="쇼핑몰 메인페이지" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/main/main.jsp" />
+			value="/WEB-INF/views/damtuh/index.jsp" />
 	</definition>
 </tiles-definitions>
 

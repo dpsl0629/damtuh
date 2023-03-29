@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-@Service
+@Service("ProductService")
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
 

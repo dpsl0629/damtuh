@@ -7,7 +7,7 @@ import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 
-public interface SupportService {
+public interface BoardService {
 
 	public NoticeBoardVO get(Long bno);
 

@@ -13,10 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class InfoController {
 
 	@RequestMapping(value = "/kind", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView kind(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+	public String kind(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "/info/kind";
 	}
 
 	@RequestMapping(value = "/origin", method = { RequestMethod.POST, RequestMethod.GET })

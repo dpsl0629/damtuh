@@ -15,6 +15,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.damtuh.support.notice.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -23,6 +25,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,7 +39,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.damtuh.support.notice.service.SupportService;
 import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
@@ -50,21 +52,19 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class SupportController {
 
 	@Autowired
-	private SupportService service;
+	private BoardService boardService;
 
 	@Autowired
 	private NoticeBoardVO noticeBoardVO;
 
 	@RequestMapping(value = "/noticeList", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView notice(Criteria cri, HttpServletRequest request, HttpServletResponse response)
+	public String notice(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		List<NoticeBoardVO> noticeList = service.getList(cri);
-		int total = service.getTotal(cri);
-		mav.addObject("list", noticeList);
-		mav.addObject("pageMaker", new PageDTO(cri, total));
-		return mav;
+		List<NoticeBoardVO> noticeList = boardService.getList(cri);
+		int total = boardService.getTotal(cri);
+		model.addAttribute("list", noticeList);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		return "support/noticeList";
 	}
 
 	@RequestMapping(value = "/noticeView", method = { RequestMethod.POST, RequestMethod.GET })
@@ -76,8 +76,8 @@ public class SupportController {
 		response.setHeader("Cache-Control", "no-cache");
 		response.addHeader("Cache-Control", "No-store");
 		response.setDateHeader("Expires", 1L);
-		noticeBoardVO = service.get(bno);
-		List<AttachFileDTO> attachList = service.findByBno(bno);
+		noticeBoardVO = boardService.get(bno);
+		List<AttachFileDTO> attachList = boardService.findByBno(bno);
 		log.info(attachList);
 		mav.setViewName(viewName);
 		mav.addObject("article", noticeBoardVO);
@@ -101,7 +101,7 @@ public class SupportController {
 			vo.getAttachList().forEach(attach -> log.info(attach));
 		}
 		log.info(vo.getBno());
-		service.insert(vo);
+		boardService.insert(vo);
 		return "redirect:/support/noticeList";
 	}
 
@@ -109,7 +109,7 @@ public class SupportController {
 	public ModelAndView modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
-		noticeBoardVO = service.get(bno);
+		noticeBoardVO = boardService.get(bno);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("notice", noticeBoardVO);
 		mav.addObject("cri", cri);
@@ -120,15 +120,15 @@ public class SupportController {
 	public String modifyConfirm(@ModelAttribute("cri") Criteria cri, @ModelAttribute("vo") NoticeBoardVO vo,
 			HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		log.info(vo);
-		service.deleteAttach(vo.getBno());
-		boolean modifyResult = service.updateNotice(vo) == 1;
-		service.updateAttachNone(vo.getBno());
+		boardService.deleteAttach(vo.getBno());
+		boolean modifyResult = boardService.updateNotice(vo) == 1;
+		boardService.updateAttachNone(vo.getBno());
 
 		if (modifyResult && vo.getAttachList() != null && vo.getAttachList().size() > 0) {
 			vo.getAttachList().forEach(attach -> {
 				attach.setBno(vo.getBno());
-				service.insertAttach(attach);
-				service.updateAttachFile(vo.getBno());
+				boardService.insertAttach(attach);
+				boardService.updateAttachFile(vo.getBno());
 			});
 		}
 		log.info("cri " + cri);
@@ -140,7 +140,7 @@ public class SupportController {
 	@GetMapping(value = "/deleteConfirm")
 	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes rttr) throws Exception {
-		service.deleteNotice(bno);
+		boardService.deleteNotice(bno);
 		return "redirect:/support/noticeList";
 	}
 
