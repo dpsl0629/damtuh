@@ -58,8 +58,7 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/orderConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView orderConfirm(OrderVO orderVO, OrderDetailVO orderDetailVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
+	public String orderConfirm(OrderVO orderVO, OrderDetailVO orderDetailVO, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		log.info(request.getParameter("ordererName"));
 		log.info(request.getParameter("deliveryNum"));
 		Calendar cal = Calendar.getInstance();
@@ -80,9 +79,8 @@ public class OrderController {
 		orderService.insertOrder(orderVO);
 		String delivery = orderVO.getDeliveryId();
 		OrderVO order = orderService.selectOrder(delivery);
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("order", order);
-		return mav;
+		model.addAttribute("order", order);
+		return "/damtuh/order/orderConfirm";
 	}
 
 }

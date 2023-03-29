@@ -10,6 +10,7 @@ import com.damtuh.product.vo.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,27 +31,23 @@ public class ProductController {
 	ProductVO productVO;
 
 	@RequestMapping(value = "/productList.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView productList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+	public String productList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		List<ProductVO> productList = service.productList();
 		// log.info(productImageList.get(0));
-		mav.addObject("list", productList);
-		return mav;
+		model.addAttribute("list", productList);
+		return "/damtuh/product/productList";
 	}
 
 	@RequestMapping(value = "/productDetail.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView productDetail(@RequestParam("productId") int productId, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+	public String productDetail(@RequestParam("productId") int productId, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws Exception {
 		ProductVO productDetail = service.productDetailList(productId);
 		// log.info(productImageList.get(0));
 		List<CommentVO> commentList = service.readComment(productId);
 		log.info(productDetail);
-		mav.addObject("product", productDetail);
-		mav.addObject("commentList", commentList);
-		return mav;
+		model.addAttribute("product", productDetail);
+		model.addAttribute("commentList", commentList);
+		return "/damtuh/product/productDetail";
 	}
 
 	@RequestMapping(value = "/likeCheck.do", method = { RequestMethod.POST, RequestMethod.GET })
@@ -64,5 +61,4 @@ public class ProductController {
 		service.likeCheck(productVO);
 		return "success";
 	}
-
 }

@@ -54,9 +54,6 @@ public class SupportController {
 	@Autowired
 	private BoardService boardService;
 
-	@Autowired
-	private NoticeBoardVO noticeBoardVO;
-
 	@RequestMapping(value = "/noticeList.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String notice(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
@@ -64,14 +61,12 @@ public class SupportController {
 		int total = boardService.getTotal(cri);
 		model.addAttribute("list", noticeList);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		return "support/noticeList";
+		return "/damtuh/support/noticeList";
 	}
 
 	@RequestMapping(value = "/noticeView.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+	public String noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,
+			HttpServletRequest request, HttpServletResponse response, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO, Model model) throws Exception {
 		response.setHeader("pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.addHeader("Cache-Control", "No-store");
@@ -79,19 +74,16 @@ public class SupportController {
 		noticeBoardVO = boardService.get(bno);
 		List<AttachFileDTO> attachList = boardService.findByBno(bno);
 		log.info(attachList);
-		mav.setViewName(viewName);
-		mav.addObject("article", noticeBoardVO);
-		mav.addObject("attachList", attachList);
-		return mav;
+		model.addAttribute("article", noticeBoardVO);
+		model.addAttribute("attachList", attachList);
+		return "/damtuh/support/noticeView";
 	}
 
 	@RequestMapping(value = "/noticeWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public String noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws Exception {
 		log.info("noticeWrite");
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+		return "/damtuh/support/noticeWrite";
 	}
 
 	@PostMapping(value = "/noticeConfirm.do")
@@ -106,14 +98,12 @@ public class SupportController {
 	}
 
 	@RequestMapping(value = "/modifyWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
+	public String modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,
+			HttpServletRequest request, HttpServletResponse response, Model model, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO) throws Exception {
 		noticeBoardVO = boardService.get(bno);
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("notice", noticeBoardVO);
-		mav.addObject("cri", cri);
-		return mav;
+		model.addAttribute("notice", noticeBoardVO);
+		model.addAttribute("cri", cri);
+		return "/damtuh/support/modifyWrite";
 	}
 
 	@GetMapping(value = "/modifyConfirm.do")
