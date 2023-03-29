@@ -16,20 +16,20 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="product/productList" extends="subLayout">
+	<definition name="/damtuh/product/productList" extends="subLayout">
 		<put-attribute name="title" value="제품구매" />
 		<put-attribute name="subtit" value="제품구매" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/product/productList.jsp" />
+			value="/WEB-INF/views/damtuh/product/productList.jsp" />
 	</definition>
 
-	<definition name="product/productDetail" extends="subLayout">
+	<definition name="/damtuh/product/productDetail" extends="subLayout">
 		<put-attribute name="title" value="제품구매" />
 		<put-attribute name="subtit" value="제품구매" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/product/productDetail.jsp" />
+			value="/WEB-INF/views/damtuh/product/productDetail.jsp" />
 	</definition>
 
 

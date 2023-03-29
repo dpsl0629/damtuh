@@ -2,15 +2,14 @@ package com.damtuh.member.dao;
 
 import java.util.List;
 
+import com.damtuh.member.vo.CommentOrderVO;
+import com.damtuh.member.vo.CommentVO;
+import com.damtuh.member.vo.MemberVO;
+import com.damtuh.order.vo.OrderVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-
-import com.damtuh.member.vo.CommentOrderVO;
-import com.damtuh.member.vo.CommentVO;
-import com.damtuh.member.vo.MemberVO;
-import com.damtuh.member.vo.OrderVO;
 
 @Repository("MemberDAOImpl")
 public class MemberDAOImpl implements MemberDAO {

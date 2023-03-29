@@ -1,12 +1,12 @@
 package com.damtuh.member.dao;
 
 import java.util.List;
-import org.springframework.dao.DataAccessException;
 
 import com.damtuh.member.vo.CommentOrderVO;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
-import com.damtuh.member.vo.OrderVO;
+import com.damtuh.order.vo.OrderVO;
+import org.springframework.dao.DataAccessException;
 
 public interface MemberDAO {
 

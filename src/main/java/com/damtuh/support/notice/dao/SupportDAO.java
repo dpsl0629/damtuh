@@ -2,12 +2,11 @@ package com.damtuh.support.notice.dao;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
-
 import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+import org.springframework.dao.DataAccessException;
 
 public interface SupportDAO {
 	public List<NoticeBoardVO> view(Criteria cri) throws DataAccessException;

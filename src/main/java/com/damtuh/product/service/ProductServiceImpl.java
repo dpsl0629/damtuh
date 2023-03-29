@@ -2,11 +2,11 @@ package com.damtuh.product.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.dao.ProductDAO;
 import com.damtuh.product.vo.ProductVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 

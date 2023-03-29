@@ -1,11 +1,11 @@
 package com.damtuh.support.notice.service;
 
-import java.util.List;
-
 import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+
+import java.util.List;
 
 public interface BoardService {
 

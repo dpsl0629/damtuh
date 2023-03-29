@@ -50,16 +50,10 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>appServlet</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Hello</display-name>
-    <servlet-name>Hello</servlet-name>
-    <servlet-class>com.damtuh.order.controller.Hello</servlet-class>
-  </servlet>
   <servlet-mapping>
-    <servlet-name>Hello</servlet-name>
-    <url-pattern>/Hello</url-pattern>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>

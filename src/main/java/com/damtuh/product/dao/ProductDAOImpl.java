@@ -2,12 +2,12 @@ package com.damtuh.product.dao;
 
 import java.util.List;
 
+import com.damtuh.member.vo.CommentVO;
+import com.damtuh.product.vo.ProductVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-import com.damtuh.member.vo.CommentVO;
-import com.damtuh.product.vo.ProductVO;
 
 import lombok.extern.log4j.Log4j;
 

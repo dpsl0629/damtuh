@@ -3,12 +3,11 @@ package com.damtuh.security.vo;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import com.damtuh.member.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-
-import com.damtuh.member.vo.MemberVO;
 
 public class CustomUser extends User {
 

@@ -1,9 +1,10 @@
 package com.damtuh.mapper;
 
-import java.util.List;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
-import com.damtuh.member.vo.OrderVO;
+import com.damtuh.order.vo.OrderVO;
+
+import java.util.List;
 
 public interface MemberMapper {
 

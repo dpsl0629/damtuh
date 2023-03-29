@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.damtuh.member.service.MemberService;
+import com.damtuh.member.vo.CommentOrderVO;
+import com.damtuh.member.vo.CommentVO;
+import com.damtuh.member.vo.MemberVO;
+import com.damtuh.order.vo.OrderVO;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -23,18 +27,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import com.damtuh.member.service.MemberService;
-import com.damtuh.member.vo.CommentOrderVO;
-import com.damtuh.member.vo.CommentVO;
-import com.damtuh.member.vo.MemberVO;
-import com.damtuh.member.vo.OrderVO;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller("memberController")
 @Log4j
 @EnableAspectJAutoProxy
-@RequestMapping("/member/*")
+@RequestMapping(value="/damtuh/member/*")
 public class MemberController {
 
 	@Resource(name="MemberService")
@@ -47,21 +46,21 @@ public class MemberController {
 	private BCryptPasswordEncoder pwdEncoder;
 
 	// 로그인
-	@RequestMapping(value = "/loginPage", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/loginPage.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String loginPage(HttpServletRequest request, HttpServletResponse response, Model model,
 			Authentication authentication) throws Exception {
 		log.info("로그인 페이지");
-		return "/member/loginPage";
+		return "/damtuh/member/loginPage";
 	}
 
 	// 회원가입
-	@RequestMapping(value = "/join", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/join.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String join(Locale locale, Model model) throws Exception {
 		return "/member/join";
 	}
 
 	// 아이디 중복체크
-	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberIdChk.do", method = RequestMethod.POST)
 	public @ResponseBody String memberIdChkPOST(@RequestParam(required = false, value = "memberId") String memberId)
 			throws Exception {
 
@@ -86,7 +85,7 @@ public class MemberController {
 
 	// 이메일 인증번호
 	@ResponseBody
-	@RequestMapping(value = "/emailCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/emailCheck.do", method = RequestMethod.GET)
 	public String mailCheckGET(String email) throws Exception {
 
 		log.info("이메일 데이터 전송 확인");
@@ -122,7 +121,7 @@ public class MemberController {
 	}
 
 	// 회원가입 확인
-	@RequestMapping(value = "/joinConfirm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/joinConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String joinConfirm(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
 		log.info(memberVO.getPw());
@@ -135,7 +134,7 @@ public class MemberController {
 	}
 
 	// 마이페이지
-	@RequestMapping(value = "/myPage", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/myPage.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response, Locale locale, Model model)
 			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
@@ -153,14 +152,14 @@ public class MemberController {
 	}
 
 	// 수정 비밀번호 확인페이지
-	@RequestMapping(value = "/modifyCheckForm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/modifyCheckForm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String modifyCheckForm(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
 		return "/member/modifyCheckForm";
 	}
 
 	// 수정 비밀번호 확인 페이지
-	@RequestMapping(value = "/modifyCheck", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/modifyCheck.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String modifyCheck(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
@@ -171,7 +170,7 @@ public class MemberController {
 	}
 
 	// 회원정보 수정 폼
-	@RequestMapping(value = "/memberModify", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/memberModify.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String memberModify(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
@@ -191,7 +190,7 @@ public class MemberController {
 	}
 
 	// 수정 확인
-	@RequestMapping(value = "/modifyConfirm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/modifyConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String modifyConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
@@ -204,13 +203,13 @@ public class MemberController {
 	}
 
 	// 삭제 비밀번호 확인 페이지
-	@RequestMapping(value = "/deleteCheckForm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/deleteCheckForm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return "/member/deleteCheckForm";
 	}
 
 	// 삭제 확인 페이지
-	@RequestMapping(value = "/deleteConfirm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/deleteConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String deleteConfirm(HttpServletRequest request, HttpServletResponse response, Model model,
 			HttpSession session) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -233,7 +232,7 @@ public class MemberController {
 	}
 
 	// 제품 코멘트 등록 페이지
-	@RequestMapping(value = "/productCommentForm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productCommentForm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String productCommentForm(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
@@ -250,7 +249,7 @@ public class MemberController {
 
 	// 제품 코멘트 작성 확인 페이지
 	@ResponseBody
-	@RequestMapping(value = "/commentConfirm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/commentConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -262,7 +261,7 @@ public class MemberController {
 	}
 
 	// 작성한 코멘트 확인 페이지
-	@RequestMapping(value = "/productCommentConfirm", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productCommentConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String productCommentConfirm(@ModelAttribute("orderVO") OrderVO orderVO, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

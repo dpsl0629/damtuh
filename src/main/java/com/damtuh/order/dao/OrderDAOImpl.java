@@ -1,9 +1,9 @@
 package com.damtuh.order.dao;
 
+import com.damtuh.order.vo.OrderVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.damtuh.order.vo.OrderVO;
 
 @Repository("OrderDAO")
 public class OrderDAOImpl implements OrderDAO {

@@ -16,36 +16,36 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="company/damtuh" extends="subLayout">
+	<definition name="/damtuh/company/damtuh" extends="subLayout">
 		<put-attribute name="title" value="인사말" />
 		<put-attribute name="subtit" value="회사소개" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/company/damtuh.jsp" />
+			value="/WEB-INF/views/damtuh/company/damtuh.jsp" />
 	</definition>
 
-	<definition name="company/history" extends="subLayout">
+	<definition name="/damtuh/company/history" extends="subLayout">
 		<put-attribute name="title" value="회사연혁" />
 		<put-attribute name="subtit" value="회사연혁" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/company/history.jsp" />
+			value="/WEB-INF/views/damtuh/company/history.jsp" />
 	</definition>
 
-	<definition name="company/ci" extends="subLayout">
+	<definition name="/damtuh/company/ci" extends="subLayout">
 		<put-attribute name="title" value="ci" />
 		<put-attribute name="subtit" value="ci" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/company/ci.jsp" />
+			value="/WEB-INF/views/damtuh/company/ci.jsp" />
 	</definition>
 
-	<definition name="company/ideology" extends="subLayout">
+	<definition name="/damtuh/company/ideology" extends="subLayout">
 		<put-attribute name="title" value="경영이념" />
 		<put-attribute name="subtit" value="경영이념" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/company/ideology.jsp" />
+			value="/WEB-INF/views/damtuh/company/ideology.jsp" />
 	</definition>
 
 </tiles-definitions>

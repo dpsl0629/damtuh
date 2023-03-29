@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.damtuh.support.notice.service.BoardService;
+import com.damtuh.support.notice.vo.AttachFileDTO;
+import com.damtuh.support.notice.vo.Criteria;
+import com.damtuh.support.notice.vo.NoticeBoardVO;
+import com.damtuh.support.notice.vo.PageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -39,15 +43,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.damtuh.support.notice.vo.AttachFileDTO;
-import com.damtuh.support.notice.vo.Criteria;
-import com.damtuh.support.notice.vo.NoticeBoardVO;
-import com.damtuh.support.notice.vo.PageDTO;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller("supportController")
-@RequestMapping("/support/*")
+@RequestMapping("/damtuh/support/*")
 @Log4j
 public class SupportController {
 
@@ -57,7 +57,7 @@ public class SupportController {
 	@Autowired
 	private NoticeBoardVO noticeBoardVO;
 
-	@RequestMapping(value = "/noticeList", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/noticeList.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String notice(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model)
 			throws Exception {
 		List<NoticeBoardVO> noticeList = boardService.getList(cri);
@@ -67,7 +67,7 @@ public class SupportController {
 		return "support/noticeList";
 	}
 
-	@RequestMapping(value = "/noticeView", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/noticeView.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
@@ -85,7 +85,7 @@ public class SupportController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/noticeWrite", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/noticeWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		log.info("noticeWrite");
@@ -94,7 +94,7 @@ public class SupportController {
 		return mav;
 	}
 
-	@PostMapping(value = "/noticeConfirm")
+	@PostMapping(value = "/noticeConfirm.do")
 	public String noticeConfirm(NoticeBoardVO vo, RedirectAttributes rttr) throws Exception {
 		log.info(vo);
 		if (vo.getAttachList() != null) {
@@ -105,7 +105,7 @@ public class SupportController {
 		return "redirect:/support/noticeList";
 	}
 
-	@RequestMapping(value = "/modifyWrite", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/modifyWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
@@ -116,7 +116,7 @@ public class SupportController {
 		return mav;
 	}
 
-	@GetMapping(value = "/modifyConfirm")
+	@GetMapping(value = "/modifyConfirm.do")
 	public String modifyConfirm(@ModelAttribute("cri") Criteria cri, @ModelAttribute("vo") NoticeBoardVO vo,
 			HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		log.info(vo);
@@ -137,14 +137,14 @@ public class SupportController {
 		return "redirect:/support/noticeList";
 	}
 
-	@GetMapping(value = "/deleteConfirm")
+	@GetMapping(value = "/deleteConfirm.do")
 	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response,
 			RedirectAttributes rttr) throws Exception {
 		boardService.deleteNotice(bno);
 		return "redirect:/support/noticeList";
 	}
 
-	@PostMapping(value = "/upload")
+	@PostMapping(value = "/upload.do")
 	@ResponseBody
 	public ResponseEntity<List<AttachFileDTO>> upload(MultipartFile[] uploadFile) throws Exception {
 		log.info("uploadAjax");
@@ -224,8 +224,8 @@ public class SupportController {
 		return false;
 	}
 
-	@GetMapping("/display")
 	@ResponseBody
+	@GetMapping("/display.do")
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		log.info("fileName : " + fileName);
 
@@ -246,7 +246,7 @@ public class SupportController {
 		return result;
 	}
 
-	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@GetMapping(value = "/download.do", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	@ResponseBody
 	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName) {
 		log.info("download file : " + fileName);
@@ -288,8 +288,8 @@ public class SupportController {
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
 
-	@PostMapping("/deleteFile")
 	@ResponseBody
+	@PostMapping("/deleteFile.do")
 	public ResponseEntity<String> deleteFile(String fileName, String type) {
 
 		log.info("deleteFile : " + fileName);

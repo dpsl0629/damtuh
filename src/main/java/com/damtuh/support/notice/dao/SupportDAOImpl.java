@@ -2,17 +2,16 @@ package com.damtuh.support.notice.dao;
 
 import java.util.List;
 
+import com.damtuh.support.notice.vo.AttachFileDTO;
+import com.damtuh.support.notice.vo.BoardAttachVO;
+import com.damtuh.support.notice.vo.Criteria;
+import com.damtuh.support.notice.vo.NoticeBoardVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.damtuh.support.notice.vo.AttachFileDTO;
-import com.damtuh.support.notice.vo.BoardAttachVO;
-import com.damtuh.support.notice.vo.Criteria;
-import com.damtuh.support.notice.vo.NoticeBoardVO;
 
 @Repository("SupportDAO")
 @Transactional(propagation = Propagation.REQUIRED)

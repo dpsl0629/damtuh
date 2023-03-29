@@ -16,104 +16,104 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="member/loginPage" extends="subLayout">
+	<definition name="/damtuh/member/loginPage" extends="subLayout">
 		<put-attribute name="title" value="로그인" />
 		<put-attribute name="subtit" value="로그인" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/loginPage.jsp" />
+			value="/WEB-INF/views/damtuh/member/loginPage.jsp" />
 	</definition>
 
-	<definition name="member/join" extends="subLayout">
+	<definition name="/damtuh/member/join" extends="subLayout">
 		<put-attribute name="title" value="회원가입" />
 		<put-attribute name="subtit" value="회원가입" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/join.jsp" />
+			value="/WEB-INF/views/damtuh/member/join.jsp" />
 	</definition>
 
-	<definition name="member/myPage" extends="subLayout">
+	<definition name="/damtuh/member/myPage" extends="subLayout">
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="subtit" value="마이페이지" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/myPage.jsp" />
+			value="/WEB-INF/views/damtuh/member/myPage.jsp" />
 	</definition>
 
-	<definition name="member/joinConfirm" extends="subLayout">
+	<definition name="/damtuh/member/joinConfirm" extends="subLayout">
 		<put-attribute name="title" value="회원가입" />
 		<put-attribute name="subtit" value="회원가입" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/joinConfirm.jsp" />
+			value="/WEB-INF/views/damtuh/member/joinConfirm.jsp" />
 	</definition>
 
-	<definition name="member/modifyCheckForm"
+	<definition name="/damtuh/member/modifyCheckForm"
 		extends="subLayout">
 		<put-attribute name="title" value="회원정보 수정" />
 		<put-attribute name="subtit" value="회원정보 수정" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/modifyCheckForm.jsp" />
+			value="/WEB-INF/views/damtuh/member/modifyCheckForm.jsp" />
 	</definition>
 
-	<definition name="member/memberModify" extends="subLayout">
+	<definition name="/damtuh/member/memberModify" extends="subLayout">
 		<put-attribute name="title" value="회원정보 수정" />
 		<put-attribute name="subtit" value="회원정보 수정" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/memberModify.jsp" />
+			value="/WEB-INF/views/damtuh/member/memberModify.jsp" />
 	</definition>
 
-	<definition name="member/modifyConfirm" extends="subLayout">
+	<definition name="/damtuh/member/modifyConfirm" extends="subLayout">
 		<put-attribute name="title" value="회원정보 수정" />
 		<put-attribute name="subtit" value="회원정보 수정" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/modifyConfirm.jsp" />
+			value="/WEB-INF/views/damtuh/member/modifyConfirm.jsp" />
 	</definition>
 
-	<definition name="member/deleteCheckForm"
+	<definition name="/damtuh/member/deleteCheckForm"
 		extends="subLayout">
 		<put-attribute name="title" value="회원탈퇴" />
 		<put-attribute name="subtit" value="회원탈퇴" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/deleteCheckForm.jsp" />
+			value="/WEB-INF/views/damtuh/member/deleteCheckForm.jsp" />
 	</definition>
 
-	<definition name="member/deleteConfirm" extends="subLayout">
+	<definition name="/damtuh/member/deleteConfirm" extends="subLayout">
 		<put-attribute name="title" value="회원탈퇴" />
 		<put-attribute name="subtit" value="회원탈퇴" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/deleteConfirm.jsp" />
+			value="/WEB-INF/views/damtuh/member/deleteConfirm.jsp" />
 	</definition>
 
-	<definition name="member/productCommentForm"
+	<definition name="/damtuh/member/productCommentForm"
 		extends="subLayout">
 		<put-attribute name="title" value="후기작성" />
 		<put-attribute name="subtit" value="후기작성" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/productCommentForm.jsp" />
+			value="/WEB-INF/views/damtuh/member/productCommentForm.jsp" />
 	</definition>
 
-	<definition name="member/commentConfirm" extends="subLayout">
+	<definition name="/damtuh/member/commentConfirm" extends="subLayout">
 		<put-attribute name="title" value="후기작성" />
 		<put-attribute name="subtit" value="후기작성" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/commentConfirm.jsp" />
+			value="/WEB-INF/views/damtuh/member/commentConfirm.jsp" />
 	</definition>
 
-	<definition name="member/productCommentConfirm"
+	<definition name="/damtuh/member/productCommentConfirm"
 		extends="subLayout">
 		<put-attribute name="title" value="후기확인" />
 		<put-attribute name="subtit" value="후기확인" />
 		<put-attribute name="bg" value="bg1" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/member/productCommentConfirm.jsp" />
+			value="/WEB-INF/views/damtuh/member/productCommentConfirm.jsp" />
 	</definition>
 
 

@@ -16,44 +16,44 @@
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="support/noticeList" extends="subLayout">
+	<definition name="/damtuh/support/noticeList" extends="subLayout">
 		<put-attribute name="title" value="담터소식" />
 		<put-attribute name="subtit" value="담터소식" />
 		<put-attribute name="bg" value="bg2" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/support/noticeList.jsp" />
+			value="/WEB-INF/views/damtuh/support/noticeList.jsp" />
 	</definition>
 
-	<definition name="support/noticeView" extends="subLayout">
+	<definition name="/damtuh/support/noticeView" extends="subLayout">
 		<put-attribute name="title" value="담터소식" />
 		<put-attribute name="subtit" value="담터소식" />
 		<put-attribute name="bg" value="bg2" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/support/noticeView.jsp" />
+			value="/WEB-INF/views/damtuh/support/noticeView.jsp" />
 	</definition>
 
-	<definition name="support/noticeWrite" extends="subLayout">
+	<definition name="/damtuh/support/noticeWrite" extends="subLayout">
 		<put-attribute name="title" value="글쓰기" />
 		<put-attribute name="subtit" value="글쓰기" />
 		<put-attribute name="bg" value="bg2" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/support/noticeWrite.jsp" />
+			value="/WEB-INF/views/damtuh/support/noticeWrite.jsp" />
 	</definition>
 
-	<definition name="support/modifyWrite" extends="subLayout">
+	<definition name="/damtuh/support/modifyWrite" extends="subLayout">
 		<put-attribute name="title" value="글 수정하기" />
 		<put-attribute name="subtit" value="글 수정하기" />
 		<put-attribute name="bg" value="bg2" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/support/modifyWrite.jsp" />
+			value="/WEB-INF/views/damtuh/support/modifyWrite.jsp" />
 	</definition>
 
-	<definition name="support/upload" extends="subLayout">
+	<definition name="/damtuh/support/upload" extends="subLayout">
 		<put-attribute name="title" value="글 수정하기" />
 		<put-attribute name="subtit" value="글 수정하기" />
 		<put-attribute name="bg" value="bg2" />
 		<put-attribute name="body"
-			value="/WEB-INF/views/support/modifyWrite.jsp" />
+			value="/WEB-INF/views/damtuh/support/modifyWrite.jsp" />
 	</definition>
 </tiles-definitions>
 

@@ -1,9 +1,10 @@
 package com.damtuh.product.dao;
 
 import java.util.List;
-import org.springframework.dao.DataAccessException;
+
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.vo.ProductVO;
+import org.springframework.dao.DataAccessException;
 
 public interface ProductDAO {
 

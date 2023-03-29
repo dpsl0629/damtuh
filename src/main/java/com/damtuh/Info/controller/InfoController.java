@@ -9,19 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller("infoController")
-@RequestMapping("/info/*")
+@RequestMapping("/damtuh/info/*")
 public class InfoController {
 
-	@RequestMapping(value = "/kind", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/kind.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String kind(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return "/info/kind";
+		return "/damtuh/info/kind";
 	}
 
-	@RequestMapping(value = "/origin", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView origin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+	@RequestMapping(value = "/origin.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public String origin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return "/info/origin";
 	}
 
 }

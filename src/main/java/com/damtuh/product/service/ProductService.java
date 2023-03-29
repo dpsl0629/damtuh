@@ -1,9 +1,9 @@
 package com.damtuh.product.service;
 
-import java.util.List;
-
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.vo.ProductVO;
+
+import java.util.List;
 
 public interface ProductService {
 

@@ -2,13 +2,13 @@ package com.damtuh.member.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.damtuh.member.dao.MemberDAO;
 import com.damtuh.member.vo.CommentOrderVO;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
-import com.damtuh.member.vo.OrderVO;
+import com.damtuh.order.vo.OrderVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 
 @Service("MemberService")

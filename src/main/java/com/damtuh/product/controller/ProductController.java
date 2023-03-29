@@ -3,6 +3,10 @@ package com.damtuh.product.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.damtuh.member.vo.CommentVO;
+import com.damtuh.product.service.ProductService;
+import com.damtuh.product.vo.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
@@ -11,13 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.damtuh.member.vo.CommentVO;
-import com.damtuh.product.service.ProductService;
-import com.damtuh.product.vo.ProductVO;
 import lombok.extern.log4j.Log4j;
 
 @Controller("productController")
-@RequestMapping("/product/*")
+@RequestMapping("/damtuh/product/*")
 @Log4j
 @EnableAspectJAutoProxy
 public class ProductController {
@@ -28,7 +29,7 @@ public class ProductController {
 	@Autowired
 	ProductVO productVO;
 
-	@RequestMapping(value = "/productList", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productList.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView productList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -38,7 +39,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/productDetail", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/productDetail.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView productDetail(@RequestParam("productId") int productId, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
@@ -52,7 +53,7 @@ public class ProductController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/likeCheck", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/likeCheck.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public @ResponseBody String likeCheck(@RequestParam(required = false, value = "cnt") int cnt,
 			@RequestParam(required = false, value = "productId") int productId, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

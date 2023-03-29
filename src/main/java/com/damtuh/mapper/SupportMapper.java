@@ -1,10 +1,10 @@
 package com.damtuh.mapper;
 
-import java.util.List;
-
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+
+import java.util.List;
 
 public interface SupportMapper {
 
@@ -27,10 +27,6 @@ public interface SupportMapper {
 	public void delete(String uuid);
 
 	public List<BoardAttachVO> findByBno(Long bno);
-
-	public void updateAttach1(Long bno);
-
-	public void updateAttach2(Long bno);
 
 	public void deleteAttach(Long bno);
 
