@@ -3,9 +3,11 @@ package com.damtuh.mapper;
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+//@Mapper("SupportMapper")
 public interface SupportMapper {
 
 	public List<NoticeBoardVO> getList();

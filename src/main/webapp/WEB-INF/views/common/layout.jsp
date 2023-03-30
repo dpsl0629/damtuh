@@ -8,17 +8,31 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<tiles:insertAttribute name="header" />
-</head>
+	<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
-	<article id="main-body">
-		<div class="layout-skip">
-			<a href="#main-wrapper">본문바로가기</a>
-		</div>
-		<tiles:insertAttribute name="body" />
-	</article>
+	<c:if test="${type ne 'main'}">
+		<jsp:include page="/WEB-INF/views/common/sub-top.jsp" />
+		<article id="sub-body">
+			<div class="wrapper">
+				<div class="sub-wrapper">
+					<div class="sub-contents">
+						<div class="sub-container">
+							<tiles:insertAttribute name="body" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</c:if>
+	<c:if test="${type eq 'main'}">
+		<article id="main-body">
+			<div class="layout-skip">
+				<a href="#main-wrapper">본문바로가기</a>
+			</div>
+			<tiles:insertAttribute name="body" />
+		</article>
+	</c:if>
 	<footer class="footer">
-		<tiles:insertAttribute name="footer" />
+		<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</footer>
 </body>

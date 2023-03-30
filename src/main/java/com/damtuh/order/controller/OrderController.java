@@ -54,7 +54,8 @@ public class OrderController {
 		model.addAttribute("product", productDetail);
 		model.addAttribute("product2", orderDetailVO);
 		model.addAttribute("member", member);
-		return "/order/orderPage";
+		model.addAttribute("title", "주문");
+		return "/damtuh/order/orderPage";
 	}
 
 	@RequestMapping(value = "/orderConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
@@ -80,6 +81,7 @@ public class OrderController {
 		String delivery = orderVO.getDeliveryId();
 		OrderVO order = orderService.selectOrder(delivery);
 		model.addAttribute("order", order);
+		model.addAttribute("title", "주문");
 		return "/damtuh/order/orderConfirm";
 	}
 

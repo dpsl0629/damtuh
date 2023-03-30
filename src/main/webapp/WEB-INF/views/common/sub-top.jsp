@@ -6,10 +6,10 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<div class="sub-top <tiles:insertAttribute name="bg"/>">
+<div class="sub-top bg1">
 	<h2 class="sub-tit">
 		[&nbsp;&nbsp;
-		<tiles:insertAttribute name="subtit" />
+			<c:out value="${title}" escapeXml="false"/>
 		&nbsp;&nbsp;]
 	</h2>
 </div>

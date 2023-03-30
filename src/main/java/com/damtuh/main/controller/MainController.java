@@ -35,6 +35,7 @@ public class MainController {
 		List<ProductVO> productList = productService.productList();
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("productList", productList);
+		model.addAttribute("type", "main");
 		return "/damtuh/index";
 	}
 }

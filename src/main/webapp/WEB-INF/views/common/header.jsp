@@ -114,42 +114,42 @@
 									</form>
 								</sec:authorize>
 								<sec:authorize access="isAuthenticated()">
-									<a href="${contextPath}/member/myPage" class="header-etc-item">마이페이지</a>
+									<a href="${contextPath}/damtuh/member/myPage.do" class="header-etc-item">마이페이지</a>
 								</sec:authorize>
 								<sec:authorize access="isAnonymous()">
-									<a href="${contextPath}/member/join.do" class="header-etc-item">회원가입</a>
+									<a href="${contextPath}/damtuh/member/join.do" class="header-etc-item">회원가입</a>
 								</sec:authorize>
 							</div>
 						</div>
 						<nav class="gnb-wrap">
 							<ul class="gnb-lst opt-clearfix">
-								<li class=""><a href="${contextPath }/company/damtuh">이용정보</a>
+								<li class=""><a href="${contextPath }/damtuh/company/damtuh.do">이용정보</a>
 									<div class="gnb-dep2-wrap">
 										<ul class="gnb-dep2-lst">
-											<li><a href="${contextPath }/company/damtuh">회사소개</a></li>
-											<li><a href="${contextPath }/company/damtuh">인사말</a></li>
-											<li><a href="${contextPath }/company/ideology">경영이념</a>
+											<li><a href="${contextPath }/damtuh/company/damtuh.do">회사소개</a></li>
+											<li><a href="${contextPath }/damtuh/company/damtuh.do">인사말</a></li>
+											<li><a href="${contextPath }/damtuh/company/ideology.do">경영이념</a>
 											</li>
-											<li><a href="${contextPath }/company/ci">CI</a></li>
-											<li><a href="${contextPath }/company/history">회사연혁</a></li>
+											<li><a href="${contextPath }/damtuh/company/ci.do">CI</a></li>
+											<li><a href="${contextPath }/damtuh/company/history.do">회사연혁</a></li>
 											<li><a href="#lnk">작업공정</a></li>
 											<li><a href="#lnk">세계속의 담터</a></li>
 											<li><a href="#lnk">찾아오시는 길</a></li>
 										</ul>
 									</div></li>
-								<li><a href="${contextPath }/product/productList"
+								<li><a href="${contextPath }/damtuh/product/productList.do"
 									style="font-weight: 600;">제품구매</a></li>
-								<li><a href="${contextPath }/info/kind">차이야기</a>
+								<li><a href="${contextPath }/damtuh/info/kind.do">차이야기</a>
 									<div class="gnb-dep2-wrap">
 										<ul class="gnb-dep2-lst">
-											<li><a href="${contextPath }/info/kind">차의 종류</a></li>
-											<li><a href="${contextPath }/info/origin">차의 기원</a></li>
+											<li><a href="${contextPath }/damtuh/info/kind.do">차의 종류</a></li>
+											<li><a href="${contextPath }/damtuh/info/origin.do">차의 기원</a></li>
 										</ul>
 									</div></li>
-								<li class=""><a href="${contextPath }/support/noticeList">고객지원</a>
+								<li class=""><a href="${contextPath}/damtuh/support/noticeList.do">고객지원</a>
 									<div class="gnb-dep2-wrap">
 										<ul class="gnb-dep2-lst">
-											<li><a href="${contextPath }/support/noticeList">공지사항</a></li>
+											<li><a href="${contextPath}/damtuh/support/noticeList.do">공지사항</a></li>
 											<li><a href="#lnk">자주 묻는 질문</a></li>
 										</ul>
 									</div>

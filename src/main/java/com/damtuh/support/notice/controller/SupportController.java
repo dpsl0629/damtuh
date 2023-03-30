@@ -55,18 +55,18 @@ public class SupportController {
 	private BoardService boardService;
 
 	@RequestMapping(value = "/noticeList.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String notice(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model)
+	public String notice(Criteria cri, Model model)
 			throws Exception {
 		List<NoticeBoardVO> noticeList = boardService.getList(cri);
 		int total = boardService.getTotal(cri);
 		model.addAttribute("list", noticeList);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("title", "담터소식");
 		return "/damtuh/support/noticeList";
 	}
 
 	@RequestMapping(value = "/noticeView.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,
-			HttpServletRequest request, HttpServletResponse response, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO, Model model) throws Exception {
+	public String noticeView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletResponse response, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO, Model model) throws Exception {
 		response.setHeader("pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.addHeader("Cache-Control", "No-store");
@@ -76,39 +76,41 @@ public class SupportController {
 		log.info(attachList);
 		model.addAttribute("article", noticeBoardVO);
 		model.addAttribute("attachList", attachList);
+		model.addAttribute("title", "담터소식");
 		return "/damtuh/support/noticeView";
 	}
 
 	@RequestMapping(value = "/noticeWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String noticeWrite(@ModelAttribute("cri") Criteria cri, HttpServletRequest request,
-			HttpServletResponse response, Model model) throws Exception {
+	public String noticeWrite(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
 		log.info("noticeWrite");
+		model.addAttribute("title", "담터소식");
 		return "/damtuh/support/noticeWrite";
 	}
 
 	@PostMapping(value = "/noticeConfirm.do")
-	public String noticeConfirm(NoticeBoardVO vo, RedirectAttributes rttr) throws Exception {
+	public String noticeConfirm(NoticeBoardVO vo, Model model) throws Exception {
 		log.info(vo);
 		if (vo.getAttachList() != null) {
 			vo.getAttachList().forEach(attach -> log.info(attach));
 		}
 		log.info(vo.getBno());
 		boardService.insert(vo);
+		model.addAttribute("title", "담터소식");
 		return "redirect:/support/noticeList";
 	}
 
 	@RequestMapping(value = "/modifyWrite.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno,
-			HttpServletRequest request, HttpServletResponse response, Model model, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO) throws Exception {
+	public String modifyWrite(@ModelAttribute("cri") Criteria cri, @RequestParam("bno") Long bno, Model model, @ModelAttribute("noticeBoardVO") NoticeBoardVO noticeBoardVO) throws Exception {
 		noticeBoardVO = boardService.get(bno);
 		model.addAttribute("notice", noticeBoardVO);
 		model.addAttribute("cri", cri);
+		model.addAttribute("title", "담터소식");
 		return "/damtuh/support/modifyWrite";
 	}
 
-	@GetMapping(value = "/modifyConfirm.do")
+	@RequestMapping(value = "/modifyConfirm.do")
 	public String modifyConfirm(@ModelAttribute("cri") Criteria cri, @ModelAttribute("vo") NoticeBoardVO vo,
-			HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+			RedirectAttributes rttr, Model model) throws Exception {
 		log.info(vo);
 		boardService.deleteAttach(vo.getBno());
 		boolean modifyResult = boardService.updateNotice(vo) == 1;
@@ -124,14 +126,15 @@ public class SupportController {
 		log.info("cri " + cri);
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
-		return "redirect:/support/noticeList";
+		model.addAttribute("title", "담터소식");
+		return "redirect:/damtuh/support/noticeList";
 	}
 
 	@GetMapping(value = "/deleteConfirm.do")
-	public String deleteConfirm(@RequestParam("bno") Long bno, HttpServletRequest request, HttpServletResponse response,
-			RedirectAttributes rttr) throws Exception {
+	public String deleteConfirm(@RequestParam("bno") Long bno, Model model) throws Exception {
 		boardService.deleteNotice(bno);
-		return "redirect:/support/noticeList";
+		model.addAttribute("title", "담터소식");
+		return "redirect:/damtuh/support/noticeList";
 	}
 
 	@PostMapping(value = "/upload.do")

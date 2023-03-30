@@ -47,16 +47,17 @@ public class MemberController {
 
 	// 로그인
 	@RequestMapping(value = "/loginPage.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String loginPage(HttpServletRequest request, HttpServletResponse response, Model model,
-			Authentication authentication) throws Exception {
+	public String loginPage(Model model) throws Exception {
 		log.info("로그인 페이지");
+		model.addAttribute("title", "로그인");
 		return "/damtuh/member/loginPage";
 	}
 
 	// 회원가입
 	@RequestMapping(value = "/join.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String join(Locale locale, Model model) throws Exception {
-		return "/member/join";
+	public String join(Model model) throws Exception {
+		model.addAttribute("title", "회원가입");
+		return "/damtuh/member/join";
 	}
 
 	// 아이디 중복체크
@@ -135,35 +136,33 @@ public class MemberController {
 
 	// 마이페이지
 	@RequestMapping(value = "/myPage.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response, Locale locale, Model model)
+	public String myPage(Model model)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		String userid = userDetails.getUsername();
 		log.info(userDetails.getUsername());
 		List<CommentOrderVO> orderList = memberService.readOrder(userid);
 		int count = orderList.size();
-		mav.setViewName(viewName);
-		mav.addObject("count", count);
-		mav.addObject("orderList", orderList);
-		return mav;
+		model.addAttribute("count", count);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("title", "마이페이지");
+		return "/damtuh/member/myPage";
 	}
 
 	// 수정 비밀번호 확인페이지
 	@RequestMapping(value = "/modifyCheckForm.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String modifyCheckForm(HttpServletRequest request, HttpServletResponse response, Model model)
+	public String modifyCheckForm(Model model)
 			throws Exception {
-		return "/member/modifyCheckForm";
+		model.addAttribute("title", "비밀번호 확인");
+		return "/damtuh/member/modifyCheckForm";
 	}
 
-	// 수정 비밀번호 확인 페이지
+	// 수정 비밀번호 확인
 	@RequestMapping(value = "/modifyCheck.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String modifyCheck(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
-		// MemberVO memberVO = memberService.modifyCheck(userDetails.getUsername());
 		log.info(userDetails.getUsername());
 		String pw = memberVO.getPw();
 		return pw;
@@ -179,33 +178,33 @@ public class MemberController {
 		log.info(pw);
 		log.info(request.getParameter("pw"));
 		boolean check = pwdEncoder.matches(request.getParameter("pw"), pw);
-
+		model.addAttribute("title", "ㅣ회원정보 수정");
 		if (check) {
 			MemberVO memberVO = memberService.read(userDetails.getUsername());
 			model.addAttribute("memberVO", memberVO);
-			return "/member/memberModify";
+			return "/damtuh/member/memberModify";
 		} else {
-			return "redirect:/member/modifyCheckForm";
+			return "redirect:/damtuh/member/modifyCheckForm";
 		}
 	}
 
 	// 수정 확인
 	@RequestMapping(value = "/modifyConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String modifyConfirm(MemberVO vo, HttpServletRequest request, HttpServletResponse response)
+	public String modifyConfirm(Model model, MemberVO vo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
 		log.info(vo.getPw());
 		log.info("modify : " + pwdEncoder.encode(vo.getPw()));
 		vo.setPw(pwdEncoder.encode(vo.getPw()));
 		memberService.modify(vo);
-		return "/member/modifyConfirm";
+		model.addAttribute("title", "수정 확인");
+		return "/damtuh/member/modifyConfirm";
 	}
 
 	// 삭제 비밀번호 확인 페이지
 	@RequestMapping(value = "/deleteCheckForm.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String memberDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return "/member/deleteCheckForm";
+	public String memberDelete(Model model) throws Exception {
+		model.addAttribute("title", "삭제 비밀번호 확인");
+		return "/damtuh/member/deleteCheckForm";
 	}
 
 	// 삭제 확인 페이지
@@ -220,14 +219,15 @@ public class MemberController {
 		log.info(request.getParameter("pw"));
 		boolean check = pwdEncoder.matches(request.getParameter("pw"), pw);
 
+		model.addAttribute("title", "삭제 확인");
 		if (check) {
 			memberService.delete1(userDetails.getUsername());
 			memberService.delete2(userDetails.getUsername());
 			memberService.deleteProductOrder(userDetails.getUsername());
 			SecurityContextHolder.clearContext();
-			return "/member/deleteConfirm";
+			return "/damtuh/member/deleteConfirm";
 		} else {
-			return "redirect:/member/deleteCheckForm";
+			return "redirect:/damtuh/member/deleteCheckForm";
 		}
 	}
 
@@ -244,20 +244,22 @@ public class MemberController {
 		log.info("아이디 " + id);
 		log.info("딜리버리아이디 " + deliveryId);
 		model.addAttribute("orderDetail", orderDetail);
-		return "/member/productCommentForm";
+		model.addAttribute("title", "리뷰 작성");
+		return "/damtuh/member/productCommentForm";
 	}
 
 	// 제품 코멘트 작성 확인 페이지
 	@ResponseBody
 	@RequestMapping(value = "/commentConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String commentConfirm(CommentVO vo, HttpServletRequest request, HttpServletResponse response, Model model)
+	public String commentConfirm(CommentVO vo, Model model)
 			throws Exception {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 		vo.setUserId(userDetails.getUsername());
 		memberService.comment(vo);
 		log.info(vo);
-		return "/member/commentConfirm";
+		model.addAttribute("title", "리뷰 작성");
+		return "/damtuh/member/commentConfirm";
 	}
 
 	// 작성한 코멘트 확인 페이지
@@ -273,6 +275,7 @@ public class MemberController {
 		OrderVO orderDetail = memberService.readOrderDetail(orderVO);
 		model.addAttribute("order", order);
 		model.addAttribute("orderDetail", orderDetail);
-		return "/member/productCommentConfirm";
+		model.addAttribute("title", "리뷰 작성");
+		return "/damtuh/member/productCommentConfirm";
 	}
 }

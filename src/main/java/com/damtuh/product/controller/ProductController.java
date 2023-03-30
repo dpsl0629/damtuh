@@ -31,22 +31,23 @@ public class ProductController {
 	ProductVO productVO;
 
 	@RequestMapping(value = "/productList.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String productList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+	public String productList(Model model) throws Exception {
 		List<ProductVO> productList = service.productList();
 		// log.info(productImageList.get(0));
 		model.addAttribute("list", productList);
+		model.addAttribute("title", "제품 구매");
 		return "/damtuh/product/productList";
 	}
 
 	@RequestMapping(value = "/productDetail.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String productDetail(@RequestParam("productId") int productId, HttpServletRequest request,
-			HttpServletResponse response, Model model) throws Exception {
+	public String productDetail(@RequestParam("productId") int productId, Model model) throws Exception {
 		ProductVO productDetail = service.productDetailList(productId);
 		// log.info(productImageList.get(0));
 		List<CommentVO> commentList = service.readComment(productId);
 		log.info(productDetail);
 		model.addAttribute("product", productDetail);
 		model.addAttribute("commentList", commentList);
+		model.addAttribute("title", "제품 구매");
 		return "/damtuh/product/productDetail";
 	}
 
