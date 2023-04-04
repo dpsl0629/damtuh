@@ -59,7 +59,7 @@
 
 	<resultMap type="com.damtuh.member.vo.CommentVO"
 		id="commentResult">
-		<result property="deliveryNum" column="deliveryNum" />
+		<result property="deliveryId" column="deliveryId" />
 		<result property="productNum" column="productNum" />
 		<result property="userId" column="userId" />
 		<result property="content" column="content" />
@@ -111,17 +111,17 @@
 
 	<select id="readOrder" resultMap="commentOrderResult">
 		SELECT *
-		FROM customer_order,
-		product_comment
-		WHERE customer_order.customerid =
-		product_comment.userid and
-		customer_order.deliveryid =
-		product_comment.deliveryNum and
-		customer_order.productid =
-		product_comment.productnum and
-		customer_order.customerid =
+		FROM tbl_customer_order,
+		tbl_product_comment
+		WHERE tbl_customer_order.customerid =
+		tbl_product_comment.userid and
+		tbl_customer_order.deliveryid =
+		tbl_product_comment.deliveryId and
+		tbl_customer_order.productid =
+		tbl_product_comment.productnum and
+		tbl_customer_order.customerid =
 		#{customerId} ORDER BY
-		customer_order.orderDate DESC
+		tbl_customer_order.orderDate DESC
 	</select>
 
 	<update id="modify">
@@ -146,29 +146,29 @@
 	</delete>
 
 	<delete id="deleteProductOrder">
-		DELETE FROM customer_order WHERE customerId = #{id}
+		DELETE FROM tbl_customer_order WHERE customerId = #{id}
 	</delete>
 
 	<select id="readOrderDetail" resultMap="orderResult">
 		SELECT * FROM
-		customer_order WHERE customerId = #{customerId} and deliveryId =
+		tbl_customer_order WHERE customerId = #{customerId} and deliveryId =
 		#{deliveryId}
 	</select>
 
 	<insert id="comment">
-		UPDATE product_comment SET content=#{content},
+		UPDATE tbl_product_comment SET content=#{content},
 		likeCount=#{likeCount}, writeDate = sysdate WHERE productNum =
-		#{productNum} AND deliveryNum = #{deliveryNum}
+		#{productNum} AND deliveryId = #{deliveryId}
 	</insert>
 
 	<select id="selectComment" resultMap="orderResult">
 		SELECT * FROM
-		customer_order WHERE deliveryId = #{deliveryId}
+		tbl_customer_order WHERE deliveryId = #{deliveryId}
 	</select>
 
 	<select id="productCommentConfirm" resultMap="commentResult">
 		SELECT * FROM
-		product_comment WHERE deliveryNum = #{deliveryId}
+		tbl_product_comment WHERE deliveryId = #{deliveryId}
 	</select>
 
 </mapper>

@@ -67,7 +67,7 @@
 
 	<resultMap type="com.damtuh.member.vo.CommentVO"
 		id="commentResult">
-		<result property="deliveryNum" column="deliveryNum" />
+		<result property="deliveryId" column="deliveryId" />
 		<result property="productNum" column="productNum" />
 		<result property="userId" column="userId" />
 		<result property="content" column="content" />
@@ -78,13 +78,13 @@
 
 	<select id="productList" resultMap="productResult">
 		<![CDATA[
-			select * from product order by productId desc
+			select * from tbl_product order by productId desc
 		]]>
 	</select>
 
 	<select id="productDetailList" resultMap="productResult">
 		<![CDATA[
-			select * from product where productId = #{productId}
+			select * from tbl_product where productId = #{productId}
 		]]>
 	</select>
 
@@ -98,7 +98,7 @@
 		SELECT *
 
 		FROM
-		product_comment
+		tbl_product_comment
 
 		WHERE content LIKE DECODE(content, NULL, '%', content)
 		and productnum =

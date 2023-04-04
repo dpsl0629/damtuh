@@ -61,7 +61,7 @@ public class OrderController {
 	@RequestMapping(value = "/orderConfirm.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String orderConfirm(OrderVO orderVO, OrderDetailVO orderDetailVO, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		log.info(request.getParameter("ordererName"));
-		log.info(request.getParameter("deliveryNum"));
+		log.info(request.getParameter("deliveryId"));
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);

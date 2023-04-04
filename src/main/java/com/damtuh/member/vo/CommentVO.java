@@ -10,7 +10,7 @@ import lombok.Data;
 public class CommentVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String deliveryNum;
+	private String deliveryId;
 	private int productNum;
 	private String userId;
 	private String content;

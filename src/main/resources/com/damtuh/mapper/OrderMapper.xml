@@ -36,7 +36,7 @@
 
 
 	<insert id="insertOrder">
-		insert into customer_order values(#{deliveryId}, #{customerId},
+		insert into tbl_customer_order values(#{deliveryId}, #{customerId},
 		#{productId}, #{productImage}, #{productName}, #{quantity},
 		#{delivery}, #{productPrice}, #{totalPrice}, #{point}, #{ordererName},
 		#{ordererTel}, #{ordererPhone}, #{ordererEmail}, #{receiverName},
@@ -46,12 +46,12 @@
 	</insert>
 
 	<insert id="insertComment">
-		insert into product_comment(deliveryNum, productNum, userid)
+		insert into tbl_product_comment(deliveryId, productNum, userid)
 		values(#{deliveryId}, #{productId}, #{customerId})
 	</insert>
 
 	<select id="selectOrder" resultMap="orderResult">
-		select * from customer_order
+		select * from tbl_customer_order
 		where deliveryId = #{deliveryId}
 	</select>
 

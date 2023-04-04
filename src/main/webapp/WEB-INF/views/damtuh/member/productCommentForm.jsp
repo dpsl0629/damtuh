@@ -77,7 +77,7 @@
 						<textarea name="content"></textarea>
 					</div>
 					<input type="hidden" class="like-count" name="likeCount"> <input
-						type="hidden" name="deliveryNum"
+						type="hidden" name="deliveryId"
 						value="${orderDetail.deliveryId }"> <input type="hidden"
 						name="productNum" value="${orderDetail.productId }">
 					<button type="button" class="btn-result btn-green">리뷰 남기기</button>
