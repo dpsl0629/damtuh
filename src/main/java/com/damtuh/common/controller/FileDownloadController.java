@@ -21,7 +21,6 @@ public class FileDownloadController {
 		ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
 
 		try {
-
 			// 이미지 파일 읽기
 			String file = CURR_IMAGE_REPO_PATH + "\\" + fileName;
 
@@ -29,7 +28,6 @@ public class FileDownloadController {
 			BufferedImage image = Thumbnails.of(file).size(500, 500).outputFormat("jpeg").asBufferedImage();
 
 			ImageIO.write(image, "jpeg", jpegOutputStream);
-
 		} catch (IllegalArgumentException e) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
@@ -44,7 +42,5 @@ public class FileDownloadController {
 		responseOutputStream.write(imgByte);
 		responseOutputStream.flush();
 		responseOutputStream.close();
-
 	}
-
 }

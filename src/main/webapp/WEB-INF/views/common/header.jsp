@@ -62,7 +62,7 @@
 							<span class="ico"></span>
 						</button>
 						<h1 class="header-logo">
-							<a href="${contextPath }/damtuh" class="header-logo-link"><img
+							<a href="${contextPath }/damtuh.do" class="header-logo-link"><img
 								src="${contextPath }/resources/images/layout/header-logo.png"
 								title="헤더 로고"><span class="opt-screen-out"></span></a>
 						</h1>
@@ -78,12 +78,12 @@
 								<sec:authorize access="isAnonymous()">
 									<a href="#" class="header-etc-item"
 										onclick="document.getElementById('login-form').submit();">로그인</a>
-									<!-- <form id="login-form" action='<c:url value='${contextPath}/member/myPage'/>'>
+									<!-- <form id="login-form" action='<c:url value='${contextPath}/damtuh/member/myPage.do'/>'>
 									   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 									</form> -->
 								</sec:authorize>
 								<sec:authorize access="isAuthenticated()">
-									<a href="${contextPath}/member/myPage" class="header-etc-item">마이페이지</a>
+									<a href="${contextPath}/member/myPage.do" class="header-etc-item">마이페이지</a>
 								</sec:authorize>
 								<sec:authorize access="isAnonymous()">
 									<a href="${contextPath}/member/join.do" class="header-etc-item">회원가입</a>
@@ -108,7 +108,7 @@
 									<a href="#" class="header-etc-item"
 										onclick="document.getElementById('login-form').submit();">로그인</a>
 									<form id="login-form"
-										action='<c:url value='${contextPath}/member/myPage'/>'>
+										action='<c:url value='/damtuh/member/myPage.do'/>'>
 										<input name="${_csrf.parameterName}" type="hidden"
 											value="${_csrf.token}" />
 									</form>

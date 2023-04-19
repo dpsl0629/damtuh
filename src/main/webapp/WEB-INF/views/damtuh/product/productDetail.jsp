@@ -11,10 +11,9 @@
 			<div class="item-visual">
 				<div class="visual-cont">
 					<div class="img-box">
-						<img
-							src="${contextPath }/thumbnails.do?fileName=${product.fileName}"
-							alt="상품 사진"> <input type="hidden" name="productImage"
-							value="${product.fileName }" />
+						<img src="${contextPath }/thumbnails.do?fileName=${product.fileName}" alt="상품 사진">
+						<input type="hidden" name="productImage"
+							value="${product.fileName}" />
 					</div>
 					<div class="">
 						<ul class="thumb-lst opt-clearfix">

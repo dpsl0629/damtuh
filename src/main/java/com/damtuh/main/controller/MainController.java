@@ -30,6 +30,7 @@ public class MainController {
 	@RequestMapping(value = "/damtuh.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String main(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		// 공지사항
+		cri.setPageNum(0);
 		List<NoticeBoardVO> noticeList = boardService.getList(cri);
 		// 제품목록
 		List<ProductVO> productList = productService.productList();

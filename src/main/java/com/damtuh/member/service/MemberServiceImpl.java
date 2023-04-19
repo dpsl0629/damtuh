@@ -104,5 +104,4 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteProductOrder(String userid) {
 		memberDAO.deleteProductOrder(userid);
 	}
-
 }

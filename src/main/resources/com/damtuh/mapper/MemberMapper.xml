@@ -115,10 +115,6 @@
 		tbl_product_comment
 		WHERE tbl_customer_order.customerid =
 		tbl_product_comment.userid and
-		tbl_customer_order.deliveryid =
-		tbl_product_comment.deliveryId and
-		tbl_customer_order.productid =
-		tbl_product_comment.productnum and
 		tbl_customer_order.customerid =
 		#{customerId} ORDER BY
 		tbl_customer_order.orderDate DESC

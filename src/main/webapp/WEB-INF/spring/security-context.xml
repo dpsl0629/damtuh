@@ -22,21 +22,21 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 
 <http>
-		<intercept-url pattern="/member/myPage" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
-		<intercept-url pattern="/order/orderPage" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
-		<intercept-url pattern="/support/noticeWrite" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/damtuh/member/myPage.do" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
+		<intercept-url pattern="/damtuh/order/orderPage.do" access="hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')"/>
+		<intercept-url pattern="/damtuh/support/noticeWrite.do" access="hasRole('ROLE_ADMIN')"/>
 		<access-denied-handler ref="customAccessFail"/>
 		<!-- <security:intercept-url pattern="/member/member" access="hasRole('ROLE_MEMBER')"/> -->
 		<!-- <security:intercept-url pattern="/product/likeCheck" access="hasRole('ROLE_MEMBER')"/> -->
 		
 		<form-login
-		login-page="/member/loginPage"
+		login-page="/damtuh/member/loginPage.do"
 		default-target-url="/damtuh"
 		authentication-failure-handler-ref="customLoginFail"
 		authentication-success-handler-ref="customLoginSuccess"
-		authentication-failure-url="/member/loginPage"
+		authentication-failure-url="/damtuh/member/loginPage.do"
 		always-use-default-target="true" /> 
-		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/main"
+		<logout logout-url="/damtuh/member/logout.do" invalidate-session="true" logout-success-url="/main"
 		delete-cookies="remember-me, JSESSIONID"/>
 		
 		<remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>

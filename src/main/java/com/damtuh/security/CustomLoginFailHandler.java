@@ -47,7 +47,7 @@ public class CustomLoginFailHandler implements AuthenticationFailureHandler {
 		}
 
 		// 로그인 페이지로 다시 포워딩
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/member/loginPage");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/damtuh/member/loginPage.do");
 		dispatcher.forward(request, response);
 	}
 }

@@ -82,7 +82,7 @@
 			<form id="write-form" action="${contextPath }/support/noticeWrite"
 				method="get">
 				<div class="btn-box right-box opt-clearfix">
-					<a href="${contextPath }/support/noticeWrite" class="btn-green"
+					<a href="${contextPath}/support/noticeWrite" class="btn-green"
 						type="button">글쓰기</a>
 				</div>
 			</form>

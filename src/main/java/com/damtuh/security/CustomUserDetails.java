@@ -60,5 +60,4 @@ public class CustomUserDetails implements UserDetails {
 	public void setNAME(String name) {
 		NAME = name;
 	}
-
 }
