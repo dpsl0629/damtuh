@@ -1,15 +1,16 @@
 package com.damtuh.order.dao;
 
 import com.damtuh.order.vo.OrderVO;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("OrderDAO")
+@RequiredArgsConstructor
 public class OrderDAOImpl implements OrderDAO {
 
-	@Autowired
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 
 	@Override
 	public int insertOrder(OrderVO orderVO) {

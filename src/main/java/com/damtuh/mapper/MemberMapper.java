@@ -16,8 +16,6 @@ public interface MemberMapper {
 
 	public MemberVO read(String userid);
 
-	public void resetFailCnt(String userid);
-
 	public List<OrderVO> readOrder(String userid);
 
 	public int modify(MemberVO vo);

@@ -10,6 +10,7 @@ import com.damtuh.product.vo.ProductVO;
 import com.damtuh.support.notice.service.BoardService;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,14 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.AllArgsConstructor;
 
 @Controller("mainController")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MainController {
 
-	@Resource(name = "BoardService")
-	private BoardService boardService;
+	private final BoardService boardService;
 
-	@Resource(name = "ProductService")
-	private ProductService productService;
+	private final ProductService productService;
 
 	@RequestMapping(value = "/damtuh.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String main(Criteria cri, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {

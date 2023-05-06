@@ -6,22 +6,23 @@ import com.damtuh.member.vo.CommentOrderVO;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
 import com.damtuh.order.vo.OrderVO;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 @Repository("MemberDAOImpl")
+@RequiredArgsConstructor
+@Log4j2
 public class MemberDAOImpl implements MemberDAO {
 
-	@Autowired
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 
 	@Override
 	public int idCheck(String id) throws DataAccessException {
-		System.out.println(id);
 		int result = sqlSession.selectOne("com.damtuh.mapper.MemberMapper.idCheck", id);
-		System.out.println(result);
 		return result;
 	}
 

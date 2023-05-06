@@ -13,7 +13,7 @@ import com.damtuh.order.vo.OrderDetailVO;
 import com.damtuh.order.vo.OrderVO;
 import com.damtuh.product.service.ProductService;
 import com.damtuh.product.vo.ProductVO;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,24 +22,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller("orderController")
 @RequestMapping("/damtuh/order/*")
 @Log4j
-@EnableAspectJAutoProxy
+@RequiredArgsConstructor
 public class OrderController {
 
-	@Resource(name = "ProductService")
-	private ProductService service;
+	private final ProductService service;
 
-	@Resource(name="OrderService")
-	private OrderService orderService;
+	private final OrderService orderService;
 
-	@Resource(name="MemberService")
-	private MemberService memberService;
+	private final MemberService memberService;
 
 	@ResponseBody
 	@RequestMapping(value = "/orderPage.do", method = { RequestMethod.POST, RequestMethod.GET })

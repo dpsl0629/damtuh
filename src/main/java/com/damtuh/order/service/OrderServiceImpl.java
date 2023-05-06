@@ -2,16 +2,16 @@ package com.damtuh.order.service;
 
 import com.damtuh.order.dao.OrderDAO;
 import com.damtuh.order.vo.OrderVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 
 @Service("OrderService")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-	@Autowired
-	OrderDAO orderDAO;
+	private final OrderDAO orderDAO;
 
 	@Override
 	public int insertOrder(OrderVO orderVO) {

@@ -7,6 +7,7 @@ import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +16,10 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service("BoardService")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BoardServiceServiceImpl implements BoardService {
 
-	private SupportDAO supportDao;
+	private final SupportDAO supportDao;
 
 	@Override
 	public List<NoticeBoardVO> getList(Criteria cri) {
@@ -39,7 +40,7 @@ public class BoardServiceServiceImpl implements BoardService {
 	public int getTotal(Criteria cri) {
 		log.info("get Total......");
 		int count = supportDao.getTotal(cri);
-		System.out.println("service total" + count);
+		log.info("service total" + count);
 		return count;
 	}
 

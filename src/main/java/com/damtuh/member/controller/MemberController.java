@@ -16,34 +16,29 @@ import com.damtuh.member.vo.CommentOrderVO;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
 import com.damtuh.order.vo.OrderVO;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller("memberController")
 @Log4j
-@EnableAspectJAutoProxy
 @RequestMapping(value="/damtuh/member/*")
+@RequiredArgsConstructor
 public class MemberController {
 
-	@Resource(name="MemberService")
-	private MemberService memberService;
+	private final MemberService memberService;
 
-	@Resource
-	private JavaMailSender mailSender;
+	private final JavaMailSender mailSender;
 
-	@Resource
-	private BCryptPasswordEncoder pwdEncoder;
+	private final BCryptPasswordEncoder pwdEncoder;
 
 	// 로그인
 	@RequestMapping(value = "/loginPage.do", method = { RequestMethod.POST, RequestMethod.GET })

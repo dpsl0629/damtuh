@@ -7,28 +7,24 @@ import javax.servlet.http.HttpServletResponse;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.service.ProductService;
 import com.damtuh.product.vo.ProductVO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.log4j.Log4j;
 
 @Controller("productController")
 @RequestMapping("/damtuh/product/*")
 @Log4j
-@EnableAspectJAutoProxy
+@RequiredArgsConstructor
 public class ProductController {
 
-	@Autowired
-	ProductService service;
+	private final ProductService service;
 
-	@Autowired
-	ProductVO productVO;
+	private final ProductVO productVO;
 
 	@RequestMapping(value = "/productList.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public String productList(Model model) throws Exception {

@@ -7,21 +7,20 @@ import com.damtuh.member.vo.CommentOrderVO;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.member.vo.MemberVO;
 import com.damtuh.order.vo.OrderVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 
 @Service("MemberService")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
-	@Autowired
-	private MemberDAO memberDAO;
+	private final MemberDAO memberDAO;
 
 	@Override
 	public int idCheck(String id) {
 		int result = memberDAO.idCheck(id);
-		System.out.println(result);
 		return result;
 	}
 

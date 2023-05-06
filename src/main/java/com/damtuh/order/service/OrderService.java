@@ -9,5 +9,4 @@ public interface OrderService {
 	public OrderVO selectOrder(String deliveryId);
 
 	public int insertComment(OrderVO orderVO);
-
 }

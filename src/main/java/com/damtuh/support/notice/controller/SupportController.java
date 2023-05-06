@@ -21,6 +21,7 @@ import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
 import com.damtuh.support.notice.vo.PageDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -49,14 +50,13 @@ import net.coobird.thumbnailator.Thumbnailator;
 @Controller("supportController")
 @RequestMapping("/damtuh/support/*")
 @Log4j
+@RequiredArgsConstructor
 public class SupportController {
 
-	@Autowired
-	private BoardService boardService;
+	private final BoardService boardService;
 
 	@RequestMapping(value = "/noticeList.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public String notice(Criteria cri, Model model)
-			throws Exception {
+	public String notice(Criteria cri, Model model) throws Exception {
 		List<NoticeBoardVO> noticeList = boardService.getList(cri);
 		int total = boardService.getTotal(cri);
 		model.addAttribute("list", noticeList);

@@ -126,7 +126,7 @@
 		phone = #{phone} where id = #{id}
 	</update>
 
-	<select id="modifyCheck" resultType="String">
+	<select id="modifyCheck" resultType="Integer">
 		SELECT pw FROM tbl_member
 		WHERE id = #{id}
 	</select>

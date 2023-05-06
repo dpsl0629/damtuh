@@ -5,6 +5,7 @@ import java.util.List;
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.dao.ProductDAO;
 import com.damtuh.product.vo.ProductVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
@@ -12,11 +13,10 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service("ProductService")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-	@Autowired
-	ProductDAO productDAO;
+	private final ProductDAO productDAO;
 
 	@Override
 	public List<ProductVO> productList() {

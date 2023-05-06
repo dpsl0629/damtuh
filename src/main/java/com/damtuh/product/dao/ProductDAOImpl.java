@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.damtuh.member.vo.CommentVO;
 import com.damtuh.product.vo.ProductVO;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -13,10 +14,10 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Repository("ProductDAO")
+@RequiredArgsConstructor
 public class ProductDAOImpl implements ProductDAO {
 
-	@Autowired
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 
 	@Override
 	public List<ProductVO> showList() throws DataAccessException {

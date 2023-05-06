@@ -10,9 +10,5 @@ public interface ProductMapper {
 
 	public List<ProductVO> productList();
 
-	public List<ProductImageVO> productIamgeList(ProductVO productId);
-
 	public int likeCheck(ProductVO productVO);
-
-	public List<CommentVO> readComment(String productId);
 }

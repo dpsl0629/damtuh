@@ -6,6 +6,8 @@ import com.damtuh.support.notice.vo.AttachFileDTO;
 import com.damtuh.support.notice.vo.BoardAttachVO;
 import com.damtuh.support.notice.vo.Criteria;
 import com.damtuh.support.notice.vo.NoticeBoardVO;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -14,11 +16,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("SupportDAO")
-@Transactional(propagation = Propagation.REQUIRED)
+@Log4j2
+@RequiredArgsConstructor
 public class SupportDAOImpl implements SupportDAO {
 
-	@Autowired
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 
 	@Override
 	public List<NoticeBoardVO> view(Criteria cri) throws DataAccessException {
@@ -35,7 +37,7 @@ public class SupportDAOImpl implements SupportDAO {
 	@Override
 	public int getTotal(Criteria cri) throws DataAccessException {
 		int count = sqlSession.selectOne("com.damtuh.mapper.SupportMapper.getTotalCount", cri);
-		System.out.println("count : " + count);
+		log.info("count : " + count);
 		return count;
 	}
 
@@ -46,11 +48,13 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 
 	@Override
+	@Transactional
 	public void insertNotice(NoticeBoardVO vo) throws DataAccessException {
 		sqlSession.insert("com.damtuh.mapper.SupportMapper.insert", vo);
 	}
 
 	@Override
+	@Transactional
 	public int updateNotice(NoticeBoardVO vo) throws DataAccessException {
 		return sqlSession.update("com.damtuh.mapper.SupportMapper.updateNotice", vo);
 	}
@@ -61,6 +65,7 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 
 	@Override
+	@Transactional
 	public void insertAttach(BoardAttachVO vo) throws DataAccessException {
 		sqlSession.insert("com.damtuh.mapper.SupportMapper.insertAttach", vo);
 	}
@@ -71,11 +76,13 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 
 	@Override
+	@Transactional
 	public void updateAttachFile(Long bno) throws DataAccessException {
 		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachFile", bno);
 	}
 
 	@Override
+	@Transactional
 	public void updateAttachNone(Long bno) throws DataAccessException {
 		sqlSession.update("com.damtuh.mapper.SupportMapper.updateAttachNone", bno);
 	}
